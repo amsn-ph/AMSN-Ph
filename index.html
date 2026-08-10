@@ -1,441 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Adventist Medical Students Network – Philippines (AMSN-PH), connecting Adventist medical students in faith, fellowship, service, and mission."
-  />
-
-  <title>AMSN-PH — Adventist Medical Students Network Philippines</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Adventist Medical Students Network – Philippines. Connecting Adventist medical students in faith, fellowship, service, and mission.">
+  <title>AMSN-PH | Adventist Medical Students Network – Philippines</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <header class="site-header">
-  <div class="container nav-row">
-    <a href="#home" class="wordmark" aria-label="AMSN-PH home">
-      <span class="wordmark-main">AMSN-PH</span>
-      <span class="wordmark-sub">Adventist Medical Students Network – Philippines</span>
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="AMSN-PH Home">
+      <img src="assets/amsn-logo.png" alt="" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <span class="brand-fallback">AMSN-PH</span>
+      <span class="brand-name">Adventist Medical Students Network – Philippines</span>
     </a>
 
-    <button class="menu-button" aria-expanded="false" aria-controls="site-nav">
-      Menu
-    </button>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
 
-    <nav class="site-nav" id="site-nav">
+    <nav id="main-nav" class="main-nav">
       <a href="#about">About</a>
       <a href="#network">Network</a>
       <a href="#ministries">Ministries</a>
       <a href="#chapters">Chapters</a>
+      <a href="stories.html">Stories & Devotionals</a>
       <a href="#leadership">Leadership</a>
-      <a href="#stories">Stories</a>
-      <a href="#join" class="nav-join">Join AMSN</a>
+      <a href="#contact">Contact</a>
+      <a class="join-link" href="#join">Join AMSN</a>
     </nav>
   </div>
 </header>
 
 <main>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="container hero-layout">
-      <div class="hero-main">
-        <p class="section-kicker">National student network • Philippines</p>
-
-        <h1>
-          Adventist medical students,
-          <span>connected by faith and calling.</span>
-        </h1>
-
-        <p class="hero-intro">
-          AMSN-PH brings together Adventist medical students across the Philippines
-          for fellowship, formation, service, and mission.
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="overline">ADVENTIST MEDICAL STUDENTS NETWORK — PHILIPPINES</p>
+        <h1>Faithful in calling.<br>Connected in community.<br>Ready to serve.</h1>
+        <p class="lead">
+          A national network of Adventist medical students growing together in faith,
+          medicine, fellowship, leadership, and mission.
         </p>
-
         <div class="hero-actions">
-          <a href="#join" class="button button-dark">Join the network</a>
-          <a href="#about" class="button button-text">Learn about AMSN-PH →</a>
+          <a href="#join" class="btn primary">Join the Network</a>
+          <a href="#about" class="btn link">Discover AMSN-PH <span>→</span></a>
         </div>
       </div>
 
-      <aside class="hero-side" aria-label="AMSN-PH focus">
-        <div class="hero-side-label">Our shared direction</div>
-
-        <div class="hero-side-list">
-          <div>
-            <span>01</span>
-            <p><strong>Faith</strong><br>Christ at the center of the medical journey.</p>
-          </div>
-          <div>
-            <span>02</span>
-            <p><strong>Fellowship</strong><br>A community that understands medicine and mission.</p>
-          </div>
-          <div>
-            <span>03</span>
-            <p><strong>Service</strong><br>Compassion expressed through action.</p>
-          </div>
-          <div>
-            <span>04</span>
-            <p><strong>Witness</strong><br>Living the gospel wherever medicine takes us.</p>
-          </div>
-        </div>
+      <aside class="hero-note">
+        <p class="hero-note-label">AMSN-PH</p>
+        <p class="hero-note-quote">
+          “Wherever the medical journey takes us, we remain one community with one greater calling.”
+        </p>
+        <div class="hero-note-meta">Faith • Fellowship • Service • Mission</div>
       </aside>
     </div>
   </section>
 
-  <!-- MARQUEE / IDENTITY STRIP -->
-  <section class="identity-strip" aria-label="AMSN-PH values">
-    <div class="container identity-row">
-      <span>Faith</span>
-      <span>Medicine</span>
-      <span>Fellowship</span>
-      <span>Service</span>
-      <span>Mission</span>
+  <section class="quick-links">
+    <div class="container quick-grid">
+      <a href="#ministries"><span>01</span><strong>Programs & Ministries</strong><small>How we grow and serve</small></a>
+      <a href="#chapters"><span>02</span><strong>Find a Chapter</strong><small>Connect with your community</small></a>
+      <a href="stories.html"><span>03</span><strong>Stories & Devotionals</strong><small>Faith from across the network</small></a>
+      <a href="#join"><span>04</span><strong>Join AMSN-PH</strong><small>Become part of the network</small></a>
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section class="section" id="about">
-    <div class="container two-column">
-      <div class="section-label">
-        <span>01</span>
-        <p>About AMSN-PH</p>
+    <div class="container section-grid">
+      <div class="section-marker">
+        <span>ABOUT</span>
       </div>
-
-      <div class="content-wide">
-        <h2>A national community for Adventist medical students.</h2>
-
-        <div class="text-columns">
+      <div class="section-content">
+        <p class="eyebrow">WHO WE ARE</p>
+        <h2>A community for Adventist medical students across the Philippines.</h2>
+        <div class="body-columns">
           <p>
-            The Adventist Medical Students Network – Philippines brings together
-            Adventist medical students from different schools, cities, and stages
-            of training in a shared commitment to faith, fellowship, service, and mission.
+            The Adventist Medical Students Network – Philippines (AMSN-PH) connects
+            Adventist medical students from different schools, regions, and stages of
+            training in a shared commitment to Christ-centered formation, fellowship,
+            service, and mission.
           </p>
-
           <p>
-            AMSN-PH exists to help future physicians remain grounded in Christ,
-            connected with one another, and equipped to serve wherever they are called.
+            Through national and chapter-based initiatives, AMSN-PH creates spaces for
+            students to worship together, encourage one another, grow as future physicians,
+            and use medicine as an avenue for compassionate service and witness.
           </p>
         </div>
 
-        <blockquote>
-          “Medicine is not only a profession we are preparing for. It is also a place
-          where faith can be lived, shared, and put into service.”
-        </blockquote>
+        <div class="values-line">
+          <div><strong>Faith</strong><span>Christ at the center.</span></div>
+          <div><strong>Fellowship</strong><span>We grow together.</span></div>
+          <div><strong>Service</strong><span>Compassion in action.</span></div>
+          <div><strong>Witness</strong><span>Faith lived through medicine.</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- NETWORK -->
-  <section class="section section-dark" id="network">
-    <div class="container two-column">
-      <div class="section-label light">
-        <span>02</span>
-        <p>The Network</p>
-      </div>
-
-      <div class="content-wide light-content">
-        <h2>More than an organization page.</h2>
-        <p class="large-copy">
-          AMSN-PH is building a stronger way for Adventist medical students to find
-          one another, discover opportunities, and stay connected across the country.
+  <section class="section dark-section" id="network">
+    <div class="container section-grid">
+      <div class="section-marker light"><span>NETWORK</span></div>
+      <div class="section-content">
+        <p class="eyebrow light">MORE THAN A WEBSITE</p>
+        <h2>One network. Different schools. A shared calling.</h2>
+        <p class="large-text">
+          AMSN-PH exists to make connection easier—between students, chapters,
+          mentors, physicians, ministries, and opportunities across the country.
         </p>
 
-        <div class="network-list">
+        <div class="network-rows">
           <article>
-            <h3>Find your community</h3>
-            <p>Connect with fellow Adventist medical students and local or regional chapters.</p>
+            <span class="number">01</span>
+            <div><h3>Connect</h3><p>Find Adventist medical students and communities beyond your own school.</p></div>
           </article>
-
           <article>
-            <h3>Find opportunities</h3>
-            <p>Discover programs, missions, mentorship, service, and collaborative initiatives.</p>
+            <span class="number">02</span>
+            <div><h3>Grow</h3><p>Learn through mentorship, spiritual formation, leadership, and professional development.</p></div>
           </article>
-
           <article>
-            <h3>Grow together</h3>
-            <p>Learn from students, physicians, mentors, alumni, and ministry partners.</p>
+            <span class="number">03</span>
+            <div><h3>Serve</h3><p>Join medical missions, health ministries, outreach, and collaborative projects.</p></div>
+          </article>
+          <article>
+            <span class="number">04</span>
+            <div><h3>Share</h3><p>Tell stories of faith, medicine, answered prayer, calling, and service.</p></div>
           </article>
         </div>
 
-        <p class="phase-note">
-          Member profiles and the digital network portal are planned for a future phase.
-        </p>
+        <p class="phase-label">Member accounts and profiles are planned for Phase 2.</p>
       </div>
     </div>
   </section>
 
-  <!-- STORY -->
   <section class="section" id="story">
-    <div class="container two-column">
-      <div class="section-label">
-        <span>03</span>
-        <p>Our Story</p>
-      </div>
-
-      <div class="content-wide">
-        <div class="story-year">2017—Today</div>
-        <h2>Connected by faith. Growing through service.</h2>
-
-        <div class="text-columns">
+    <div class="container section-grid">
+      <div class="section-marker"><span>OUR STORY</span></div>
+      <div class="section-content">
+        <p class="eyebrow">2017 — PRESENT</p>
+        <h2>Connected by faith. Growing through service. Continuing the mission.</h2>
+        <div class="body-columns">
           <p>
-            AMSN-PH began as Adventist medical students from different parts of the
+            AMSN-PH began when Adventist medical students from different parts of the
             Philippines sought to build a national community grounded in shared faith,
             fellowship, and service.
           </p>
-
           <p>
-            The Network has since brought students together through worship, prayer,
-            mentorship, medical missions, professional development, publications,
-            and other initiatives that strengthen both faith and calling.
+            Through the years, the Network has brought students together through prayer,
+            worship, mentorship, medical missions, professional development, publications,
+            board-exam support, and other initiatives that strengthen both faith and calling.
           </p>
         </div>
-
         <p class="editor-note">
-          Replace this with the Board-approved historical timeline before public launch.
+          Final historical details should be reviewed against AMSN-PH records before public launch.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- MISSION/VISION -->
-  <section class="mission-section">
-    <div class="container mission-grid">
+  <section class="purpose-section">
+    <div class="container purpose-grid">
       <article>
-        <p class="mission-label">Vision</p>
-        <h2>
-          A connected and Christ-centered community of Adventist medical students
-          committed to becoming compassionate, competent, and mission-driven physicians.
-        </h2>
+        <p class="purpose-label">VISION</p>
+        <h2>A connected and Christ-centered community of Adventist medical students committed to compassionate, competent, and mission-driven practice.</h2>
       </article>
-
       <article>
-        <p class="mission-label">Mission</p>
-        <h2>
-          To connect, nurture, equip, and mobilize Adventist medical students through
-          spiritual fellowship, mentorship, leadership, growth, and service.
-        </h2>
+        <p class="purpose-label">MISSION</p>
+        <h2>To connect, nurture, equip, and mobilize Adventist medical students through fellowship, mentorship, leadership, growth, and service.</h2>
       </article>
     </div>
-
-    <div class="container">
-      <p class="editor-note">
-        Draft website copy only. Replace with constitutionally approved mission and vision, if available.
-      </p>
-    </div>
+    <div class="container"><p class="editor-note purpose-note">Draft website copy. Replace with officially approved statements, if AMSN-PH already has them.</p></div>
   </section>
 
-  <!-- MINISTRIES -->
   <section class="section" id="ministries">
-    <div class="container two-column">
-      <div class="section-label">
-        <span>04</span>
-        <p>Programs & Ministries</p>
-      </div>
-
-      <div class="content-wide">
+    <div class="container section-grid">
+      <div class="section-marker"><span>MINISTRIES</span></div>
+      <div class="section-content">
+        <p class="eyebrow">PROGRAMS & MINISTRIES</p>
         <h2>Growing in faith. Serving with purpose.</h2>
 
-        <div class="program-list">
-          <article>
-            <span>01</span>
-            <div>
-              <h3>Spiritual Life</h3>
-              <p>Prayer, worship, Bible study, fellowship, and spiritual formation.</p>
-            </div>
-          </article>
-
-          <article>
-            <span>02</span>
-            <div>
-              <h3>Physician-Missionary Formation</h3>
-              <p>Helping students see medicine as a calling and an avenue for ministry.</p>
-            </div>
-          </article>
-
-          <article>
-            <span>03</span>
-            <div>
-              <h3>Medical Missions & Community Service</h3>
-              <p>Health outreach, humanitarian work, service projects, and mission initiatives.</p>
-            </div>
-          </article>
-
-          <article>
-            <span>04</span>
-            <div>
-              <h3>Mentorship & Professional Development</h3>
-              <p>Connections with students, physicians, alumni, and mentors.</p>
-            </div>
-          </article>
-
-          <article>
-            <span>05</span>
-            <div>
-              <h3>PLE Support & Prayer Ministry</h3>
-              <p>Prayer and spiritual encouragement for Adventist medical graduates preparing for the boards.</p>
-            </div>
-          </article>
-
-          <article>
-            <span>06</span>
-            <div>
-              <h3>Publications & Media</h3>
-              <p>Stories, testimonies, health education, announcements, and organizational updates.</p>
-            </div>
-          </article>
+        <div class="program-table">
+          <article><span>01</span><h3>Spiritual Life</h3><p>Prayer, worship, Bible study, fellowship, and spiritual formation.</p></article>
+          <article><span>02</span><h3>Physician-Missionary Formation</h3><p>Exploring medicine as both profession and avenue for ministry.</p></article>
+          <article><span>03</span><h3>Medical Missions & Community Service</h3><p>Health outreach, service projects, missions, and humanitarian initiatives.</p></article>
+          <article><span>04</span><h3>Mentorship & Professional Development</h3><p>Guidance and learning through students, physicians, alumni, and mentors.</p></article>
+          <article><span>05</span><h3>PLE Support & Prayer Ministry</h3><p>Prayer and encouragement for Adventist graduates preparing for the boards.</p></article>
+          <article><span>06</span><h3>Publications & Media</h3><p>Stories, testimonies, devotionals, announcements, and health communication.</p></article>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CHAPTERS -->
-  <section class="section section-warm" id="chapters">
-    <div class="container two-column">
-      <div class="section-label">
-        <span>05</span>
-        <p>Chapters</p>
-      </div>
-
-      <div class="content-wide">
-        <h2>One network. Many communities.</h2>
-        <p class="large-copy dark-copy">
-          AMSN-PH connects Adventist medical students through regional and campus-based communities.
+  <section class="section sand-section" id="chapters">
+    <div class="container section-grid">
+      <div class="section-marker"><span>CHAPTERS</span></div>
+      <div class="section-content">
+        <p class="eyebrow">LOCAL COMMUNITIES</p>
+        <h2>Find your community in the network.</h2>
+        <p class="large-text dark">
+          Regional and campus-based communities bring AMSN closer to students wherever they study.
         </p>
+        <div class="chapter-list">
+          <div><strong>Luzon</strong><span>Current chapters to be verified</span></div>
+          <div><strong>Visayas</strong><span>Current chapters to be verified</span></div>
+          <div><strong>Mindanao</strong><span>Current chapters to be verified</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="region-list">
+  <section class="section stories-preview">
+    <div class="container section-grid">
+      <div class="section-marker"><span>STORIES</span></div>
+      <div class="section-content">
+        <div class="section-topline">
           <div>
-            <span>Luzon</span>
-            <p>Add verified current chapters.</p>
+            <p class="eyebrow">FROM THE NETWORK</p>
+            <h2>Faith lived in the medical journey.</h2>
           </div>
-          <div>
-            <span>Visayas</span>
-            <p>Add verified current chapters.</p>
-          </div>
-          <div>
-            <span>Mindanao</span>
-            <p>Add verified current chapters.</p>
+          <a href="stories.html" class="plain-link">View all stories →</a>
+        </div>
+
+        <div class="story-feature-grid">
+          <article class="featured-story">
+            <p class="story-type">DEVOTIONAL</p>
+            <h3>When the calling feels heavier than the white coat</h3>
+            <p>
+              A space for Scripture-centered reflections written for and by Adventist
+              medical students navigating training, uncertainty, service, and faith.
+            </p>
+            <span class="story-meta">Sample placeholder • Replace with approved submission</span>
+          </article>
+
+          <div class="story-side-list">
+            <article>
+              <p class="story-type">MEMBER STORY</p>
+              <h3>Stories of calling, answered prayer, and becoming</h3>
+              <span>Member testimonies</span>
+            </article>
+            <article>
+              <p class="story-type">CHAPTER STORY</p>
+              <h3>What God is doing through local AMSN communities</h3>
+              <span>Chapter highlights</span>
+            </article>
+            <article>
+              <p class="story-type">MISSION</p>
+              <h3>Serving beyond the classroom and hospital</h3>
+              <span>Mission & outreach</span>
+            </article>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LEADERSHIP -->
   <section class="section" id="leadership">
-    <div class="container two-column">
-      <div class="section-label">
-        <span>06</span>
-        <p>Leadership</p>
-      </div>
-
-      <div class="content-wide">
-        <div class="leadership-heading">
-          <div>
-            <h2>National Executive Board</h2>
-            <p>Academic Year 2026–2027</p>
-          </div>
-        </div>
-
-        <div class="leaders-list" id="leaders-list"></div>
-
-        <p class="editor-note">
-          Update the NEB data in <code>script.js</code> before public launch.
-        </p>
+    <div class="container section-grid">
+      <div class="section-marker"><span>LEADERSHIP</span></div>
+      <div class="section-content">
+        <p class="eyebrow">NATIONAL EXECUTIVE BOARD</p>
+        <h2>Serving the network for AY 2026–2027.</h2>
+        <div class="leader-list" id="leader-list"></div>
+        <p class="editor-note">Edit the current NEB roster in <code>script.js</code>.</p>
       </div>
     </div>
   </section>
 
-  <!-- STORIES -->
-  <section class="section section-dark" id="stories">
-    <div class="container two-column">
-      <div class="section-label light">
-        <span>07</span>
-        <p>Stories</p>
-      </div>
-
-      <div class="content-wide light-content">
-        <h2>Stories from the Network.</h2>
-        <p class="large-copy">
-          Faith, medicine, mission, chapter life, and the people who make the network what it is.
-        </p>
-
-        <div class="story-list">
-          <article>
-            <span>Witness</span>
-            <h3>Testimonies and reflections from the medical journey</h3>
-            <p>For stories of faith, calling, growth, and service.</p>
-          </article>
-
-          <article>
-            <span>Chapters</span>
-            <h3>Local initiatives and community highlights</h3>
-            <p>For chapter activities, events, missions, and milestones.</p>
-          </article>
-
-          <article>
-            <span>Opportunities</span>
-            <h3>Calls for mentorship, service, and collaboration</h3>
-            <p>For opportunities that help members participate and contribute.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- JOIN -->
   <section class="join-section" id="join">
-    <div class="container join-layout">
+    <div class="container join-grid">
       <div>
-        <p class="section-kicker">Join AMSN-PH</p>
-        <h2>You belong in the network.</h2>
+        <p class="eyebrow light">JOIN AMSN-PH</p>
+        <h2>You do not have to walk the medical journey alone.</h2>
       </div>
-
       <div>
         <p>
-          Whether you are beginning medical school, studying far from an established
-          chapter, preparing for internship or the boards, or simply looking for
-          fellow Adventist medical students—you are welcome to connect.
+          Connect with fellow Adventist medical students, discover your chapter,
+          participate in ministries and programs, and become part of a national community.
         </p>
-
-        <a href="mailto:connect@amsn-ph.org?subject=AMSN-PH Membership Inquiry" class="button button-dark">
-          Express interest
-        </a>
-
-        <small>Member accounts and profiles are planned for Phase 2.</small>
+        <a class="btn white" href="mailto:connect@amsn-ph.org?subject=AMSN-PH Membership Inquiry">Express Interest</a>
+        <small>Verified member accounts and profiles are planned for Phase 2.</small>
       </div>
     </div>
   </section>
-
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-main">
+<footer class="site-footer" id="contact">
+  <div class="container footer-grid">
     <div>
-      <div class="footer-wordmark">AMSN-PH</div>
+      <div class="footer-brand">AMSN-PH</div>
       <p>Adventist Medical Students Network – Philippines</p>
     </div>
-
-    <div class="footer-links">
+    <div>
+      <strong>Explore</strong>
       <a href="#about">About</a>
-      <a href="#network">Network</a>
       <a href="#ministries">Ministries</a>
-      <a href="#leadership">Leadership</a>
+      <a href="#chapters">Chapters</a>
+      <a href="stories.html">Stories & Devotionals</a>
+    </div>
+    <div>
+      <strong>Connect</strong>
       <a href="mailto:connect@amsn-ph.org">connect@amsn-ph.org</a>
+      <span>Add official Facebook</span>
+      <span>Add official Instagram</span>
     </div>
   </div>
-
-  <div class="container footer-bottom">
-    <span>© <span id="year"></span> AMSN-PH</span>
-    <span>Phase 1 public website</span>
-  </div>
+  <div class="container footer-bottom">© <span id="year"></span> Adventist Medical Students Network – Philippines</div>
 </footer>
 
 <script src="script.js"></script>

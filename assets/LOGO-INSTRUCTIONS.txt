@@ -1,0 +1,9 @@
+PLACE OFFICIAL AMSN-PH LOGO HERE
+
+Rename the official logo file to:
+amsn-logo.png
+
+Recommended:
+- transparent PNG
+- at least 500 px wide
+- do not crop tightly around the artwork

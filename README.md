@@ -1,44 +1,74 @@
-# AMSN-PH Website V1 — Redesign
+# AMSN-PH Website V1.2
 
-This redesign intentionally avoids the common “AI/startup landing page” aesthetic.
+This version is a public-facing Phase 1 website with a dedicated Stories & Devotionals section.
 
-## New visual direction
+## Pages
 
-- Institutional / editorial rather than startup-style
-- Flat layout; almost no rounded cards
-- No gradients
-- Strong grid and typographic hierarchy
-- IBM Plex Sans + IBM Plex Serif
-- Deep green, warm cream, and burnt orange palette
-- Text-led sections that can later incorporate real AMSN photography
-- Leadership presented as a formal roster rather than generic profile cards
+- `index.html` — main AMSN-PH public website
+- `stories.html` — devotionals, member stories, chapter stories, missions, and updates
+- `styles.css` — full responsive styling
+- `script.js` — mobile navigation, leadership data, and story-category filtering
+- `assets/amsn-logo.png` — place the official AMSN-PH logo here
 
-## Files
+## Design Direction
 
-- `index.html`
-- `styles.css`
-- `script.js`
+This version intentionally avoids the generic "AI/startup" aesthetic.
 
-## Important items to verify before launch
+- Editorial / institutional layout
+- Strong type hierarchy
+- Barlow Condensed headings
+- Source Sans 3 body copy
+- Lora only for reflective/devotional pull-quotes
+- Flat surfaces and grid lines instead of rounded cards and gradients
+- Real-photo-ready layout
+- Public website now, platform-ready later
 
-- Official AMSN-PH logo
-- Official brand colors, if existing
-- Constitutionally approved Mission and Vision
-- Current NEB roster
-- Current chapters
-- Approved organization history
-- Official social media links
-- Whether `connect@amsn-ph.org` has already been set up
+## Recommended Phase 1 Navigation
+
+1. About
+2. Network
+3. Programs & Ministries
+4. Chapters
+5. Stories & Devotionals
+6. Leadership
+7. Contact
+8. Join AMSN
+
+## Stories & Devotionals Categories
+
+- Devotionals
+- Member Stories
+- Chapter Stories
+- Mission & Service
+- AMSN Updates
+
+Do not create fictional member testimonials. Replace placeholders only with approved submissions.
+
+## Before Public Launch
+
+Verify / replace:
+
+- official logo
+- official brand colors
+- official mission and vision
+- AMSN-PH history
+- current NEB roster
+- current chapters
+- current ministries/programs
+- social media links
+- final email address
+- membership procedure
+- privacy notice when member accounts are introduced
 
 ## Phase 2
 
-The design can later support:
-- member login
+Add:
+- sign-up/login
 - verified profiles
-- member directory
-- chapter portals
-- NEB hub
-- tasks
-- calendar
-- files / links
+- searchable member directory
+- chapter hubs
+- officer/NEB hub
+- tasks/goals/calendar
+- files/links
 - role-based access
+- admin moderation
