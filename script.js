@@ -1,134 +1,65 @@
-// =======================================================
-// AMSN-PH Website V1
-// Phase 1: Public website
-// Edit the data below as the current NEB/chapter information is finalized.
-// =======================================================
-
 const leaders = [
   {
     role: "President",
     name: "Name of President",
-    school: "Medical School / Chapter",
-    photo: ""
+    school: "Medical School / Chapter"
   },
   {
     role: "Executive Vice President",
     name: "Name of EVP",
-    school: "Medical School / Chapter",
-    photo: ""
+    school: "Medical School / Chapter"
   },
   {
     role: "Secretary",
     name: "Name of Secretary",
-    school: "Medical School / Chapter",
-    photo: ""
+    school: "Medical School / Chapter"
   },
   {
     role: "Treasurer",
     name: "Name of Treasurer",
-    school: "Medical School / Chapter",
-    photo: ""
+    school: "Medical School / Chapter"
   },
   {
     role: "National Public Relations Officer",
     name: "Glister Diadem A. Dollera",
-    school: "Medical School / Chapter",
-    photo: ""
+    school: "Medical School / Chapter"
   },
   {
     role: "Publications / Media",
     name: "Name of Officer",
-    school: "Medical School / Chapter",
-    photo: ""
-  },
-  {
-    role: "Programs / Ministries",
-    name: "Name of Officer",
-    school: "Medical School / Chapter",
-    photo: ""
-  },
-  {
-    role: "Other NEB Position",
-    name: "Name of Officer",
-    school: "Medical School / Chapter",
-    photo: ""
+    school: "Medical School / Chapter"
   }
 ];
 
-const leadersGrid = document.getElementById("leaders-grid");
+const leadersList = document.getElementById("leaders-list");
 
-if (leadersGrid) {
-  leadersGrid.innerHTML = leaders
-    .map((leader) => {
-      const photoMarkup = leader.photo
-        ? `<img src="${leader.photo}" alt="${leader.name}" loading="lazy" />`
-        : `<span>Add photo</span>`;
-
-      return `
-        <article class="leader-card reveal">
-          <div class="leader-photo">${photoMarkup}</div>
-          <div class="leader-body">
-            <span class="leader-role">${leader.role}</span>
-            <h3 class="leader-name">${leader.name}</h3>
-            <p class="leader-school">${leader.school}</p>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
+if (leadersList) {
+  leadersList.innerHTML = leaders.map((leader) => `
+    <article class="leader-row">
+      <span class="leader-role">${leader.role}</span>
+      <p class="leader-name">${leader.name}</p>
+      <p class="leader-school">${leader.school}</p>
+    </article>
+  `).join("");
 }
 
-// Mobile navigation
-const navToggle = document.querySelector(".nav-toggle");
-const primaryNav = document.querySelector(".primary-nav");
+const menuButton = document.querySelector(".menu-button");
+const siteNav = document.querySelector(".site-nav");
 
-if (navToggle && primaryNav) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = primaryNav.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-    navToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation" : "Open navigation"
-    );
+if (menuButton && siteNav) {
+  menuButton.addEventListener("click", () => {
+    const open = siteNav.classList.toggle("open");
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.textContent = open ? "Close" : "Menu";
   });
 
-  primaryNav.querySelectorAll("a").forEach((link) => {
+  siteNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      primaryNav.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-      navToggle.setAttribute("aria-label", "Open navigation");
+      siteNav.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.textContent = "Menu";
     });
   });
 }
 
-// Reveal animation
-const revealElements = document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  revealElements.forEach((element) => observer.observe(element));
-
-  // Leaders are injected after the first NodeList is created.
-  document
-    .querySelectorAll(".leader-card.reveal")
-    .forEach((element) => observer.observe(element));
-} else {
-  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
-}
-
-// Footer year
-const yearNode = document.getElementById("year");
-if (yearNode) {
-  yearNode.textContent = new Date().getFullYear();
-}
+document.getElementById("year").textContent = new Date().getFullYear();
