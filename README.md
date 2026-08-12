@@ -236,3 +236,12 @@ Current chapter/officer status should still be verified separately.
 - Replaced the homepage hero photo with the newly supplied AMSN-PH collage featuring the blue event background.
 - The image is displayed in full and remains uncropped.
 - All V1.13 content, including the Philippines map section, is retained.
+
+
+## V1.15 — Subtle medical hero background
+
+- Added the supplied doctor/stethoscope image as a low-contrast hero background.
+- Kept the AMSN community collage as the main foreground visual.
+- Applied a strong white overlay plus a light AMSN-blue wash so the image adds atmosphere without reducing readability.
+- Retained AMSN blue/green identity accents.
+- Background image is preserved as supplied; no image editing or cropping was performed.

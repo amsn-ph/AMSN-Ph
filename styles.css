@@ -2562,3 +2562,83 @@ main{
   object-fit:contain;
   object-position:center;
 }
+
+
+/* ======================================================
+   V1.15 — Subtle medical background in hero
+   ====================================================== */
+
+.hero{
+  position:relative;
+  isolation:isolate;
+  background:#ffffff;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.92) 42%, rgba(255,255,255,.84) 100%),
+    url("assets/hero-medical-background.jpeg") center right / cover no-repeat;
+  opacity:1;
+}
+
+/* Soft AMSN-blue wash so the stock image blends with the brand */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:linear-gradient(135deg, rgba(0,84,128,.06), rgba(0,149,215,.02) 55%, rgba(255,255,255,0) 100%);
+  pointer-events:none;
+}
+
+/* Restore the thin AMSN identity accents as separate decorative bars */
+.hero .container{
+  position:relative;
+  z-index:1;
+}
+
+.hero .container::before{
+  content:"";
+  position:absolute;
+  left:-34px;
+  top:-28px;
+  width:6px;
+  height:150px;
+  background:var(--amsn-blue);
+}
+
+.hero .container::after{
+  content:"";
+  position:absolute;
+  left:-34px;
+  top:124px;
+  width:6px;
+  height:52px;
+  background:var(--amsn-green);
+}
+
+.hero-copy{
+  padding:22px 0;
+}
+
+.hero-image-frame{
+  background:rgba(255,255,255,.9);
+  box-shadow:0 18px 46px rgba(0,48,73,.10);
+}
+
+@media(max-width:900px){
+  .hero::before{
+    background:
+      linear-gradient(rgba(255,255,255,.92), rgba(255,255,255,.94)),
+      url("assets/hero-medical-background.jpeg") center / cover no-repeat;
+  }
+
+  .hero .container::before,
+  .hero .container::after{
+    display:none;
+  }
+}
