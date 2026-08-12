@@ -118,3 +118,98 @@ Prepared for the Phase 1 website content migration.
 5. Add medical missions and Good Samaritan Project archive.
 6. Add previous NEB turnover/leadership posts to the organization-history timeline.
 7. Add actual cover images only when supplied by AMSN or otherwise cleared for website reuse.
+
+
+---
+
+# Second Migration Pass — V1.11
+
+## 8th NEB Organizational Life
+
+### GTYK: Getting to Know You
+- Category: AMSN Update / Leadership
+- Period: July 2026
+- Website use: Stories & Devotionals / leadership archive
+- Summary: First meeting of the incoming 8th National Executive Board; introductions, shared mission, teamwork, and collaboration.
+- Source: https://www.facebook.com/AMSNPh/posts/-gtyk-getting-to-know-you-our-first-amsn-ph-national-executive-board-meeting-was/1471904998291500/
+
+### Leadership Begins With Service
+- Category: AMSN Update / Leadership
+- Period: July 2026
+- Website use: Leadership archive
+- Summary: Public welcome to the 8th NEB ahead of the Turn-Over Ceremony & Dedicatory Service.
+- Source: https://www.facebook.com/AMSNPh/posts/-leadership-begins-with-service-a-new-chapter-begins-as-we-officially-welcome-th/1475354077946592/
+
+### Tribute to the 7th Executive Board
+- Category: Leadership Legacy
+- Period: July 2026
+- Website use: Leadership archive + event highlight
+- Summary: Recognition of the outgoing 7th AMSN Executive Board for humble leadership and service.
+- Source: https://www.facebook.com/AMSNPh/posts/-a-tribute-to-the-7th-amsn-executive-board-today-we-celebrate-and-honor-the-rema/1477545211060812/
+
+## Week of Prayer / Spiritual Formation
+
+### Week of Prayer 2026 — Calling Beyond the White Coat
+- Category: Devotional / Week of Prayer
+- Period: April 2026
+- Website use: Devotional archive
+- Summary: Calling, Christian identity, commitment, and faith beyond professional performance.
+- Source: https://www.facebook.com/AMSNPh/posts/tonight-who-are-you-when-the-white-coat-comes-off-in-the-race-to-become-a-physic/1386354960179838/
+
+### Collaborative Week of Prayer 2022
+- Category: Devotional / Inter-school Collaboration
+- Period: March 2022
+- Website use: Historical spiritual-life archive
+- Summary: Collaborative Week of Prayer involving AMSN-PH, AUP-COM, and AMiCUS-UNP.
+- Source: https://www.facebook.com/AMSNPh/posts/%F0%9D%90%80%F0%9D%90%8C%F0%9D%90%92%F0%9D%90%8D-%F0%9D%90%8F%F0%9D%90%87-%F0%9D%90%80%F0%9D%90%94%F0%9D%90%8F-%F0%9D%90%82%F0%9D%90%8E%F0%9D%90%8C-%F0%9D%90%80%F0%9D%90%8C%F0%9D%90%88%F0%9D%90%82%F0%9D%90%94%F0%9D%90%92-%F0%9D%90%94%F0%9D%90%8D%F0%9D%90%8F-%F0%9D%90%96%F0%9D%90%9E%F0%9D%90%9E%F0%9D%90%A4-%F0%9D%90%A8%F0%9D%90%9F-%F0%9D%90%8F%F0%9D%90%AB%F0%9D%90%9A%F0%9D%90%B2%F0%9D%90%9E%F0%9D%90%AB-%F0%9D%90%8C%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9C%F0%9D%90%A1-%F0%9D%9F%90%F0%9D%9F%8E%F0%9D%9F%90%F0%9D%9F%90the-lord-desires-us-to-appre/1487343964993684/
+
+## Testimonies
+
+### Physician Testimonies — Dejolde, Dela Cruz, and Rabadon
+- Category: Member / Physician Testimony
+- Period: 2026
+- Website use: Member Stories
+- Summary: Testimonies of answered prayer and God's faithfulness from three doctors.
+- Source: https://www.facebook.com/AMSNPh/posts/we-were-blessed-with-three-encouraging-testimonies-from-doctors-dejolde-dela-cru/1486230945104986/
+
+### The Answer Is Grace
+- Category: Member Testimony
+- Website use: Member Stories / WITNESS-style archive
+- Summary: Reflection on changed plans, medical school, and the sufficiency of God's grace.
+- Source: https://www.facebook.com/AMSNPh/posts/%F0%9D%90%93%F0%9D%90%87%F0%9D%90%84-%F0%9D%90%80%F0%9D%90%8D%F0%9D%90%92%F0%9D%90%96%F0%9D%90%84%F0%9D%90%91-%F0%9D%90%88%F0%9D%90%92-%F0%9D%90%86%F0%9D%90%91%F0%9D%90%80%F0%9D%90%82%F0%9D%90%84two-years-ago-i-had-my-life-planned-out-in-perfect-order-when/490608926421117/
+
+### What's Your Will for Me, Lord?
+- Category: Member Testimony
+- Website use: Member Stories / AMiCUS-UNP archive
+- Summary: Reflection on uncertainty, God's leading, and gratitude for faith community.
+- Source: https://www.facebook.com/AMSNPh/posts/i-used-to-ask-whats-your-will-for-me-lord-what-would-my-future-be-while-asking-g/680834760731865/
+
+## Service & Relief
+
+### Good Samaritan Project GifTED
+- Category: Mission & Service
+- Period: 2020
+- Website use: Our Story timeline + Mission archive
+- Summary: COVID-19 response fund drive that supported Adventist hospitals and practical service efforts.
+- Source: https://www.facebook.com/AMSNPh/posts/the-good-samaritan-project-the-adventist-medical-students-network-project-gifted/1002257726835646/
+
+### Typhoon Agaton Relief Appeal
+- Category: Mission & Service / Disaster Response
+- Website use: Mission archive
+- Summary: Appeal for support after flooding and destruction caused by Typhoon Agaton.
+- Source: https://www.facebook.com/AMSNPh/posts/many-of-our-kababayans-have-been-affected-by-typhoon-agaton-homes-were-flooded-d/1513693545692059/
+
+## PLE & Organizational History
+
+### March 2019 Newly Registered Physicians
+- Category: PLE Milestone
+- Period: March 2019
+- Website use: Our Story timeline / PLE archive
+- Summary: Early public record celebrating AMSN members who became registered physicians.
+- Source: https://www.facebook.com/AMSNPh/posts/presenting-the-amsn-ple-march-2019-newly-registered-physicians/715239968870758/
+
+### 4th National Executive Council
+- Category: Leadership History
+- Website use: Organizational archive
+- Summary: Public record of an earlier national leadership team.
+- Source: https://www.facebook.com/AMSNPh/posts/amsn-presents-its-4th-national-executive-council-officers-committed-to-serve-the/1476699256058155/
