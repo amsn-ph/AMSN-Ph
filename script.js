@@ -21,7 +21,7 @@ const leadership = [
   }
 ];
 
-const leadershipTable = document.getElementById("leadership-table");
+
 
 if (leadershipTable) {
   leadershipTable.innerHTML = leadership.map(member => `

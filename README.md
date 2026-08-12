@@ -284,3 +284,13 @@ licensed CC BY-SA 3.0. Attribution is displayed below the map on the homepage.
 Note:
 The medical photo background you sent is still the same file previously added in V1.15.
 In this version, it is simply made more visible and used more intentionally.
+
+
+## V1.19 — Leadership placeholders
+
+- removed the partial/incomplete public officer list
+- replaced the leadership roster with neutral placeholders
+- added a visual organizational-chart placeholder
+- added a separate officer-roster placeholder
+- removed dynamic officer names from `script.js`
+- section is ready to receive the final approved organizational chart and complete 8th NEB roster later
