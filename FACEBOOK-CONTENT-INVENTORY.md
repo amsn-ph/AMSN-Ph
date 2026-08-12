@@ -213,3 +213,67 @@ Prepared for the Phase 1 website content migration.
 - Website use: Organizational archive
 - Summary: Public record of an earlier national leadership team.
 - Source: https://www.facebook.com/AMSNPh/posts/amsn-presents-its-4th-national-executive-council-officers-committed-to-serve-the/1476699256058155/
+
+
+---
+
+# Chapter & Network Research — V1.12
+
+## Historical core member organizations
+AMSN-PH's archived website and 2023 WITNESS issue document five member organizations:
+- LSAMS — Luzon Society of Adventist Medical Students
+- CAMSA — Cebu Adventist Medical Students Association
+- ISAMS — Iloilo Society of Adventist Medical Students
+- AMiCUS-UNP — Adventist Ministry to College and University Students, University of Northern Philippines
+- DSAMS — Davao Society of Adventist Medical Students
+
+### Founding and growth
+- November 2017: AMSN-PH founded with LSAMS, CAMSA, and ISAMS.
+- July 2018: AMiCUS-UNP joined the national network.
+- 2021 / fourth year: DSAMS joined, extending the formal network to Mindanao.
+- By 2022–2023, the archived AMSN-PH website publicly listed all five as member organizations.
+- WITNESS 2023 also recorded discovery of Adventist medical students in other areas such as Leyte and Cagayan de Oro.
+
+Primary sources:
+- Archived AMSN-PH website: https://amsn-ph.webflow.io/
+- WITNESS 2023: https://cdnc.heyzine.com/files/uploaded/v2/46bf0b2e10680c5f8c15c648ae2a16b28f8868a5.pdf
+
+## LSAMS
+- Historical role: founding regional organization, 2017.
+- WITNESS notes AUP-MEDS under LSAMS.
+- Public page identity: physician missionaries called to bring healing and wholeness to the world.
+- Page: https://www.facebook.com/lsamsofficial/
+
+## CAMSA
+- Historical role: founding regional organization, 2017.
+- AMSN-PH public feature emphasizes Sabbath preservation, religious activities, and service.
+- WITNESS chapter feature highlights strong participation in medical missions.
+- AMSN-PH feature: https://www.facebook.com/AMSNPh/posts/day-6-camsacebu-adventist-medical-students-network-camsa-is-known-for-its-distin/1362100870851328/
+
+## ISAMS
+- Historical role: founding regional organization, 2017.
+- Public page describes the society as SDA medical students serving to become more like the Great Physician.
+- Page: https://www.facebook.com/isams2016/
+- WITNESS featured Dr. Denise Jann Agum and her Sabbath-accommodation experience during internship.
+
+## AMiCUS-UNP
+- Joined AMSN-PH in July 2018.
+- Extends the network in Northern Luzon.
+- Broader Adventist campus ministry chapter that includes medical students at UNP.
+- Page: https://www.facebook.com/AMICUS.UNPChapterOfficial/
+- WITNESS featured Dr. David Calibuso II, including Sabbath-related medical-school choice and academic journey.
+
+## DSAMS
+- Joined during AMSN-PH's fourth year, documented in WITNESS as under the leadership of Marc Philip Ocoma.
+- Strengthened the national alliance by extending the network into Mindanao.
+- WITNESS also uses the description DMSF Society of Adventist Medical Students in a 2023 partner list.
+- WITNESS featured Drs. Marie Anthonette Mencidor-Nañez and Jibeth Mudanza, both connected with Davao Medical School Foundation.
+
+## Editorial caution for 2026
+These sources establish historical chapter membership and identity, not necessarily current 2026 active status.
+Before public launch, verify with the 8th NEB:
+- current chapter officers
+- current contact persons
+- current participating schools
+- whether each historical organization remains formally active
+- naming consistency (for example DSAMS / DMSF Society of Adventist Medical Students)
