@@ -2548,3 +2548,17 @@ main{
     font-size:11px;
   }
 }
+
+
+/* ======================================================
+   V1.14 — Blue-background community collage hero
+   ====================================================== */
+
+.hero-image-frame img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+}
