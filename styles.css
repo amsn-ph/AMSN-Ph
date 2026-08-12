@@ -3336,3 +3336,13 @@ main{
     height:auto;
   }
 }
+
+
+/* ======================================================
+   V2.0 — Member Portal entry point
+   ====================================================== */
+
+.portal-nav-link{
+  color:var(--amsn-blue)!important;
+  font-weight:800!important;
+}
