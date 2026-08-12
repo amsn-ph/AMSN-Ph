@@ -2283,3 +2283,268 @@ main{
     padding:82px 0 74px;
   }
 }
+
+
+/* ======================================================
+   V1.13 — AMSN Across the Philippines map section
+   ====================================================== */
+
+.map-section-home{
+  position:relative;
+  padding:108px 0 114px;
+  background:#ffffff;
+  border-bottom:1px solid var(--line);
+}
+
+.map-section-home::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:80px;
+  height:6px;
+  background:var(--amsn-blue);
+}
+
+.map-section-home::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:6px;
+  width:44px;
+  height:6px;
+  background:var(--amsn-cyan);
+}
+
+.map-section-header{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:68px;
+  align-items:start;
+  margin-bottom:44px;
+}
+
+.map-section-header .section-intro{
+  margin:0;
+  max-width:720px;
+  font-size:1rem;
+  line-height:1.72;
+}
+
+.ph-map-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);
+  gap:34px;
+  align-items:start;
+}
+
+.ph-map-card{
+  padding:20px;
+  background:#eef3f5;
+  outline:1px solid var(--line);
+  outline-offset:-1px;
+}
+
+.ph-map-svg{
+  width:100%;
+  height:auto;
+  display:block;
+  background:linear-gradient(180deg,#f9fbfc 0%, #eef3f5 100%);
+}
+
+.island-shape{
+  fill:#d7e6ec;
+  stroke:#7fa4b5;
+  stroke-width:3;
+}
+
+.main-island{
+  fill:#cfdee6;
+}
+
+.map-marker circle{
+  stroke:#ffffff;
+  stroke-width:4;
+}
+
+.map-marker.established circle{
+  fill:var(--amsn-blue);
+}
+
+.map-marker.emerging circle{
+  fill:var(--amsn-green);
+}
+
+.map-marker text{
+  fill:#0f3043;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:17px;
+  font-weight:700;
+}
+
+.map-marker text.subtext{
+  fill:#5f7078;
+  font-size:13px;
+  font-weight:600;
+}
+
+.ph-map-sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.map-legend-card,
+.map-callout,
+.map-location-list{
+  background:#fff;
+  outline:1px solid var(--line);
+  outline-offset:-1px;
+}
+
+.map-legend-card{
+  padding:24px;
+}
+
+.legend-title{
+  display:block;
+  margin-bottom:20px;
+  color:var(--amsn-blue);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.14em;
+}
+
+.legend-item{
+  display:grid;
+  grid-template-columns:18px 1fr;
+  gap:14px;
+  align-items:start;
+  margin-bottom:18px;
+}
+
+.legend-item:last-child{
+  margin-bottom:0;
+}
+
+.legend-dot{
+  width:14px;
+  height:14px;
+  margin-top:3px;
+  border-radius:50%;
+  border:3px solid #fff;
+  box-shadow:0 0 0 1px rgba(0,0,0,.08);
+}
+
+.legend-dot.established{
+  background:var(--amsn-blue);
+}
+
+.legend-dot.emerging{
+  background:var(--amsn-green);
+}
+
+.legend-item strong{
+  display:block;
+  margin-bottom:5px;
+  color:var(--amsn-blue);
+  font-size:.9rem;
+}
+
+.legend-item p{
+  margin:0;
+  color:#59676d;
+  font-size:.84rem;
+  line-height:1.55;
+}
+
+.map-location-list{
+  border-top:3px solid var(--amsn-blue);
+}
+
+.map-location-list article{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:14px;
+  padding:16px 18px;
+  border-bottom:1px solid var(--line);
+}
+
+.map-location-list article:last-child{
+  border-bottom:0;
+}
+
+.map-code{
+  color:var(--amsn-cyan);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.map-location-list strong{
+  display:block;
+  margin-bottom:4px;
+  color:var(--amsn-blue);
+  font-size:.9rem;
+}
+
+.map-location-list p{
+  margin:0;
+  color:#59676d;
+  font-size:.83rem;
+  line-height:1.55;
+}
+
+.map-callout{
+  padding:24px;
+  background:#f4f8f9;
+  border-left:4px solid var(--amsn-green);
+}
+
+.map-callout span{
+  display:block;
+  margin-bottom:8px;
+  color:#6b7a81;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.13em;
+}
+
+.map-callout h3{
+  margin:0 0 10px;
+  color:var(--amsn-blue);
+  font-size:1.28rem;
+}
+
+.map-callout p{
+  margin:0 0 16px;
+  color:#55646a;
+  font-size:.86rem;
+  line-height:1.62;
+}
+
+@media(max-width:1100px){
+  .map-section-header,
+  .ph-map-layout{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+}
+
+@media(max-width:700px){
+  .map-section-home{
+    padding:82px 0 88px;
+  }
+
+  .ph-map-card{
+    padding:10px;
+  }
+
+  .map-marker text{
+    font-size:14px;
+  }
+
+  .map-marker text.subtext{
+    font-size:11px;
+  }
+}
