@@ -60,6 +60,15 @@ window.amsnRoleAllowsOfficerHub = function (roles) {
   return (roles || []).some((entry) => allowed.includes(entry.role));
 };
 
+window.amsnRoleAllowsAdminPanel = function (roles) {
+  const allowed = ["verifier", "admin"];
+  return (roles || []).some((entry) => allowed.includes(entry.role));
+};
+
+window.amsnIsAdmin = function (roles) {
+  return (roles || []).some((entry) => entry.role === "admin");
+};
+
 window.amsnSetupProtectedPage = async function () {
   const user = await window.amsnRequireUser();
   const profile = await window.amsnLoadProfile(user.id);
@@ -71,6 +80,11 @@ window.amsnSetupProtectedPage = async function () {
   const officerLink = document.querySelector(".officer-link");
   if (officerLink && window.amsnRoleAllowsOfficerHub(roles)) {
     officerLink.classList.add("visible");
+  }
+
+  const adminLink = document.querySelector(".admin-link");
+  if (adminLink && window.amsnRoleAllowsAdminPanel(roles)) {
+    adminLink.classList.add("visible");
   }
 
   document.querySelectorAll("[data-signout]").forEach((button) => {

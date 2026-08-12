@@ -81,8 +81,10 @@ button,input,select,textarea{font:inherit}
   background:rgba(255,255,255,.09);
   color:#fff;
 }
-.portal-nav .officer-link{display:none}
-.portal-nav .officer-link.visible{display:block}
+.portal-nav .officer-link,
+.portal-nav .admin-link{display:none}
+.portal-nav .officer-link.visible,
+.portal-nav .admin-link.visible{display:block}
 
 .portal-sidebar-footer{
   margin-top:auto;
@@ -404,4 +406,64 @@ button,input,select,textarea{font:inherit}
   .directory-grid{grid-template-columns:1fr}
   .portal-nav{grid-template-columns:1fr 1fr}
   .auth-brand-panel h1{font-size:2.8rem}
+}
+
+
+/* ======================================================
+   V2.1 — Admin / Verification Panel
+   ====================================================== */
+
+.admin-summary-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin:18px 0 24px;
+}
+.admin-summary-card{
+  padding:18px;
+  background:#f7fafb;
+  border:1px solid var(--line);
+}
+.admin-summary-card strong{
+  display:block;
+  margin-top:6px;
+  font-size:1.8rem;
+  color:var(--blue);
+}
+.admin-section + .admin-section{
+  margin-top:28px;
+}
+.review-note{
+  width:100%;
+  min-height:70px;
+  padding:9px 10px;
+  border:1px solid #cbd5d9;
+  resize:vertical;
+}
+.role-pill{
+  display:inline-flex;
+  margin:2px 4px 2px 0;
+  padding:4px 7px;
+  background:#edf2f4;
+  color:#506068;
+  font-size:.68rem;
+  font-weight:700;
+}
+.audit-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.audit-list li{
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+}
+.audit-list li:last-child{border-bottom:0}
+.audit-list strong{display:block}
+.audit-list small{color:var(--muted)}
+.admin-only{display:none}
+.admin-only.visible{display:block}
+
+@media(max-width:820px){
+  .admin-summary-grid{grid-template-columns:1fr}
 }
