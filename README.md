@@ -264,3 +264,23 @@ Launch-preparation pass:
 ### Map source
 The accurate map asset is derived from `Map of the Philippines.svg` on Wikimedia Commons,
 licensed CC BY-SA 3.0. Attribution is displayed below the map on the homepage.
+
+
+## V1.17 — CAMSA story date fix + alternate network photo
+
+- corrected the CAMSA chapter-story date from April 2026 to April 2021
+- replaced the duplicated homepage network/community image so it no longer repeats the hero photo
+- used a different AMSN community collage for the secondary network visual
+- lightly refined the related section wording to reduce repetition
+
+
+## V1.18 — Final polish + visible photo backgrounds
+
+- increased the visibility of the doctor/stethoscope background photo in the hero
+- kept readability by using a softer white overlay instead of hiding the image too much
+- added a coordinated low-transparency medical photo treatment to the Join section
+- slightly refined shadows/section rhythm for a less flat, more launch-ready look
+
+Note:
+The medical photo background you sent is still the same file previously added in V1.15.
+In this version, it is simply made more visible and used more intentionally.
