@@ -1766,3 +1766,60 @@ main{
     margin-inline:-2px;
   }
 }
+
+
+/* ======================================================
+   V1.10 — Curated Facebook archive / real story content
+   ====================================================== */
+
+.real-story .article-date{
+  margin:0 0 16px;
+  color:#7c8589;
+  font-size:.74rem;
+  font-weight:600;
+}
+
+.real-story .article-copy>p:not(.article-date){
+  line-height:1.65;
+}
+
+.article-actions{
+  margin-top:20px;
+  padding-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px 18px;
+  border-top:1px solid var(--line);
+}
+
+.article-actions a,
+.story-inline-link{
+  color:var(--amsn-blue);
+  font-size:.76rem;
+  font-weight:700;
+}
+
+.article-actions a:hover,
+.story-inline-link:hover{
+  text-decoration:underline;
+}
+
+.article-featured.real-story{
+  background:#f4f7f8;
+}
+
+.article-featured.real-story .article-label{
+  color:var(--amsn-blue);
+}
+
+.story-inline-link{
+  display:inline-block;
+  margin-top:12px;
+}
+
+@media(max-width:720px){
+  .article-actions{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
