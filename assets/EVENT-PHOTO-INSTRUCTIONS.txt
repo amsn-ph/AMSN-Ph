@@ -1,0 +1,18 @@
+AMSN-PH EVENT PHOTO SLIDESHOW
+
+The homepage has 3 photo slots for the 8th National Executive Board Turn-Over Ceremony & Dedicatory Service.
+Theme: Physician in the 11th Hour
+Date: July 24, 2026
+
+Save official event photos in this folder using exactly:
+turnover-01.jpg
+turnover-02.jpg
+turnover-03.jpg
+
+Recommended:
+- landscape 16:9 images
+- 1600 x 900 px or similar
+- use original AMSN-PH photos, not Messenger/Facebook screenshots
+- good choices: group photo, worship/program moment, board turnover/dedication moment
+
+The site displays clean placeholders until these files are added.
