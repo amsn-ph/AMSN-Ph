@@ -1071,3 +1071,698 @@ p{color:var(--muted)}
     padding:70px 0 76px;
   }
 }
+
+
+/* ======================================================
+   V1.9 — Visual polish layer
+   Goal: institutional, editorial, premium — not startup-like
+   ====================================================== */
+
+/* Overall rhythm */
+body{
+  background:#fbfcfc;
+}
+
+main{
+  overflow:hidden;
+}
+
+.section,
+.network-showcase{
+  position:relative;
+}
+
+.section{
+  padding-top:118px;
+  padding-bottom:118px;
+}
+
+.light-gray-section{
+  background:#f4f6f7;
+}
+
+.section-main{
+  max-width:980px;
+}
+
+.section-index{
+  position:relative;
+  padding-top:2px;
+}
+
+.section-index::after{
+  content:"";
+  display:block;
+  width:34px;
+  height:2px;
+  margin-top:16px;
+  background:var(--amsn-cyan);
+}
+
+.section-index.inverse::after{
+  background:#67c9ef;
+}
+
+/* Header polish */
+.site-header{
+  box-shadow:0 1px 0 rgba(0,0,0,.025);
+}
+
+.header-inner{
+  min-height:86px;
+}
+
+.primary-nav{
+  letter-spacing:.01em;
+}
+
+.primary-nav a{
+  position:relative;
+}
+
+.primary-nav a:not(.nav-action)::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:100%;
+  bottom:3px;
+  height:2px;
+  background:var(--amsn-cyan);
+  transition:right .18s ease;
+}
+
+.primary-nav a:not(.nav-action):hover::after,
+.primary-nav [aria-current="page"]::after{
+  right:0;
+}
+
+.nav-action{
+  padding:10px 15px!important;
+}
+
+/* Hero */
+.hero{
+  padding-top:104px;
+  padding-bottom:98px;
+  background:#ffffff;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:7px;
+  height:62%;
+  background:var(--amsn-blue);
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:7px;
+  height:18%;
+  background:var(--amsn-green);
+}
+
+.hero-grid{
+  grid-template-columns:minmax(0,1.15fr) minmax(430px,.85fr);
+  gap:74px;
+  align-items:center;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:1;
+}
+
+.hero-copy .kicker{
+  margin-bottom:22px;
+  font-size:.7rem;
+}
+
+.hero h1{
+  max-width:820px;
+  font-size:clamp(3.25rem,5.7vw,5.4rem);
+  line-height:.97;
+  letter-spacing:-.055em;
+}
+
+.hero-lead{
+  max-width:680px;
+  margin-bottom:0;
+  font-size:1.08rem;
+  line-height:1.65;
+  color:#4c575b;
+}
+
+.hero-actions{
+  margin-top:32px;
+}
+
+.hero-meta{
+  margin-top:44px;
+  padding-top:17px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 26px;
+  border-top:1px solid var(--line);
+}
+
+.hero-meta span{
+  color:#7c8589;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* Hero image as an editorial visual rather than a card */
+.hero-visual{
+  gap:0;
+}
+
+.hero-image-frame{
+  position:relative;
+  padding:0;
+  background:#eef1f2;
+  border-top:0;
+  box-shadow:none;
+  outline:1px solid var(--line);
+  outline-offset:-1px;
+}
+
+.hero-image-frame::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:-1px;
+  top:-1px;
+  width:88px;
+  height:7px;
+  background:var(--amsn-blue);
+}
+
+.hero-image-frame::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  right:-1px;
+  bottom:-1px;
+  width:54px;
+  height:7px;
+  background:var(--amsn-green);
+}
+
+.hero-image-frame img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  display:block;
+}
+
+.hero-visual-caption{
+  padding:17px 0 0;
+  border-top:0;
+}
+
+.hero-caption-title{
+  margin-bottom:5px;
+  color:var(--amsn-blue);
+}
+
+.hero-visual-caption p{
+  max-width:610px;
+  color:#6b7478;
+  font-size:.84rem;
+  line-height:1.55;
+}
+
+/* Quick access becomes a crisp institutional navigation band */
+.quick-access{
+  position:relative;
+  background:var(--amsn-blue-dark);
+}
+
+.quick-access::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:4px;
+  background:var(--amsn-cyan);
+}
+
+.quick-grid a{
+  min-height:142px;
+  padding:26px 24px;
+  transition:background .18s ease, transform .18s ease;
+}
+
+.quick-grid a:hover{
+  background:#00486e;
+  transform:translateY(-2px);
+}
+
+.quick-grid strong{
+  font-size:1rem;
+  letter-spacing:.01em;
+}
+
+.quick-grid small{
+  max-width:210px;
+  line-height:1.45;
+}
+
+/* Network in action */
+.network-showcase{
+  padding-top:104px;
+  padding-bottom:108px;
+  background:#f7f9fa;
+}
+
+.network-showcase::before{
+  content:"";
+  position:absolute;
+  right:0;
+  top:0;
+  width:80px;
+  height:6px;
+  background:var(--amsn-blue);
+}
+
+.network-showcase::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:6px;
+  width:42px;
+  height:6px;
+  background:var(--amsn-cyan);
+}
+
+.network-showcase-copy{
+  display:grid;
+  grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  column-gap:58px;
+  align-items:start;
+  max-width:none;
+  margin-bottom:38px;
+}
+
+.network-showcase-copy .eyebrow{
+  grid-column:1;
+  margin-top:8px;
+}
+
+.network-showcase-copy h2{
+  grid-column:2;
+  margin-bottom:20px;
+}
+
+.network-showcase-copy .section-intro{
+  grid-column:2;
+  max-width:760px;
+  font-size:1.02rem;
+}
+
+.network-showcase-figure{
+  border-top:0;
+  background:#eef1f2;
+  box-shadow:none;
+  outline:1px solid var(--line);
+  outline-offset:-1px;
+}
+
+.network-showcase-figure img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* Section headings */
+.eyebrow{
+  margin-bottom:15px;
+  font-size:.68rem;
+  letter-spacing:.15em;
+}
+
+.section h2,
+.network-showcase h2{
+  margin-bottom:28px;
+}
+
+.two-col-copy{
+  gap:56px;
+}
+
+.two-col-copy p{
+  line-height:1.72;
+}
+
+/* Principles */
+.principles{
+  margin-top:58px;
+  border-top:2px solid var(--amsn-blue);
+}
+
+.principles article{
+  min-height:156px;
+  padding:23px 20px;
+  background:#fff;
+}
+
+.principles strong{
+  margin-bottom:30px;
+  font-size:.9rem;
+  letter-spacing:.01em;
+}
+
+/* Blue network section */
+.blue-section{
+  background:#063c59;
+}
+
+.blue-section::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:4px;
+  background:var(--amsn-cyan);
+}
+
+.network-lines article{
+  padding:27px 0;
+}
+
+.network-lines span{
+  font-size:.69rem;
+  letter-spacing:.12em;
+}
+
+/* AMEN continuum */
+.continuum{
+  margin-top:60px;
+  padding:0;
+  border-top:2px solid var(--amsn-blue);
+  border-bottom:1px solid var(--line);
+}
+
+.continuum article{
+  min-height:176px;
+  padding:23px 14px;
+}
+
+.continuum article>span{
+  margin-bottom:46px;
+}
+
+.amen-links{
+  margin-top:30px;
+}
+
+/* Membership */
+.benefit-grid{
+  margin-top:52px;
+  border-top:2px solid var(--amsn-blue);
+}
+
+.benefit-grid article{
+  min-height:248px;
+  padding:29px;
+  background:#fff;
+}
+
+.benefit-code{
+  margin-bottom:58px;
+}
+
+.privacy-note{
+  margin-top:40px;
+  padding:25px 27px;
+  background:#fff;
+}
+
+/* Program list */
+.program-list{
+  border-top:2px solid var(--amsn-blue);
+}
+
+.program-list article{
+  padding:27px 0;
+}
+
+/* Regions */
+.region-grid{
+  margin-top:52px;
+}
+
+.region-grid article{
+  min-height:285px;
+  background:#fff;
+}
+
+.region-label{
+  margin-bottom:94px;
+}
+
+/* Social community */
+.social-community{
+  margin-top:50px;
+  border-top:2px solid var(--amsn-blue);
+}
+
+.social-community>div{
+  padding:29px;
+  background:#fff;
+}
+
+/* Event / highlights */
+.event-summary{
+  margin-top:50px;
+}
+
+.event-data{
+  min-height:124px;
+  padding:22px;
+}
+
+.event-data span{
+  margin-bottom:30px;
+}
+
+.event-copy{
+  margin-top:42px;
+  gap:54px;
+}
+
+.event-copy p{
+  line-height:1.72;
+}
+
+/* Gallery */
+.event-gallery{
+  margin-top:58px;
+  border-top:0;
+  box-shadow:0 18px 48px rgba(0,34,54,.07);
+}
+
+.gallery-viewer{
+  background:#eef1f2;
+}
+
+.gallery-slide figcaption{
+  padding:45px 34px;
+}
+
+.gallery-slide figcaption>span{
+  color:var(--amsn-blue);
+}
+
+.gallery-navigation{
+  background:#fafbfb;
+}
+
+/* Stories */
+.story-grid{
+  margin-top:34px;
+  border-top:2px solid var(--amsn-blue);
+}
+
+.story-feature{
+  border-top:0;
+}
+
+.story-feature h3{
+  letter-spacing:-.025em;
+}
+
+.story-stack article{
+  padding:27px;
+}
+
+.publication-strip{
+  margin-top:42px;
+  border-left:0;
+  border-top:4px solid var(--amsn-cyan);
+  background:#fff;
+}
+
+/* Timeline */
+.timeline{
+  margin-top:56px;
+}
+
+.timeline article{
+  padding:27px 0;
+}
+
+.timeline article>span{
+  letter-spacing:.05em;
+}
+
+/* Leadership */
+.leadership-table{
+  margin-top:50px;
+}
+
+.leader-row{
+  padding:23px 0;
+}
+
+/* Join section */
+.join-section{
+  padding-top:98px;
+  padding-bottom:98px;
+}
+
+.join-section::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:0;
+  width:110px;
+  height:8px;
+  background:var(--amsn-cyan);
+}
+
+.join-grid{
+  align-items:center;
+}
+
+.join-grid>div:last-child{
+  max-width:630px;
+}
+
+/* Footer */
+.site-footer{
+  padding-top:62px;
+}
+
+.footer-bottom{
+  margin-top:52px;
+}
+
+/* Slightly more deliberate buttons */
+.btn{
+  min-height:46px;
+  padding:0 19px;
+  transition:transform .16s ease, background .16s ease;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+/* Responsive refinements */
+@media(max-width:1100px){
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+
+  .hero-visual{
+    max-width:900px;
+  }
+
+  .network-showcase-copy{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .network-showcase-copy .eyebrow,
+  .network-showcase-copy h2,
+  .network-showcase-copy .section-intro{
+    grid-column:1;
+  }
+
+  .network-showcase-copy .eyebrow{
+    margin-top:0;
+  }
+}
+
+@media(max-width:800px){
+  .section{
+    padding-top:88px;
+    padding-bottom:88px;
+  }
+
+  .hero{
+    padding-top:72px;
+    padding-bottom:76px;
+  }
+
+  .hero h1{
+    font-size:clamp(3rem,12vw,4.8rem);
+  }
+
+  .hero-meta{
+    margin-top:34px;
+  }
+
+  .network-showcase{
+    padding-top:82px;
+    padding-bottom:84px;
+  }
+
+  .quick-grid a{
+    min-height:128px;
+  }
+
+  .principles article{
+    min-height:140px;
+  }
+
+  .event-copy{
+    gap:25px;
+  }
+}
+
+@media(max-width:540px){
+  .hero::before,
+  .hero::after{
+    width:4px;
+  }
+
+  .hero-meta{
+    flex-direction:column;
+    gap:7px;
+  }
+
+  .section-index::after{
+    margin-top:8px;
+  }
+
+  .network-showcase-copy{
+    margin-bottom:28px;
+  }
+
+  .network-showcase-figure{
+    margin-inline:-2px;
+  }
+}
