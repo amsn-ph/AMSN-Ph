@@ -2898,3 +2898,15 @@ main{
     height:480px;
   }
 }
+
+
+/* ======================================================
+   V1.17 — CAMSA date fix + alternate network image
+   ====================================================== */
+
+.highlight-visual img,
+.network-visual img,
+.community-visual img{
+  object-fit:cover;
+  object-position:center;
+}
