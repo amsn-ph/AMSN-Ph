@@ -79,28 +79,41 @@ filters.forEach(button => {
   });
 });
 
-// Event slideshow (V1.4)
-const eventSlides = Array.from(document.querySelectorAll('.event-slide'));
-const prevEventSlide = document.getElementById('prev-slide');
-const nextEventSlide = document.getElementById('next-slide');
-const eventDotsWrap = document.getElementById('slide-dots');
-let eventSlideIndex = 0;
 
-function showEventSlide(index) {
-  if (!eventSlides.length) return;
-  eventSlideIndex = (index + eventSlides.length) % eventSlides.length;
-  eventSlides.forEach((slide, i) => slide.classList.toggle('active', i === eventSlideIndex));
-  document.querySelectorAll('.slide-dot').forEach((dot, i) => dot.classList.toggle('active', i === eventSlideIndex));
-}
+// 8th NEB event gallery
+const gallerySlides = Array.from(document.querySelectorAll(".gallery-slide"));
+const galleryThumbs = Array.from(document.querySelectorAll(".gallery-thumb"));
+const galleryPrev = document.getElementById("prev-slide");
+const galleryNext = document.getElementById("next-slide");
+let galleryIndex = 0;
 
-if (eventSlides.length && eventDotsWrap) {
-  eventSlides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-    dot.addEventListener('click', () => showEventSlide(i));
-    eventDotsWrap.appendChild(dot);
+function showGallerySlide(index) {
+  if (!gallerySlides.length) return;
+
+  galleryIndex = (index + gallerySlides.length) % gallerySlides.length;
+
+  gallerySlides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === galleryIndex);
   });
-  prevEventSlide?.addEventListener('click', () => showEventSlide(eventSlideIndex - 1));
-  nextEventSlide?.addEventListener('click', () => showEventSlide(eventSlideIndex + 1));
+
+  galleryThumbs.forEach((thumb, i) => {
+    thumb.classList.toggle("active", i === galleryIndex);
+  });
+
+  if (window.innerWidth <= 720 && galleryThumbs[galleryIndex]) {
+    galleryThumbs[galleryIndex].scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest"
+    });
+  }
 }
+
+galleryThumbs.forEach((thumb) => {
+  thumb.addEventListener("click", () => {
+    showGallerySlide(Number(thumb.dataset.go));
+  });
+});
+
+galleryPrev?.addEventListener("click", () => showGallerySlide(galleryIndex - 1));
+galleryNext?.addEventListener("click", () => showGallerySlide(galleryIndex + 1));
