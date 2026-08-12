@@ -989,6 +989,7 @@ p{color:var(--muted)}
 .hero-image-frame{
   position:relative;
   overflow:hidden;
+  padding:10px;
   background:#dfe5e8;
   border-top:4px solid var(--amsn-blue);
   box-shadow:0 10px 28px rgba(0,0,0,.06);
@@ -997,9 +998,9 @@ p{color:var(--muted)}
 .hero-image-frame img{
   display:block;
   width:100%;
-  height:100%;
-  min-height:360px;
-  object-fit:cover;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
   object-position:center;
 }
 
@@ -1023,12 +1024,6 @@ p{color:var(--muted)}
   font-size:.9rem;
 }
 
-@media(max-width:1050px){
-  .hero-image-frame img{
-    min-height:320px;
-  }
-}
-
 @media(max-width:800px){
   .hero-visual{
     max-width:760px;
@@ -1036,10 +1031,43 @@ p{color:var(--muted)}
 }
 
 @media(max-width:540px){
-  .hero-image-frame img{
-    min-height:260px;
-  }
   .hero-visual-caption{
     padding:14px 0 0;
+  }
+}
+
+
+/* ======================================================
+   V1.8 — Community/network showcase section
+   ====================================================== */
+
+.network-showcase{
+  padding:88px 0 96px;
+  background:var(--light);
+  border-bottom:1px solid var(--line);
+}
+
+.network-showcase-copy{
+  max-width:920px;
+  margin-bottom:32px;
+}
+
+.network-showcase-figure{
+  margin:0;
+  border-top:4px solid var(--amsn-blue);
+  background:#dfe5e8;
+  box-shadow:0 12px 28px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+
+.network-showcase-figure img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+@media(max-width:800px){
+  .network-showcase{
+    padding:70px 0 76px;
   }
 }
