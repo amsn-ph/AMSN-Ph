@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <title>Admin & Verification | AMSN-PH Portal</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<div class="portal-shell">
+  <aside class="portal-sidebar">
+    <a href="../index.html" class="portal-brand">
+      <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+      <span><strong>AMSN-PH Portal</strong><span>Member & Officer Workspace</span></span>
+    </a>
+
+    <nav class="portal-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">My Profile</a>
+      <a href="directory.html">Member Directory</a>
+      <a href="officer.html" class="officer-link">Officer Hub</a>
+      <a href="admin.html" class="admin-link" aria-current="page">Admin / Verification</a>
+      <a href="../index.html">Public Website</a>
+      <button type="button" data-signout>Sign Out</button>
+    </nav>
+
+    <div class="portal-sidebar-footer">
+      Restricted AMSN-PH administration area.<br>
+      Access is limited to Verifiers and Administrators.
+    </div>
+  </aside>
+
+  <main class="portal-main">
+    <header class="portal-topbar">
+      <div>
+        <p class="eyebrow">ADMINISTRATION</p>
+        <h1>Membership & access control.</h1>
+        <p>Verify applicants, review audit history, and manage system roles.</p>
+      </div>
+      <div class="user-chip" data-user-chip>Loading…</div>
+    </header>
+
+    <div id="admin-message" class="message" aria-live="polite"></div>
+
+    <section class="card admin-section">
+      <span class="card-label">Membership overview</span>
+      <h2>Verification queue</h2>
+      <div class="admin-summary-grid">
+        <div class="admin-summary-card">
+          <span class="card-label">Pending</span>
+          <strong id="count-pending">—</strong>
+        </div>
+        <div class="admin-summary-card">
+          <span class="card-label">Verified</span>
+          <strong id="count-verified">—</strong>
+        </div>
+        <div class="admin-summary-card">
+          <span class="card-label">Rejected</span>
+          <strong id="count-rejected">—</strong>
+        </div>
+      </div>
+
+      <div style="overflow:auto">
+        <table class="officer-table">
+          <thead>
+            <tr>
+              <th>Applicant</th>
+              <th>School / Level</th>
+              <th>Region</th>
+              <th>Applied</th>
+              <th>Verification note</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="pending-members-body">
+            <tr><td colspan="6">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card admin-section">
+      <span class="card-label">Audit trail</span>
+      <h2>Recent membership reviews</h2>
+      <ul id="audit-list" class="audit-list">
+        <li><small>Loading…</small></li>
+      </ul>
+    </section>
+
+    <section id="role-management-section" class="card admin-section admin-only">
+      <span class="card-label">Administrator only</span>
+      <h2>User roles</h2>
+      <p>
+        Assign system permissions independently from organizational titles.
+        A user may hold more than one role.
+      </p>
+
+      <div style="overflow:auto">
+        <table class="officer-table">
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>School</th>
+              <th>Current roles</th>
+              <th>Add role</th>
+            </tr>
+          </thead>
+          <tbody id="role-users-body">
+            <tr><td colspan="4">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-config.js"></script>
+<script src="assets/supabase-client.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>
