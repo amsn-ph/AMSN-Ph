@@ -3,31 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Stories, devotionals, testimonies, and mission reflections from AMSN-PH.">
+  <meta name="description" content="Devotionals, member stories, chapter stories, mission reflections, and AMSN-PH updates.">
+  <meta name="theme-color" content="#005480">
   <title>Stories & Devotionals | AMSN-PH</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="assets/amsn-logo.jpg">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html">
-      <img src="assets/amsn-logo.png" alt="" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-      <span class="brand-fallback">AMSN-PH</span>
-      <span class="brand-name">Adventist Medical Students Network – Philippines</span>
+    <a href="index.html" class="brand">
+      <img src="assets/amsn-logo.jpg" class="brand-logo" alt="AMSN-PH logo">
+      <span class="brand-text">
+        <strong>Adventist Medical</strong>
+        <span>Students Network</span>
+        <small>PHILIPPINES</small>
+      </span>
     </a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-    <nav id="main-nav" class="main-nav">
+
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+
+    <nav id="primary-nav" class="primary-nav">
       <a href="index.html#about">About</a>
-      <a href="index.html#network">Network</a>
-      <a href="index.html#ministries">Ministries</a>
-      <a href="index.html#chapters">Chapters</a>
-      <a href="stories.html" aria-current="page">Stories & Devotionals</a>
+      <a href="index.html#membership">Membership</a>
+      <a href="index.html#programs">Programs</a>
+      <a href="index.html#chapters">Network</a>
+      <a href="stories.html" aria-current="page">Stories</a>
       <a href="index.html#leadership">Leadership</a>
-      <a class="join-link" href="index.html#join">Join AMSN</a>
+      <a href="index.html#join" class="nav-action">Join AMSN</a>
     </nav>
   </div>
 </header>
@@ -35,99 +39,121 @@
 <main>
   <section class="stories-hero">
     <div class="container">
-      <p class="overline">STORIES & DEVOTIONALS</p>
-      <h1>Faith, medicine,<br>and the stories between.</h1>
-      <p class="lead">
-        Devotionals, testimonies, chapter stories, mission reflections, and voices
+      <p class="kicker">STORIES & DEVOTIONALS</p>
+      <h1>Stories of faith from the medical journey.</h1>
+      <p class="hero-lead">
+        Devotionals, testimonies, chapter stories, mission experiences, and updates
         from Adventist medical students across the Philippines.
       </p>
     </div>
   </section>
 
-  <section class="story-categories">
-    <div class="container category-row">
-      <button class="category active" data-filter="all">All</button>
-      <button class="category" data-filter="devotional">Devotionals</button>
-      <button class="category" data-filter="member">Member Stories</button>
-      <button class="category" data-filter="chapter">Chapter Stories</button>
-      <button class="category" data-filter="mission">Mission & Service</button>
-      <button class="category" data-filter="news">AMSN Updates</button>
+  <section class="story-filter-bar">
+    <div class="container filter-row">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="devotional">Devotionals</button>
+      <button class="filter" data-filter="member">Member Stories</button>
+      <button class="filter" data-filter="chapter">Chapter Stories</button>
+      <button class="filter" data-filter="mission">Mission & Service</button>
+      <button class="filter" data-filter="update">AMSN Updates</button>
     </div>
   </section>
 
   <section class="section">
-    <div class="container stories-page-grid" id="stories-grid">
+    <div class="container article-grid" id="article-grid">
       <article class="article-card article-featured" data-category="devotional">
         <div class="article-label">DEVOTIONAL</div>
-        <h2>When the calling feels heavier than the white coat</h2>
-        <p>
-          A sample space for a Scripture-centered reflection on fatigue, purpose,
-          uncertainty, and remembering Who called us into service.
-        </p>
-        <div class="article-meta">Sample placeholder • 5 min read</div>
+        <div class="article-copy">
+          <h2>When the calling feels heavier than the white coat</h2>
+          <p>
+            This featured space can hold a Scripture-centered devotional written
+            specifically for Adventist medical students.
+          </p>
+          <span>Sample placeholder • Replace with approved contribution</span>
+        </div>
       </article>
 
       <article class="article-card" data-category="member">
         <div class="article-label">MEMBER STORY</div>
-        <h3>Why I chose to keep faith at the center of medicine</h3>
-        <p>A placeholder for a member testimony or personal reflection.</p>
-        <div class="article-meta">Member contribution</div>
+        <div class="article-copy">
+          <h3>Faith through exams, duties, and uncertain seasons</h3>
+          <p>A space for member testimonies and personal reflections.</p>
+          <span>Member contribution</span>
+        </div>
       </article>
 
       <article class="article-card" data-category="chapter">
         <div class="article-label">CHAPTER STORY</div>
-        <h3>Small communities, shared Sabbath, stronger connections</h3>
-        <p>A placeholder for chapter fellowship and ministry stories.</p>
-        <div class="article-meta">Chapter contribution</div>
+        <div class="article-copy">
+          <h3>Stories from local AMSN communities</h3>
+          <p>Highlight fellowships, programs, initiatives, and chapter milestones.</p>
+          <span>Chapter contribution</span>
+        </div>
       </article>
 
       <article class="article-card" data-category="mission">
         <div class="article-label">MISSION & SERVICE</div>
-        <h3>Learning to serve beyond the hospital walls</h3>
-        <p>A placeholder for medical mission, health outreach, or community-service reflections.</p>
-        <div class="article-meta">Mission story</div>
+        <div class="article-copy">
+          <h3>Serving where medicine meets community</h3>
+          <p>Stories from outreach, health education, medical missions, and service.</p>
+          <span>Mission story</span>
+        </div>
       </article>
 
-      <article class="article-card" data-category="news">
+      <article class="article-card" data-category="update">
         <div class="article-label">AMSN UPDATE</div>
-        <h3>Network announcements, national programs, and opportunities</h3>
-        <p>Use this category for important public updates without turning the whole site into a news board.</p>
-        <div class="article-meta">Official update</div>
+        <div class="article-copy">
+          <h3>Programs, announcements, and opportunities</h3>
+          <p>Important public information from the National Executive Board and chapters.</p>
+          <span>Official update</span>
+        </div>
       </article>
 
-      <article class="article-card submit-card" data-category="all">
+      <article class="article-card submit-story" data-category="all">
         <div class="article-label">SHARE YOUR STORY</div>
-        <h3>Your experience may be the encouragement another medical student needs.</h3>
-        <p>
-          Members may submit devotionals, testimonies, chapter stories, ministry
-          reflections, and other pieces for editorial review.
-        </p>
-        <a class="btn primary" href="mailto:connect@amsn-ph.org?subject=AMSN-PH Story Submission">Submit a Story</a>
+        <div class="article-copy">
+          <h3>Your story may be the encouragement another medical student needs.</h3>
+          <p>
+            Members may submit devotionals, testimonies, chapter stories, and
+            mission reflections for editorial review.
+          </p>
+          <a href="mailto:connect@amsn-ph.org?subject=AMSN-PH Story Submission" class="btn btn-white">Submit a Story</a>
+        </div>
       </article>
     </div>
   </section>
 
-  <section class="devotional-callout">
+  <section class="devotional-band">
     <div class="container devotional-grid">
-      <p class="devotional-kicker">DEVOTIONAL SERIES</p>
+      <div>
+        <p class="eyebrow">DEVOTIONALS</p>
+        <h2>A quiet space in the middle of medical training.</h2>
+      </div>
       <blockquote>
-        “A place to return to Scripture in the middle of rounds, exams, duties,
-        uncertainty, and the long work of becoming a physician.”
+        Scripture-centered reflections for the seasons when students need to
+        remember their calling, renew their faith, and find strength to continue.
       </blockquote>
-      <p>
-        The devotional section can be published weekly, biweekly, or whenever the
-        Publications/Spiritual team has an approved contribution. It does not need
-        to become another content burden.
-      </p>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div><div class="footer-brand">AMSN-PH</div><p>Adventist Medical Students Network – Philippines</p></div>
-    <div><strong>Explore</strong><a href="index.html">Home</a><a href="index.html#ministries">Ministries</a><a href="stories.html">Stories & Devotionals</a></div>
-    <div><strong>Connect</strong><a href="mailto:connect@amsn-ph.org">connect@amsn-ph.org</a><span>Add official social links</span></div>
+    <div class="footer-brand-block">
+      <img src="assets/amsn-logo.jpg" alt="AMSN-PH logo">
+      <div><strong>AMSN-PH</strong><p>Adventist Medical Students Network – Philippines</p></div>
+    </div>
+    <div class="footer-column">
+      <strong>Explore</strong>
+      <a href="index.html">Home</a>
+      <a href="index.html#membership">Membership</a>
+      <a href="index.html#programs">Programs</a>
+    </div>
+    <div class="footer-column">
+      <strong>Connect</strong>
+      <a href="mailto:connect@amsn-ph.org">connect@amsn-ph.org</a>
+      <span>Facebook: AMSNPh</span>
+    </div>
   </div>
   <div class="container footer-bottom">© <span id="year"></span> Adventist Medical Students Network – Philippines</div>
 </footer>

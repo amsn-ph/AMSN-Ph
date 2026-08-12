@@ -1,53 +1,80 @@
-const leaders = [
-  { role: "President", name: "Name of President", school: "Medical School / Chapter" },
-  { role: "Executive Vice President", name: "Name of Executive Vice President", school: "Medical School / Chapter" },
-  { role: "Secretary", name: "Name of Secretary", school: "Medical School / Chapter" },
-  { role: "Treasurer", name: "Name of Treasurer", school: "Medical School / Chapter" },
-  { role: "National Public Relations Officer", name: "Glister Diadem A. Dollera", school: "Medical School / Chapter" },
-  { role: "Publications / Media", name: "Name of Officer", school: "Medical School / Chapter" }
+const leadership = [
+  {
+    role: "National President",
+    name: "Gherneil Dalanon",
+    meta: "AMSN-PH 8th NEB"
+  },
+  {
+    role: "National Secretary",
+    name: "Cyd Paulin Rosal",
+    meta: "AMSN-PH 8th NEB"
+  },
+  {
+    role: "National Public Relations Officer",
+    name: "Glister Diadem A. Dollera",
+    meta: "AMSN-PH 8th NEB"
+  },
+  {
+    role: "Adviser",
+    name: "Dr. Elvin Tecson",
+    meta: "AMSN-PH"
+  }
+  // Add the remaining current National Executive Board members here.
 ];
 
-const leaderList = document.getElementById("leader-list");
-if (leaderList) {
-  leaderList.innerHTML = leaders.map((leader) => `
+const leadershipTable = document.getElementById("leadership-table");
+
+if (leadershipTable) {
+  leadershipTable.innerHTML = leadership.map(member => `
     <article class="leader-row">
-      <span class="leader-role">${leader.role}</span>
-      <p class="leader-name">${leader.name}</p>
-      <p class="leader-school">${leader.school}</p>
+      <span class="leader-role">${member.role}</span>
+      <p class="leader-name">${member.name}</p>
+      <p class="leader-meta">${member.meta}</p>
     </article>
   `).join("");
 }
 
 const menuToggle = document.querySelector(".menu-toggle");
-const mainNav = document.querySelector(".main-nav");
-if (menuToggle && mainNav) {
+const primaryNav = document.querySelector(".primary-nav");
+
+if (menuToggle && primaryNav) {
   menuToggle.addEventListener("click", () => {
-    const open = mainNav.classList.toggle("open");
+    const open = primaryNav.classList.toggle("open");
     menuToggle.setAttribute("aria-expanded", String(open));
     menuToggle.textContent = open ? "Close" : "Menu";
   });
 
-  mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-    mainNav.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.textContent = "Menu";
-  }));
+  primaryNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      primaryNav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "Menu";
+    });
+  });
 }
 
-document.querySelectorAll("#year").forEach(el => el.textContent = new Date().getFullYear());
+document.querySelectorAll("#year").forEach(node => {
+  node.textContent = new Date().getFullYear();
+});
 
-const categoryButtons = document.querySelectorAll(".category");
-const articleCards = document.querySelectorAll(".article-card[data-category]");
+const filters = document.querySelectorAll(".filter");
+const articles = document.querySelectorAll(".article-card[data-category]");
 
-categoryButtons.forEach(button => {
+filters.forEach(button => {
   button.addEventListener("click", () => {
-    categoryButtons.forEach(btn => btn.classList.remove("active"));
+    filters.forEach(filter => filter.classList.remove("active"));
     button.classList.add("active");
 
-    const filter = button.dataset.filter;
-    articleCards.forEach(card => {
-      const category = card.dataset.category;
-      card.classList.toggle("hidden", filter !== "all" && category !== filter && category !== "all");
+    const selected = button.dataset.filter;
+
+    articles.forEach(article => {
+      const category = article.dataset.category;
+      const visible =
+        selected === "all" ||
+        category === selected ||
+        category === "all";
+
+      article.classList.toggle("hidden", !visible);
     });
   });
 });
