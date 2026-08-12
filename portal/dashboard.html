@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <title>Dashboard | AMSN-PH Portal</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<div class="portal-shell">
+  
+    <aside class="portal-sidebar">
+      <a href="../index.html" class="portal-brand">
+        <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+        <span><strong>AMSN-PH Portal</strong><span>Member & Officer Workspace</span></span>
+      </a>
+      <nav class="portal-nav">
+        <a href="dashboard.html" aria-current="page">Dashboard</a><a href="profile.html">My Profile</a><a href="directory.html">Member Directory</a>
+        <a href="officer.html" class="officer-link">Officer Hub</a>
+        <a href="../index.html">Public Website</a>
+        <button type="button" data-signout>Sign Out</button>
+      </nav>
+      <div class="portal-sidebar-footer">
+        Private AMSN-PH workspace<br>
+        Access depends on membership and assigned role.
+      </div>
+    </aside>
+    
+  <main class="portal-main">
+    <header class="portal-topbar">
+      <div>
+        <p class="eyebrow">MEMBER DASHBOARD</p>
+        <h1>Hello, <span id="welcome-name">Member</span>.</h1>
+        <p>Your place in the AMSN-PH network.</p>
+      </div>
+      <div class="user-chip" data-user-chip>Loading…</div>
+    </header>
+
+    <section class="portal-grid">
+      <article class="card span-4">
+        <span class="card-label">Membership status</span>
+        <h2><span id="membership-status" class="status-badge">Loading</span></h2>
+        <p>Full directory and verified-member features unlock after membership review.</p>
+      </article>
+      <article class="card span-4">
+        <span class="card-label">Medical school</span>
+        <h2 id="school-name">—</h2>
+        <p><span id="year-level">—</span> • <span id="region-name">—</span></p>
+      </article>
+      <article class="card span-4">
+        <span class="card-label">Portal role</span>
+        <h2 id="role-list">Member</h2>
+        <p>Additional officer tools appear automatically when a role is assigned.</p>
+      </article>
+
+      <article class="card span-7">
+        <span class="card-label">Announcements</span>
+        <h2>From AMSN-PH</h2>
+        <ul class="portal-list" id="announcement-list"><li><small>Loading…</small></li></ul>
+      </article>
+
+      <article class="card span-5">
+        <span class="card-label">Upcoming</span>
+        <h2>Events & activities</h2>
+        <ul class="portal-list" id="event-list"><li><small>Loading…</small></li></ul>
+      </article>
+
+      <article class="card span-12">
+        <span class="card-label">Quick access</span>
+        <h2>Continue in the network</h2>
+        <div class="action-row">
+          <a href="profile.html" class="btn btn-blue">Update My Profile</a>
+          <a id="directory-button" href="directory.html" class="btn btn-light">Open Member Directory</a>
+          <a href="../stories.html" class="btn btn-light">Stories & Devotionals</a>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/supabase-config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+
+<script src="assets/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <title>Officer Hub | AMSN-PH Portal</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<div class="portal-shell">
+  
+    <aside class="portal-sidebar">
+      <a href="../index.html" class="portal-brand">
+        <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+        <span><strong>AMSN-PH Portal</strong><span>Member & Officer Workspace</span></span>
+      </a>
+      <nav class="portal-nav">
+        <a href="dashboard.html">Dashboard</a><a href="profile.html">My Profile</a><a href="directory.html">Member Directory</a>
+        <a href="officer.html" class="officer-link" aria-current="page">Officer Hub</a>
+        <a href="../index.html">Public Website</a>
+        <button type="button" data-signout>Sign Out</button>
+      </nav>
+      <div class="portal-sidebar-footer">
+        Private AMSN-PH workspace<br>
+        Access depends on membership and assigned role.
+      </div>
+    </aside>
+    
+  <main class="portal-main">
+    <header class="portal-topbar">
+      <div>
+        <p class="eyebrow">OFFICER HUB</p>
+        <h1>Coordinate the network.</h1>
+        <p>Role-based tools for trustees, chapter officers, and the National Executive Board.</p>
+      </div>
+      <div class="user-chip" data-user-chip>Loading…</div>
+    </header>
+
+    <section class="portal-grid">
+      <article id="membership-review-card" class="card span-12">
+        <span class="card-label">Membership verification</span>
+        <h2>Pending member accounts</h2>
+        <p>Review affiliation before granting verified-member access.</p>
+        <div style="overflow:auto">
+          <table class="officer-table">
+            <thead><tr><th>Name</th><th>School</th><th>Level</th><th>Region</th><th>Applied</th><th>Action</th></tr></thead>
+            <tbody id="pending-members-body"><tr><td colspan="6">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card span-7">
+        <span class="card-label">Announcements</span>
+        <h2>Post to the member portal</h2>
+        <form id="announcement-form" class="form-grid">
+          <div class="field full"><label>Title</label><input name="title" required></div>
+          <div class="field full"><label>Message</label><textarea name="body" required></textarea></div>
+          <div class="field">
+            <label>Audience</label>
+            <select name="audience">
+              <option value="members">Verified members</option>
+              <option value="officers">Officers only</option>
+            </select>
+          </div>
+          <div class="field checkbox-row">
+            <input type="checkbox" name="is_published" checked>
+            <span>Publish immediately</span>
+          </div>
+          <div class="field full">
+            <button class="btn btn-blue" type="submit">Save Announcement</button>
+            <div id="announcement-message" class="message"></div>
+          </div>
+        </form>
+      </article>
+
+      <article class="card span-5">
+        <span class="card-label">Phase 2 roadmap</span>
+        <h2>Next officer tools</h2>
+        <ul class="portal-list">
+          <li><strong>Events</strong><small>Create and manage national/chapter activities</small></li>
+          <li><strong>Resources</strong><small>Policies, forms, minutes, and turnover files</small></li>
+          <li><strong>Tasks</strong><small>Assign work to officers and trustees</small></li>
+          <li><strong>School coverage</strong><small>Track chapters, trustees, and campus contacts</small></li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/supabase-config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+
+<script src="assets/officer.js"></script>
+</body>
+</html>

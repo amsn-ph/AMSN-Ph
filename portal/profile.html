@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <title>My Profile | AMSN-PH Portal</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<div class="portal-shell">
+  
+    <aside class="portal-sidebar">
+      <a href="../index.html" class="portal-brand">
+        <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+        <span><strong>AMSN-PH Portal</strong><span>Member & Officer Workspace</span></span>
+      </a>
+      <nav class="portal-nav">
+        <a href="dashboard.html">Dashboard</a><a href="profile.html" aria-current="page">My Profile</a><a href="directory.html">Member Directory</a>
+        <a href="officer.html" class="officer-link">Officer Hub</a>
+        <a href="../index.html">Public Website</a>
+        <button type="button" data-signout>Sign Out</button>
+      </nav>
+      <div class="portal-sidebar-footer">
+        Private AMSN-PH workspace<br>
+        Access depends on membership and assigned role.
+      </div>
+    </aside>
+    
+  <main class="portal-main">
+    <header class="portal-topbar">
+      <div>
+        <p class="eyebrow">MY PROFILE</p>
+        <h1>Your place in the network.</h1>
+        <p>Keep your medical-school and networking information current.</p>
+      </div>
+      <div class="user-chip" data-user-chip>Loading…</div>
+    </header>
+
+    <section class="card">
+      <form id="profile-form" class="form-grid">
+        <div class="field">
+          <label>Full name</label>
+          <input name="full_name" type="text" required>
+        </div>
+        <div class="field">
+          <label>Preferred name</label>
+          <input name="preferred_name" type="text">
+        </div>
+        <div class="field">
+          <label>Medical school</label>
+          <input name="school_name" type="text" required>
+        </div>
+        <div class="field">
+          <label>Year / training level</label>
+          <select name="year_level">
+            <option value="">Select</option>
+            <option>YL1 / First Year</option>
+            <option>YL2 / Second Year</option>
+            <option>YL3 / Third Year</option>
+            <option>YL4 / Clerkship</option>
+            <option>YL5 / Internship / Community</option>
+            <option>Post-Graduate Intern</option>
+            <option>Graduate / PLE Review</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>City</label>
+          <input name="city" type="text">
+        </div>
+        <div class="field">
+          <label>Region</label>
+          <select name="region">
+            <option value="">Select</option>
+            <option>Luzon</option>
+            <option>Visayas</option>
+            <option>Mindanao</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Short bio</label>
+          <textarea name="bio" maxlength="500" placeholder="A short introduction for other verified members."></textarea>
+        </div>
+        <div class="field full">
+          <label>Interests</label>
+          <input name="interests" type="text" placeholder="e.g. Pediatrics, public health, research, medical missions">
+          <small>Separate interests with commas.</small>
+        </div>
+        <div class="field full checkbox-row">
+          <input name="mentorship_interest" type="checkbox">
+          <span>I am interested in mentorship opportunities.</span>
+        </div>
+        <div class="field full checkbox-row">
+          <input name="collaboration_interest" type="checkbox">
+          <span>I am open to collaboration on projects, research, missions, or chapter activities.</span>
+        </div>
+        <div class="field full checkbox-row">
+          <input name="directory_visible" type="checkbox">
+          <span>Show my profile to other verified AMSN-PH members in the member directory.</span>
+        </div>
+        <div class="field full">
+          <button class="btn btn-blue" type="submit">Save Profile</button>
+          <div id="profile-message" class="message" aria-live="polite"></div>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/supabase-config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+
+<script src="assets/profile.js"></script>
+</body>
+</html>

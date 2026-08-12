@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <title>Member Directory | AMSN-PH Portal</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<div class="portal-shell">
+  
+    <aside class="portal-sidebar">
+      <a href="../index.html" class="portal-brand">
+        <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+        <span><strong>AMSN-PH Portal</strong><span>Member & Officer Workspace</span></span>
+      </a>
+      <nav class="portal-nav">
+        <a href="dashboard.html">Dashboard</a><a href="profile.html">My Profile</a><a href="directory.html" aria-current="page">Member Directory</a>
+        <a href="officer.html" class="officer-link">Officer Hub</a>
+        <a href="../index.html">Public Website</a>
+        <button type="button" data-signout>Sign Out</button>
+      </nav>
+      <div class="portal-sidebar-footer">
+        Private AMSN-PH workspace<br>
+        Access depends on membership and assigned role.
+      </div>
+    </aside>
+    
+  <main class="portal-main">
+    <header class="portal-topbar">
+      <div>
+        <p class="eyebrow">MEMBER DIRECTORY</p>
+        <h1>Find your AMSN-PH community.</h1>
+        <p>Visible only to verified members, and only for profiles that opt in.</p>
+      </div>
+      <div class="user-chip" data-user-chip>Loading…</div>
+    </header>
+
+    <section class="card">
+      <div class="field">
+        <label for="directory-search">Search by name, school, region, year, or interest</label>
+        <input id="directory-search" type="search" placeholder="Search the network…">
+      </div>
+    </section>
+
+    <div id="directory-gate"></div>
+    <section id="directory-grid" class="directory-grid" style="margin-top:18px"></section>
+  </main>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/supabase-config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+
+<script src="assets/directory.js"></script>
+</body>
+</html>
