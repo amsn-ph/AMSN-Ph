@@ -313,3 +313,31 @@ Changes:
 
 Recommended homepage flow:
 Hero → Quick Access → Philippines Map → About → Membership → Programs → Network teaser → Featured Highlight → Stories teaser → Join
+
+
+## V2.0 — Phase 2 Starter
+
+Phase 2 begins with a Supabase-ready authenticated portal.
+
+New files:
+- `portal/` — member login, dashboard, profile, directory, officer hub
+- `supabase/phase2-schema.sql` — database + RLS starter
+- `PHASE-2-SETUP.md` — step-by-step implementation guide
+
+The public site now includes a Member Portal link.
+
+This starter intentionally focuses on the smallest useful workflow:
+sign-up → email confirmation → pending profile → officer verification → verified member directory → role-based officer access.
+
+
+## V2.1 — Separate Admin / Verification Panel
+
+- Added `portal/admin.html`
+- Added `portal/assets/admin.js`
+- Added `verifier` system role
+- Separated membership verification from the general Officer Hub
+- Added verification audit history
+- Added `verified_at`, `verified_by`, and verification notes
+- Admins can assign system roles
+- Verifiers can approve/reject members without receiving full administrator access
+- Added `supabase/v2.1-admin-verifier-migration.sql` for existing Supabase projects
