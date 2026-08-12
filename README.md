@@ -294,3 +294,22 @@ In this version, it is simply made more visible and used more intentionally.
 - added a separate officer-roster placeholder
 - removed dynamic officer names from `script.js`
 - section is ready to receive the final approved organizational chart and complete 8th NEB roster later
+
+
+## V1.20 — Landing page cleanup
+
+Homepage structure was intentionally shortened to improve scanability and launch readiness.
+
+Changes:
+- removed the duplicate “Network in Action” section
+- removed the longer “Why a Network?” and standalone AMSN + AMEN sections from the homepage
+- replaced the long chapter grid with a compact network teaser that links to `network.html`
+- replaced the long highlights block/gallery with a shorter featured-update layout
+- replaced the longer stories/archive section with a compact three-card teaser
+- removed the Leadership placeholder section from the homepage to keep the landing page focused
+- kept AMEN continuity as a short note inside Membership
+- updated quick-access cards to point to the most important landing-page destinations
+- removed “Phase 1” from the footer
+
+Recommended homepage flow:
+Hero → Quick Access → Philippines Map → About → Membership → Programs → Network teaser → Featured Highlight → Stories teaser → Join
