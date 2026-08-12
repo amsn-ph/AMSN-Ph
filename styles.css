@@ -2642,3 +2642,259 @@ main{
     display:none;
   }
 }
+
+
+/* ======================================================
+   V1.16 — Launch-ready accurate map + official voice polish
+   ====================================================== */
+
+.accurate-map-layout{
+  grid-template-columns:minmax(0,1.08fr) minmax(330px,.92fr);
+}
+
+.accurate-map-panel{
+  min-width:0;
+}
+
+.accurate-map-stage{
+  position:relative;
+  min-height:690px;
+  padding:28px 58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(0,149,215,.065), transparent 48%),
+    #f7fafb;
+  border:1px solid var(--line);
+}
+
+.accurate-map-stage img{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:690px;
+  object-fit:contain;
+  filter:drop-shadow(0 5px 13px rgba(0,56,82,.08));
+}
+
+.geo-pin{
+  --pin-size:28px;
+  position:absolute;
+  left:var(--x);
+  top:var(--y);
+  z-index:5;
+  width:var(--pin-size);
+  height:var(--pin-size);
+  transform:translate(-50%,-50%);
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--amsn-blue);
+  border:3px solid #fff;
+  box-shadow:0 0 0 2px rgba(0,84,128,.17), 0 6px 15px rgba(0,54,81,.18);
+  color:#fff;
+  font-size:.62rem;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.geo-pin.emerging{
+  background:var(--amsn-green);
+  box-shadow:0 0 0 2px rgba(92,194,50,.20), 0 6px 15px rgba(0,54,81,.16);
+}
+
+.geo-pin em{
+  position:absolute;
+  left:35px;
+  top:50%;
+  min-width:142px;
+  padding:9px 10px;
+  transform:translateY(-50%);
+  opacity:0;
+  pointer-events:none;
+  background:#fff;
+  border:1px solid var(--line);
+  box-shadow:0 9px 24px rgba(0,40,60,.12);
+  color:var(--amsn-blue);
+  font-style:normal;
+  font-size:.72rem;
+  font-weight:800;
+  line-height:1.25;
+  transition:opacity .15s ease, transform .15s ease;
+}
+
+.geo-pin.pin-left em{
+  left:auto;
+  right:35px;
+  text-align:right;
+}
+
+.geo-pin em small{
+  color:#66757b;
+  font-size:.66rem;
+  font-weight:600;
+}
+
+.geo-pin:hover em,
+.geo-pin:focus-visible em{
+  opacity:1;
+  transform:translateY(-50%) translateX(2px);
+}
+
+.geo-pin.pin-left:hover em,
+.geo-pin.pin-left:focus-visible em{
+  transform:translateY(-50%) translateX(-2px);
+}
+
+.map-source-note{
+  margin:10px 0 0;
+  color:#849096;
+  font-size:.64rem;
+  line-height:1.45;
+}
+
+.map-source-note a{
+  color:#6e8088;
+  text-decoration:underline;
+}
+
+.emerging-code{
+  color:var(--amsn-green)!important;
+}
+
+.leadership-intro{
+  max-width:780px;
+  margin-bottom:30px;
+}
+
+.public-connect-note{
+  grid-template-columns:180px 1fr auto;
+  align-items:center;
+}
+
+.public-connect-note a{
+  color:var(--amsn-blue);
+  font-size:.78rem;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.editor-note{
+  display:none!important;
+}
+
+@media(max-width:1100px){
+  .accurate-map-layout{
+    grid-template-columns:1fr;
+  }
+
+  .accurate-map-stage{
+    max-width:700px;
+    min-height:650px;
+    margin:0 auto;
+  }
+
+  .accurate-map-stage img{
+    height:650px;
+  }
+}
+
+@media(max-width:720px){
+  .accurate-map-stage{
+    min-height:565px;
+    padding:18px 18px;
+  }
+
+  .accurate-map-stage img{
+    height:550px;
+  }
+
+  .geo-pin{
+    --pin-size:24px;
+    font-size:.56rem;
+  }
+
+  .geo-pin em{
+    display:none;
+  }
+
+  .public-connect-note{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+}
+
+@media(max-width:480px){
+  .accurate-map-stage{
+    min-height:500px;
+    padding:14px 6px;
+  }
+
+  .accurate-map-stage img{
+    height:480px;
+  }
+}
+
+.not-found-page{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:60px 0;
+  background:#f7fafb;
+}
+.not-found-page .container{
+  max-width:760px;
+}
+.not-found-logo{
+  width:86px;
+  height:86px;
+  object-fit:contain;
+  margin-bottom:34px;
+}
+.not-found-page h1{
+  margin:0 0 18px;
+  font-size:clamp(3rem,8vw,5rem);
+  line-height:.98;
+  letter-spacing:-.05em;
+}
+.not-found-page p:not(.eyebrow){
+  max-width:620px;
+  color:#59666b;
+  line-height:1.7;
+}
+
+
+/* Pin coordinates are tied to the map image canvas. */
+.map-canvas{
+  position:relative;
+  height:690px;
+  width:auto;
+  aspect-ratio:1038 / 1789;
+  flex:0 0 auto;
+}
+
+.map-canvas>img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+@media(max-width:1100px){
+  .map-canvas{
+    height:650px;
+  }
+}
+
+@media(max-width:720px){
+  .map-canvas{
+    height:550px;
+  }
+}
+
+@media(max-width:480px){
+  .map-canvas{
+    height:480px;
+  }
+}

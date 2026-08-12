@@ -245,3 +245,22 @@ Current chapter/officer status should still be verified separately.
 - Applied a strong white overlay plus a light AMSN-blue wash so the image adds atmosphere without reducing readability.
 - Retained AMSN blue/green identity accents.
 - Background image is preserved as supplied; no image editing or cropping was performed.
+
+
+## V1.16 — Launch-ready copy + accurate Philippines map
+
+Launch-preparation pass:
+- replaced the hand-drawn Philippines illustration with an accurate geographic map
+- added city/region-level pins for AMiCUS-UNP, LSAMS/AUP-MEDS, ISAMS, CAMSA, DSAMS, and the Leyte campus connection
+- made map pins clickable and keyboard-accessible
+- rewrote public-facing copy into AMSN-PH's own voice (`we`, `our`, `us`)
+- removed visible editor notes, verification reminders, Phase 2 notes, and pre-launch language
+- revised the AMSN–AMEN section to use conservative wording grounded in the current membership framework
+- reframed the leadership section around verified public coordination contacts
+- added canonical/OpenGraph metadata
+- added `robots.txt`, `sitemap.xml`, and a branded `404.html`
+- retained all real AMSN-PH event photos and content archives
+
+### Map source
+The accurate map asset is derived from `Map of the Philippines.svg` on Wikimedia Commons,
+licensed CC BY-SA 3.0. Attribution is displayed below the map on the homepage.

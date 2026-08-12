@@ -19,7 +19,6 @@ const leadership = [
     name: "Dr. Elvin Tecson",
     meta: "AMSN-PH"
   }
-  // Add the remaining current National Executive Board members here.
 ];
 
 const leadershipTable = document.getElementById("leadership-table");
