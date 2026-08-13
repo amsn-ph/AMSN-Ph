@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <title>Events | AMSN-PH Portal</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<div class="portal-shell">
+  <aside class="portal-sidebar">
+    <a href="../index.html" class="portal-brand">
+      <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+      <span><strong>AMSN-PH Portal</strong><span>Member & Officer Workspace</span></span>
+    </a>
+    <nav class="portal-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">My Profile</a>
+      <a href="directory.html">Member Directory</a>
+      <a href="events.html" aria-current="page">Events</a>
+      <a href="opportunities.html">Opportunities</a>
+      <a href="mentorship.html">Mentorship</a>
+      <a href="officer.html" class="officer-link">Officer Hub</a>
+      <a href="admin.html" class="admin-link">Admin / Verification</a>
+      <a href="../index.html">Public Website</a>
+      <button type="button" data-signout>Sign Out</button>
+    </nav>
+    <div class="portal-sidebar-footer">Private AMSN-PH workspace</div>
+  </aside>
+
+  <main class="portal-main">
+    <header class="portal-topbar">
+      <div>
+        <p class="eyebrow">EVENTS</p>
+        <h1>Gather. Learn. Serve.</h1>
+        <p>National and chapter activities available to verified AMSN-PH members.</p>
+      </div>
+      <div class="user-chip" data-user-chip>Loading…</div>
+    </header>
+
+    <section class="card">
+      <div class="toolbar">
+        <div class="field search-wide">
+          <label for="event-search">Search events</label>
+          <input id="event-search" type="search" placeholder="Search title, location, or description">
+        </div>
+        <div class="field">
+          <label for="event-filter">Show</label>
+          <select id="event-filter">
+            <option value="upcoming">Upcoming</option>
+            <option value="registered">My RSVPs</option>
+            <option value="all">All visible events</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <div id="event-message" class="message" aria-live="polite"></div>
+    <section id="events-grid" class="engagement-grid" style="margin-top:18px">
+      <div class="empty-state">Loading events…</div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-config.js?v=2.3.0"></script>
+<script src="assets/supabase-client.js?v=2.3.0"></script>
+<script src="assets/events.js?v=2.3.0"></script>
+</body>
+</html>

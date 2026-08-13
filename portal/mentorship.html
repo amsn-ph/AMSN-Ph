@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <title>Mentorship | AMSN-PH Portal</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<div class="portal-shell">
+  <aside class="portal-sidebar">
+    <a href="../index.html" class="portal-brand">
+      <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+      <span><strong>AMSN-PH Portal</strong><span>Member & Officer Workspace</span></span>
+    </a>
+    <nav class="portal-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">My Profile</a>
+      <a href="directory.html">Member Directory</a>
+      <a href="events.html">Events</a>
+      <a href="opportunities.html">Opportunities</a>
+      <a href="mentorship.html" aria-current="page">Mentorship</a>
+      <a href="officer.html" class="officer-link">Officer Hub</a>
+      <a href="admin.html" class="admin-link">Admin / Verification</a>
+      <a href="../index.html">Public Website</a>
+      <button type="button" data-signout>Sign Out</button>
+    </nav>
+    <div class="portal-sidebar-footer">Private AMSN-PH workspace</div>
+  </aside>
+
+  <main class="portal-main">
+    <header class="portal-topbar">
+      <div>
+        <p class="eyebrow">MENTORSHIP</p>
+        <h1>Ask for guidance when you need it.</h1>
+        <p>Submit a mentorship request and let AMSN-PH help connect you with an appropriate mentor.</p>
+      </div>
+      <div class="user-chip" data-user-chip>Loading…</div>
+    </header>
+
+    <section class="portal-grid">
+      <article class="card span-6">
+        <span class="card-label">NEW REQUEST</span>
+        <h2>What kind of guidance are you looking for?</h2>
+        <form id="mentorship-form" class="form-grid">
+          <div class="field full">
+            <label>Preferred specialty / field</label>
+            <input name="preferred_specialty" placeholder="e.g. Internal Medicine, Pediatrics, Public Health">
+          </div>
+          <div class="field">
+            <label>Preferred mentor region</label>
+            <select name="preferred_region">
+              <option value="Any">Any</option>
+              <option>Luzon</option>
+              <option>Visayas</option>
+              <option>Mindanao</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>Your goals / questions</label>
+            <textarea name="goals" required placeholder="What would you like help with?"></textarea>
+          </div>
+          <div class="field full">
+            <label>Additional notes</label>
+            <textarea name="notes" placeholder="Optional context for the matching team"></textarea>
+          </div>
+          <div class="field full">
+            <button class="btn btn-blue" type="submit">Submit Mentorship Request</button>
+            <div id="mentorship-message" class="message"></div>
+          </div>
+        </form>
+      </article>
+
+      <article class="card span-6">
+        <span class="card-label">MY REQUESTS</span>
+        <h2>Mentorship status</h2>
+        <div id="mentorship-list">
+          <div class="empty-state">Loading…</div>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-config.js?v=2.3.0"></script>
+<script src="assets/supabase-client.js?v=2.3.0"></script>
+<script src="assets/mentorship.js?v=2.3.0"></script>
+</body>
+</html>

@@ -17,6 +17,9 @@
       </a>
       <nav class="portal-nav">
         <a href="dashboard.html">Dashboard</a><a href="profile.html">My Profile</a><a href="directory.html">Member Directory</a>
+        <a href="events.html">Events</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="mentorship.html">Mentorship</a>
         <a href="officer.html" class="officer-link" aria-current="page">Officer Hub</a>
         <a href="admin.html" class="admin-link">Admin / Verification</a>
         <a href="../index.html">Public Website</a>
@@ -64,23 +67,83 @@
       </article>
 
       <article class="card span-5">
-        <span class="card-label">Phase 2 roadmap</span>
-        <h2>Next officer tools</h2>
+        <span class="card-label">ENGAGEMENT TOOLS</span>
+        <h2>Member activity</h2>
         <ul class="portal-list">
-          <li><strong>Events</strong><small>Create and manage national/chapter activities</small></li>
-          <li><strong>Resources</strong><small>Policies, forms, minutes, and turnover files</small></li>
-          <li><strong>Tasks</strong><small>Assign work to officers and trustees</small></li>
-          <li><strong>School coverage</strong><small>Track chapters, trustees, and campus contacts</small></li>
+          <li><strong>Events</strong><small>Create events and review RSVP counts.</small></li>
+          <li><strong>Opportunities</strong><small>Post mission, research, training, and service openings.</small></li>
+          <li><strong>Mentorship</strong><small>Review requests and record mentor matches.</small></li>
         </ul>
       </article>
     </section>
+
+    <section class="officer-management-grid" style="margin-top:18px">
+      <article class="card">
+        <span class="card-label">EVENT MANAGER</span>
+        <h2>Create an event</h2>
+        <form id="event-create-form" class="form-grid">
+          <div class="field full"><label>Title</label><input name="title" required></div>
+          <div class="field full"><label>Description</label><textarea name="description"></textarea></div>
+          <div class="field"><label>Starts</label><input name="starts_at" type="datetime-local" required></div>
+          <div class="field"><label>Ends</label><input name="ends_at" type="datetime-local"></div>
+          <div class="field"><label>Location</label><input name="location"></div>
+          <div class="field checkbox-row"><input name="is_online" type="checkbox"><span>Online event</span></div>
+          <div class="field"><label>Capacity</label><input name="capacity" type="number" min="1"></div>
+          <div class="field"><label>RSVP deadline</label><input name="registration_deadline" type="datetime-local"></div>
+          <div class="field full">
+            <button class="btn btn-blue" type="submit">Publish Event</button>
+            <div id="event-create-message" class="message"></div>
+          </div>
+        </form>
+        <div id="officer-event-list" style="margin-top:22px"></div>
+      </article>
+
+      <article class="card">
+        <span class="card-label">OPPORTUNITY MANAGER</span>
+        <h2>Post an opportunity</h2>
+        <form id="opportunity-create-form" class="form-grid">
+          <div class="field full"><label>Title</label><input name="title" required></div>
+          <div class="field full"><label>Description</label><textarea name="description" required></textarea></div>
+          <div class="field">
+            <label>Category</label>
+            <select name="category">
+              <option value="mission">Mission</option>
+              <option value="research">Research</option>
+              <option value="leadership">Leadership</option>
+              <option value="scholarship">Scholarship</option>
+              <option value="training">Training</option>
+              <option value="volunteer">Volunteer</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="field"><label>Organization</label><input name="organization"></div>
+          <div class="field"><label>Location</label><input name="location"></div>
+          <div class="field"><label>Deadline</label><input name="deadline" type="datetime-local"></div>
+          <div class="field full"><label>Application URL</label><input name="application_url" type="url"></div>
+          <div class="field full"><label>Contact email</label><input name="contact_email" type="email"></div>
+          <div class="field full">
+            <button class="btn btn-blue" type="submit">Publish Opportunity</button>
+            <div id="opportunity-create-message" class="message"></div>
+          </div>
+        </form>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <span class="card-label">MENTORSHIP COORDINATION</span>
+      <h2>Pending mentorship requests</h2>
+      <div id="officer-mentorship-list">
+        <div class="empty-state">Loading requests…</div>
+      </div>
+    </section>
+
   </main>
 </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/supabase-config.js?v=2.2.0"></script>
-  <script src="assets/supabase-client.js?v=2.2.0"></script>
+  <script src="assets/supabase-config.js?v=2.3.0"></script>
+  <script src="assets/supabase-client.js?v=2.3.0"></script>
 
-<script src="assets/officer.js?v=2.1.1"></script>
+<script src="assets/officer.js?v=2.3.0"></script>
 </body>
 </html>

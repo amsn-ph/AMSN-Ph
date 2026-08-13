@@ -17,6 +17,9 @@
       </a>
       <nav class="portal-nav">
         <a href="dashboard.html">Dashboard</a><a href="profile.html">My Profile</a><a href="directory.html" aria-current="page">Member Directory</a>
+        <a href="events.html">Events</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="mentorship.html">Mentorship</a>
         <a href="officer.html" class="officer-link">Officer Hub</a>
         <a href="admin.html" class="admin-link">Admin / Verification</a>
         <a href="../index.html">Public Website</a>
@@ -39,9 +42,32 @@
     </header>
 
     <section class="card">
-      <div class="field">
-        <label for="directory-search">Search by name, school, chapter, region, year, or interest</label>
-        <input id="directory-search" type="search" placeholder="Search the network…">
+      <div class="toolbar">
+        <div class="field search-wide">
+          <label for="directory-search">Search members</label>
+          <input id="directory-search" type="search" placeholder="Name, school, specialty, or interest">
+        </div>
+        <div class="field">
+          <label for="directory-region">Region</label>
+          <select id="directory-region">
+            <option value="">All regions</option>
+            <option>Luzon</option>
+            <option>Visayas</option>
+            <option>Mindanao</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="directory-chapter">Chapter</label>
+          <select id="directory-chapter">
+            <option value="">All affiliations</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="directory-school">Medical school</label>
+          <select id="directory-school">
+            <option value="">All schools</option>
+          </select>
+        </div>
       </div>
     </section>
 
@@ -51,9 +77,9 @@
 </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/supabase-config.js?v=2.2.0"></script>
-  <script src="assets/supabase-client.js?v=2.2.0"></script>
+  <script src="assets/supabase-config.js?v=2.3.0"></script>
+  <script src="assets/supabase-client.js?v=2.3.0"></script>
 
-<script src="assets/directory.js?v=2.2.0"></script>
+<script src="assets/directory.js?v=2.3.0"></script>
 </body>
 </html>
