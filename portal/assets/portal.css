@@ -480,3 +480,116 @@ button,input,select,textarea{font:inherit}
 .member-card-header{display:flex;gap:14px;align-items:center;margin-bottom:12px}.directory-avatar{width:58px;height:58px;flex:0 0 58px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:#e3ebee;color:var(--blue);font-weight:800;border:1px solid var(--line)}.directory-avatar img{width:100%;height:100%;object-fit:cover}
 .registry-admin-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px;align-items:start}.registry-list{margin:0;padding:0;list-style:none}.registry-list li{padding:13px 0;border-bottom:1px solid var(--line)}.registry-list li:last-child{border-bottom:0}.registry-list strong{display:block}.registry-list small{color:var(--muted)}
 @media(max-width:780px){.profile-identity,.registry-admin-grid{grid-template-columns:1fr}.avatar-panel{max-width:360px}}
+
+
+/* ======================================================
+   V2.3 — Member Engagement
+   ====================================================== */
+
+.engagement-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.engagement-card{
+  padding:22px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+.engagement-card h3{
+  margin:8px 0 9px;
+  color:var(--blue);
+  font-size:1.2rem;
+}
+.engagement-card p{
+  margin:0 0 15px;
+  color:#5c6b71;
+}
+.meta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:10px 0 15px;
+}
+.meta-row span{
+  padding:4px 7px;
+  background:#eef3f5;
+  color:#5c6a70;
+  font-size:.68rem;
+  font-weight:700;
+}
+.toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:end;
+}
+.toolbar .field{
+  min-width:180px;
+  flex:1;
+}
+.toolbar .field.search-wide{
+  flex:2;
+  min-width:260px;
+}
+.event-status{
+  display:inline-flex;
+  padding:4px 8px;
+  background:#eef3f5;
+  color:#55656c;
+  font-size:.68rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.event-status.going{background:#e7f4eb;color:#267146}
+.event-status.cancelled{background:#f7e9e9;color:#9a3d3d}
+.opportunity-deadline{
+  color:#9a6500!important;
+  font-weight:700;
+}
+.mentor-request{
+  padding:18px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.mentor-request + .mentor-request{margin-top:12px}
+.mentor-request h3{margin:7px 0}
+.mentor-request p{margin:7px 0;color:#5e6d73}
+.feature-link-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.feature-link{
+  display:block;
+  padding:22px;
+  border:1px solid var(--line);
+  background:#f8fafb;
+  text-decoration:none;
+}
+.feature-link strong{
+  display:block;
+  margin-bottom:5px;
+  color:var(--blue);
+}
+.feature-link span{
+  color:#67767c;
+  font-size:.82rem;
+}
+.officer-management-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.rsvp-count{
+  color:var(--cyan);
+  font-weight:800;
+}
+@media(max-width:900px){
+  .engagement-grid,
+  .feature-link-grid,
+  .officer-management-grid{
+    grid-template-columns:1fr;
+  }
+}
