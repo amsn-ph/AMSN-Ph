@@ -1,50 +1,37 @@
-
 document.addEventListener("DOMContentLoaded", async () => {
   const { user, profile } = await window.amsnSetupProtectedPage();
   const form = document.getElementById("profile-form");
   const message = document.getElementById("profile-message");
+  const client = window.amsnRequireClient();
+  const schoolSelect=document.getElementById("profile-school-select"), chapterSelect=document.getElementById("profile-chapter-select"), legacySchoolNote=document.getElementById("legacy-school-note");
+  const avatarPreview=document.getElementById("avatar-preview"), avatarPlaceholder=document.getElementById("avatar-placeholder"), avatarFile=document.getElementById("avatar-file"), avatarUpload=document.getElementById("avatar-upload"), avatarRemove=document.getElementById("avatar-remove"), avatarMessage=document.getElementById("avatar-message");
 
-  form.full_name.value = profile.full_name || "";
-  form.preferred_name.value = profile.preferred_name || "";
-  form.school_name.value = profile.school_name || "";
-  form.year_level.value = profile.year_level || "";
-  form.city.value = profile.city || "";
-  form.region.value = profile.region || "";
-  form.bio.value = profile.bio || "";
-  form.interests.value = (profile.interests || []).join(", ");
-  form.mentorship_interest.checked = !!profile.mentorship_interest;
-  form.collaboration_interest.checked = !!profile.collaboration_interest;
-  form.directory_visible.checked = profile.directory_visible !== false;
+  document.getElementById("profile-display-name").textContent=profile.preferred_name||profile.full_name||"Your AMSN-PH profile";
+  const statusEl=document.getElementById("profile-membership-status"); statusEl.textContent=profile.membership_status||"pending"; statusEl.classList.add(profile.membership_status||"pending");
+  setAvatarPlaceholder(profile.preferred_name||profile.full_name||"AM");
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    try {
-      const client = window.amsnRequireClient();
-      const interests = form.interests.value
-        .split(",")
-        .map((item) => item.trim())
-        .filter(Boolean);
+  const [{data:schools,error:schoolError},{data:chapters,error:chapterError}]=await Promise.all([
+    client.from("medical_schools").select("id,name,short_name,city,province,region,chapter_id").eq("is_active",true).order("name"),
+    client.from("chapters").select("id,code,name,region").eq("is_active",true).order("code")
+  ]);
+  const schoolRegistry=schools||[];
+  if(!schoolError) schoolSelect.innerHTML='<option value="">Select a registered medical school</option>'+schoolRegistry.map(s=>{const place=[s.city,s.province].filter(Boolean).join(", ");return `<option value="${s.id}">${escapeHtml(s.short_name||s.name)}${place?" — "+escapeHtml(place):""}</option>`}).join("");
+  if(!chapterError) chapterSelect.innerHTML='<option value="">Not yet affiliated / I am not sure</option>'+(chapters||[]).map(c=>`<option value="${c.id}">${escapeHtml(c.code)} — ${escapeHtml(c.name)}</option>`).join("");
 
-      const updates = {
-        full_name: form.full_name.value.trim(),
-        preferred_name: form.preferred_name.value.trim() || null,
-        school_name: form.school_name.value.trim(),
-        year_level: form.year_level.value || null,
-        city: form.city.value.trim() || null,
-        region: form.region.value || null,
-        bio: form.bio.value.trim() || null,
-        interests,
-        mentorship_interest: form.mentorship_interest.checked,
-        collaboration_interest: form.collaboration_interest.checked,
-        directory_visible: form.directory_visible.checked,
-        updated_at: new Date().toISOString(),
-      };
+  form.full_name.value=profile.full_name||""; form.preferred_name.value=profile.preferred_name||""; form.medical_school_id.value=profile.medical_school_id||""; form.chapter_id.value=profile.chapter_id||""; form.year_level.value=profile.year_level||""; form.city.value=profile.city||""; form.region.value=profile.region||""; form.bio.value=profile.bio||""; form.interests.value=(profile.interests||[]).join(", "); form.mentorship_interest.checked=!!profile.mentorship_interest; form.collaboration_interest.checked=!!profile.collaboration_interest; form.directory_visible.checked=profile.directory_visible!==false;
+  if(!profile.medical_school_id&&profile.school_name) legacySchoolNote.textContent=`Current recorded school: ${profile.school_name}. Select it from the registry if available.`;
+  if(profile.avatar_path) await showStoredAvatar(profile.avatar_path);
 
-      const { error } = await client.from("profiles").update(updates).eq("id", user.id);
-      if (error) throw error;
-      window.amsnShowMessage(message, "Profile updated.", "success");
-    } catch (error) {
-      window.amsnShowMessage(message, error.message, "error");
-    }
-  });
+  schoolSelect.addEventListener("change",()=>{const school=schoolRegistry.find(x=>x.id===schoolSelect.value);if(school?.region)form.region.value=school.region;if(school?.chapter_id&&!chapterSelect.value)chapterSelect.value=school.chapter_id;});
+  avatarFile.addEventListener("change",()=>{const file=avatarFile.files?.[0];if(!file)return;const error=validateImage(file);if(error){window.amsnShowMessage(avatarMessage,error,"error");avatarFile.value="";return;}avatarPreview.src=URL.createObjectURL(file);avatarPreview.hidden=false;avatarPlaceholder.hidden=true;});
+
+  avatarUpload.addEventListener("click",async()=>{const file=avatarFile.files?.[0];if(!file){window.amsnShowMessage(avatarMessage,"Choose a photo first.","error");return;}const invalid=validateImage(file);if(invalid){window.amsnShowMessage(avatarMessage,invalid,"error");return;}try{avatarUpload.disabled=true;const ext=file.type==="image/png"?"png":file.type==="image/webp"?"webp":"jpg";const newPath=`${user.id}/profile.${ext}`;if(profile.avatar_path&&profile.avatar_path!==newPath)await client.storage.from("profile-photos").remove([profile.avatar_path]);const {error:uploadError}=await client.storage.from("profile-photos").upload(newPath,file,{upsert:true,cacheControl:"3600",contentType:file.type});if(uploadError)throw uploadError;const {error:profileError}=await client.from("profiles").update({avatar_path:newPath,updated_at:new Date().toISOString()}).eq("id",user.id);if(profileError)throw profileError;profile.avatar_path=newPath;await showStoredAvatar(newPath);avatarFile.value="";window.amsnShowMessage(avatarMessage,"Profile photo updated.","success");}catch(error){window.amsnShowMessage(avatarMessage,error.message,"error");}finally{avatarUpload.disabled=false;}});
+  avatarRemove.addEventListener("click",async()=>{if(!profile.avatar_path)return;try{avatarRemove.disabled=true;const {error:removeError}=await client.storage.from("profile-photos").remove([profile.avatar_path]);if(removeError)throw removeError;const {error:profileError}=await client.from("profiles").update({avatar_path:null,updated_at:new Date().toISOString()}).eq("id",user.id);if(profileError)throw profileError;profile.avatar_path=null;avatarPreview.hidden=true;avatarPreview.removeAttribute("src");avatarPlaceholder.hidden=false;window.amsnShowMessage(avatarMessage,"Profile photo removed.","success");}catch(error){window.amsnShowMessage(avatarMessage,error.message,"error");}finally{avatarRemove.disabled=false;}});
+
+  form.addEventListener("submit",async(event)=>{event.preventDefault();try{const interests=form.interests.value.split(",").map(x=>x.trim()).filter(Boolean);const school=schoolRegistry.find(x=>x.id===form.medical_school_id.value);const updates={full_name:form.full_name.value.trim(),preferred_name:form.preferred_name.value.trim()||null,medical_school_id:form.medical_school_id.value||null,school_name:school?.name||profile.school_name||null,chapter_id:form.chapter_id.value||null,year_level:form.year_level.value||null,city:form.city.value.trim()||null,region:form.region.value||null,bio:form.bio.value.trim()||null,interests,mentorship_interest:form.mentorship_interest.checked,collaboration_interest:form.collaboration_interest.checked,directory_visible:form.directory_visible.checked,updated_at:new Date().toISOString()};const {error}=await client.from("profiles").update(updates).eq("id",user.id);if(error)throw error;profile.school_name=updates.school_name;profile.medical_school_id=updates.medical_school_id;profile.chapter_id=updates.chapter_id;document.getElementById("profile-display-name").textContent=updates.preferred_name||updates.full_name;setAvatarPlaceholder(updates.preferred_name||updates.full_name);legacySchoolNote.textContent="";window.amsnShowMessage(message,"Profile updated.","success");}catch(error){window.amsnShowMessage(message,error.message,"error");}});
+
+  function validateImage(file){const allowed=["image/jpeg","image/png","image/webp"];if(!allowed.includes(file.type))return"Please use a JPEG, PNG, or WebP image.";if(file.size>5*1024*1024)return"Profile photos must be 5 MB or smaller.";return"";}
+  async function showStoredAvatar(path){const {data,error}=await client.storage.from("profile-photos").createSignedUrl(path,3600);if(error)return;const url=data?.signedUrl||data?.signedURL;if(!url)return;avatarPreview.src=url;avatarPreview.hidden=false;avatarPlaceholder.hidden=true;}
+  function setAvatarPlaceholder(name){const initials=String(name||"AM").trim().split(/\s+/).slice(0,2).map(x=>x[0]?.toUpperCase()||"").join("");avatarPlaceholder.textContent=initials||"AM";}
 });
+function escapeHtml(value){return String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}

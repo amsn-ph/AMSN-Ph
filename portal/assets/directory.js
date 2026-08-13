@@ -1,79 +1,14 @@
-
 document.addEventListener("DOMContentLoaded", async () => {
   const { profile } = await window.amsnSetupProtectedPage();
-  const gate = document.getElementById("directory-gate");
-  const grid = document.getElementById("directory-grid");
-  const search = document.getElementById("directory-search");
-
-  if (profile.membership_status !== "verified") {
-    gate.innerHTML = `
-      <div class="empty-state">
-        The member directory becomes available after your AMSN membership is verified.
-      </div>`;
-    search.disabled = true;
-    return;
-  }
-
-  const client = window.amsnRequireClient();
-  const { data, error } = await client
-    .from("profiles")
-    .select("id,full_name,preferred_name,school_name,year_level,city,region,bio,interests,mentorship_interest,collaboration_interest")
-    .eq("membership_status", "verified")
-    .eq("directory_visible", true)
-    .order("full_name");
-
-  if (error) {
-    gate.innerHTML = `<div class="empty-state">${escapeHtml(error.message)}</div>`;
-    return;
-  }
-
-  let members = data || [];
-  render(members);
-
-  search.addEventListener("input", () => {
-    const q = search.value.trim().toLowerCase();
-    const filtered = members.filter((member) => {
-      const haystack = [
-        member.full_name, member.preferred_name, member.school_name,
-        member.year_level, member.city, member.region,
-        ...(member.interests || [])
-      ].join(" ").toLowerCase();
-      return haystack.includes(q);
-    });
-    render(filtered);
-  });
-
-  function render(list) {
-    if (!list.length) {
-      grid.innerHTML = '<div class="empty-state">No members match your search.</div>';
-      return;
-    }
-
-    grid.innerHTML = list.map((member) => {
-      const tags = [];
-      if (member.mentorship_interest) tags.push("Mentorship");
-      if (member.collaboration_interest) tags.push("Collaboration");
-      (member.interests || []).slice(0,4).forEach((tag) => tags.push(tag));
-
-      return `
-        <article class="member-card">
-          <h3>${escapeHtml(member.preferred_name || member.full_name)}</h3>
-          <p>${escapeHtml(member.school_name || "Medical school not listed")}</p>
-          <p>${escapeHtml(member.year_level || "")}${member.region ? " • " + escapeHtml(member.region) : ""}</p>
-          ${member.bio ? `<p>${escapeHtml(member.bio)}</p>` : ""}
-          <div class="member-tags">
-            ${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
-          </div>
-        </article>`;
-    }).join("");
-  }
+  const gate=document.getElementById("directory-gate"), grid=document.getElementById("directory-grid"), search=document.getElementById("directory-search");
+  if(profile.membership_status!=="verified"){gate.innerHTML='<div class="empty-state">The member directory becomes available after your AMSN membership is verified.</div>';search.disabled=true;return;}
+  const client=window.amsnRequireClient();
+  const {data,error}=await client.from("profiles").select(`id,full_name,preferred_name,school_name,medical_school_id,year_level,city,region,bio,interests,mentorship_interest,collaboration_interest,avatar_path,medical_school:medical_schools(name,short_name),chapter:chapters(code,name)`).eq("membership_status","verified").eq("directory_visible",true).order("full_name");
+  if(error){gate.innerHTML=`<div class="empty-state">${escapeHtml(error.message)}</div>`;return;}
+  let members=data||[];await attachAvatarUrls(members);render(members);
+  search.addEventListener("input",()=>{const q=search.value.trim().toLowerCase();render(members.filter(m=>[m.full_name,m.preferred_name,m.medical_school?.name,m.medical_school?.short_name,m.school_name,m.year_level,m.city,m.region,m.chapter?.code,m.chapter?.name,...(m.interests||[])].join(" ").toLowerCase().includes(q)));});
+  async function attachAvatarUrls(list){await Promise.all(list.map(async m=>{if(!m.avatar_path)return;const {data}=await client.storage.from("profile-photos").createSignedUrl(m.avatar_path,3600);m.avatar_url=data?.signedUrl||data?.signedURL||"";}));}
+  function render(list){if(!list.length){grid.innerHTML='<div class="empty-state">No members match your search.</div>';return;}grid.innerHTML=list.map(m=>{const tags=[];if(m.mentorship_interest)tags.push("Mentorship");if(m.collaboration_interest)tags.push("Collaboration");(m.interests||[]).slice(0,4).forEach(t=>tags.push(t));const name=m.preferred_name||m.full_name, initials=initialsFor(name), school=m.medical_school?.short_name||m.medical_school?.name||m.school_name||"Medical school not listed", chapter=m.chapter?.code||"";return `<article class="member-card"><div class="member-card-header"><div class="directory-avatar">${m.avatar_url?`<img src="${escapeHtml(m.avatar_url)}" alt="${escapeHtml(name)} profile photo">`:`<span>${escapeHtml(initials)}</span>`}</div><div><h3>${escapeHtml(name)}</h3><p>${escapeHtml(school)}</p></div></div><p>${escapeHtml(m.year_level||"")}${m.region?" • "+escapeHtml(m.region):""}${chapter?" • "+escapeHtml(chapter):""}</p>${m.bio?`<p>${escapeHtml(m.bio)}</p>`:""}<div class="member-tags">${tags.map(t=>`<span>${escapeHtml(t)}</span>`).join("")}</div></article>`;}).join("");}
 });
-
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
+function initialsFor(name){return String(name||"AM").trim().split(/\s+/).slice(0,2).map(x=>x[0]?.toUpperCase()||"").join("")||"AM";}
+function escapeHtml(value){return String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}

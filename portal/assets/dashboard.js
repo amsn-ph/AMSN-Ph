@@ -6,18 +6,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("welcome-name").textContent =
     profile.preferred_name || profile.full_name || "Member";
 
+  const client = window.amsnRequireClient();
+
   const status = document.getElementById("membership-status");
   status.textContent = profile.membership_status || "pending";
   status.classList.add(profile.membership_status || "pending");
 
-  document.getElementById("school-name").textContent = profile.school_name || "Not yet added";
+  let schoolLabel = profile.school_name || "Not yet added";
+  let chapterLabel = "";
+  if (profile.medical_school_id) {
+    const { data: school } = await client.from("medical_schools").select("name,short_name").eq("id", profile.medical_school_id).maybeSingle();
+    schoolLabel = school?.short_name || school?.name || schoolLabel;
+  }
+  if (profile.chapter_id) {
+    const { data: chapter } = await client.from("chapters").select("code").eq("id", profile.chapter_id).maybeSingle();
+    chapterLabel = chapter?.code || "";
+  }
+  document.getElementById("school-name").textContent = schoolLabel;
   document.getElementById("year-level").textContent = profile.year_level || "—";
-  document.getElementById("region-name").textContent = profile.region || "—";
+  document.getElementById("region-name").textContent = [profile.region, chapterLabel].filter(Boolean).join(" • ") || "—";
 
   const roleNames = (roles || []).map((r) => r.role.replaceAll("_", " "));
   document.getElementById("role-list").textContent = roleNames.length ? roleNames.join(", ") : "Member";
-
-  const client = window.amsnRequireClient();
 
   const announcementsEl = document.getElementById("announcement-list");
   const eventsEl = document.getElementById("event-list");

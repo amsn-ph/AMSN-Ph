@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (isAdmin) {
     document.getElementById("role-management-section").classList.add("visible");
+    document.getElementById("school-registry-section")?.classList.add("visible");
+    document.getElementById("chapter-registry-section")?.classList.add("visible");
   }
 
   await Promise.all([
@@ -20,7 +22,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     loadPending(),
     loadAudit(),
     isAdmin ? loadRoleUsers() : Promise.resolve(),
+    isAdmin ? loadChapterRegistry() : Promise.resolve(),
+    isAdmin ? loadSchoolRegistry() : Promise.resolve(),
   ]);
+
+  if (isAdmin) setupRegistryForms();
 
   async function loadCounts() {
     const statuses = ["pending", "verified", "rejected"];
@@ -241,6 +247,59 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     });
   }
+
+  function setupRegistryForms() {
+    const schoolForm = document.getElementById("school-registry-form");
+    const chapterForm = document.getElementById("chapter-registry-form");
+
+    schoolForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const msg = document.getElementById("school-registry-message");
+      const payload = {
+        name: schoolForm.elements["name"].value.trim(),
+        short_name: schoolForm.elements["short_name"].value.trim() || null,
+        region: schoolForm.elements["region"].value || null,
+        city: schoolForm.elements["city"].value.trim() || null,
+        province: schoolForm.elements["province"].value.trim() || null,
+        chapter_id: schoolForm.elements["chapter_id"].value || null,
+        is_active: true,
+        updated_at: new Date().toISOString(),
+      };
+      const { error } = await client.from("medical_schools").insert(payload);
+      if (error) { window.amsnShowMessage(msg, error.message, "error"); return; }
+      schoolForm.reset(); window.amsnShowMessage(msg, "Medical school added.", "success"); await loadSchoolRegistry();
+    });
+
+    chapterForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const msg = document.getElementById("chapter-registry-message");
+      const payload = { code: chapterForm.elements["code"].value.trim().toUpperCase(), name: chapterForm.elements["name"].value.trim(), region: chapterForm.elements["region"].value || null, city: chapterForm.elements["city"].value.trim() || null, is_active: true };
+      const { error } = await client.from("chapters").insert(payload);
+      if (error) { window.amsnShowMessage(msg, error.message, "error"); return; }
+      chapterForm.reset(); window.amsnShowMessage(msg, "Affiliation added.", "success"); await Promise.all([loadChapterRegistry(), loadSchoolRegistry()]);
+    });
+  }
+
+  async function loadChapterRegistry() {
+    const list = document.getElementById("chapter-registry-list");
+    const schoolChapter = document.getElementById("school-default-chapter");
+    const { data, error } = await client.from("chapters").select("id,code,name,region,city,is_active").order("code");
+    if (error) { if(list) list.innerHTML=`<li><small>${escapeHtml(error.message)}</small></li>`; return; }
+    const active=(data||[]).filter(x=>x.is_active);
+    if(schoolChapter) schoolChapter.innerHTML='<option value="">No default affiliation</option>'+active.map(x=>`<option value="${x.id}">${escapeHtml(x.code)} — ${escapeHtml(x.name)}</option>`).join("");
+    if(list) list.innerHTML=active.length?active.map(x=>`<li><strong>${escapeHtml(x.code)} — ${escapeHtml(x.name)}</strong><small>${escapeHtml([x.region,x.city].filter(Boolean).join(" • ")||"No location specified")}</small></li>`).join(""):'<li><small>No active affiliations.</small></li>';
+  }
+
+  async function loadSchoolRegistry() {
+    const list=document.getElementById("school-registry-list");
+    const { data, error } = await client.from("medical_schools").select("id,name,short_name,city,province,region,is_active,chapter:chapters(code)").order("name");
+    if(error){if(list)list.innerHTML=`<li><small>${escapeHtml(error.message)}</small></li>`;return;}
+    const active=(data||[]).filter(x=>x.is_active);
+    if(list){list.innerHTML=active.length?active.map(x=>`<li><strong>${escapeHtml(x.short_name||x.name)}</strong><small>${escapeHtml([x.city,x.province,x.region].filter(Boolean).join(" • "))}${x.chapter?.code?" • "+escapeHtml(x.chapter.code):""}</small><div class="action-row" style="margin-top:8px"><button class="btn btn-light btn-sm" data-deactivate-school="${x.id}">Deactivate</button></div></li>`).join(""):'<li><small>No active medical schools.</small></li>';
+      list.querySelectorAll("[data-deactivate-school]").forEach(button=>button.addEventListener("click",async()=>{if(!confirm("Remove this school from the active signup/profile dropdown? Existing member records will be preserved."))return;const {error}=await client.from("medical_schools").update({is_active:false,updated_at:new Date().toISOString()}).eq("id",button.dataset.deactivateSchool);if(error){window.amsnShowMessage(message,error.message,"error");return;}await loadSchoolRegistry();}));
+    }
+  }
+
 });
 
 function escapeHtml(value) {
