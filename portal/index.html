@@ -68,7 +68,16 @@
             </div>
             <div class="field">
               <label for="signup-school">Medical school</label>
-              <input id="signup-school" name="school_name" type="text" required>
+              <select id="signup-school" name="medical_school_id" required>
+                <option value="">Loading registered medical schools…</option>
+              </select>
+              <small class="registry-note">The school list is maintained by AMSN-PH administrators.</small>
+            </div>
+
+            <div id="signup-school-other-wrap" class="field conditional-field" hidden>
+              <label for="signup-school-other">School not yet listed</label>
+              <input id="signup-school-other" name="school_name_other" type="text" placeholder="Enter your medical school">
+              <small class="registry-note">You may continue signing up. An administrator can add the school to the registry later.</small>
             </div>
             <div class="form-grid">
               <div class="field">
@@ -94,6 +103,14 @@
                   <option>Mindanao</option>
                 </select>
               </div>
+            </div>
+
+            <div class="field">
+              <label for="signup-chapter">Regional / chapter affiliation</label>
+              <select id="signup-chapter" name="chapter_id">
+                <option value="">Loading affiliations…</option>
+              </select>
+              <small class="registry-note">Choose your AMSN regional/chapter community, or select “Not yet affiliated.”</small>
             </div>
             <div class="field">
               <label for="signup-email">Email address</label>
@@ -131,9 +148,9 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/supabase-config.js"></script>
-  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-config.js?v=2.2.0"></script>
+  <script src="assets/supabase-client.js?v=2.2.0"></script>
 
-  <script src="assets/auth.js"></script>
+  <script src="assets/auth.js?v=2.2.0"></script>
 </body>
 </html>

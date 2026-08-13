@@ -113,12 +113,47 @@
         </table>
       </div>
     </section>
+
+    <section id="school-registry-section" class="card admin-section admin-only">
+      <span class="card-label">Administrator only</span>
+      <h2>Medical School Registry</h2>
+      <p>This registry powers the medical-school dropdown used during signup and in member profiles.</p>
+      <div class="registry-admin-grid">
+        <form id="school-registry-form" class="form-grid">
+          <div class="field full"><label>Official / display name</label><input name="name" required placeholder="Medical school name"></div>
+          <div class="field"><label>Short name</label><input name="short_name" placeholder="e.g. UPM-SHS"></div>
+          <div class="field"><label>Region</label><select name="region"><option value="">Select</option><option>Luzon</option><option>Visayas</option><option>Mindanao</option></select></div>
+          <div class="field"><label>City</label><input name="city"></div>
+          <div class="field"><label>Province</label><input name="province"></div>
+          <div class="field full"><label>Default chapter / regional affiliation</label><select name="chapter_id" id="school-default-chapter"><option value="">No default affiliation</option></select></div>
+          <div class="field full"><button type="submit" class="btn btn-blue">Add Medical School</button><div id="school-registry-message" class="message"></div></div>
+        </form>
+        <div><span class="card-label">ACTIVE SCHOOLS</span><ul id="school-registry-list" class="registry-list"><li><small>Loading…</small></li></ul></div>
+      </div>
+    </section>
+
+    <section id="chapter-registry-section" class="card admin-section admin-only">
+      <span class="card-label">Administrator only</span>
+      <h2>Regional / Chapter Affiliations</h2>
+      <p>These options appear in the member profile dropdown, including LSAMS, CAMSA, ISAMS, AMiCUS-UNP, and DSAMS.</p>
+      <div class="registry-admin-grid">
+        <form id="chapter-registry-form" class="form-grid">
+          <div class="field"><label>Code</label><input name="code" required placeholder="e.g. LSAMS"></div>
+          <div class="field"><label>Region</label><select name="region"><option value="">Select</option><option>Luzon</option><option>Visayas</option><option>Mindanao</option></select></div>
+          <div class="field full"><label>Name</label><input name="name" required></div>
+          <div class="field full"><label>City / base (optional)</label><input name="city"></div>
+          <div class="field full"><button type="submit" class="btn btn-blue">Add Affiliation</button><div id="chapter-registry-message" class="message"></div></div>
+        </form>
+        <div><span class="card-label">ACTIVE AFFILIATIONS</span><ul id="chapter-registry-list" class="registry-list"><li><small>Loading…</small></li></ul></div>
+      </div>
+    </section>
+
   </main>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/supabase-config.js"></script>
-<script src="assets/supabase-client.js"></script>
-<script src="assets/admin.js"></script>
+<script src="assets/supabase-config.js?v=2.2.0"></script>
+<script src="assets/supabase-client.js?v=2.2.0"></script>
+<script src="assets/admin.js?v=2.2.0"></script>
 </body>
 </html>
