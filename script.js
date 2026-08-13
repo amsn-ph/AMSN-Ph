@@ -1,38 +1,3 @@
-const leadership = [
-  {
-    role: "National President",
-    name: "Gherneil Dalanon",
-    meta: "AMSN-PH 8th NEB"
-  },
-  {
-    role: "National Secretary",
-    name: "Cyd Paulin Rosal",
-    meta: "AMSN-PH 8th NEB"
-  },
-  {
-    role: "National Public Relations Officer",
-    name: "Glister Diadem A. Dollera",
-    meta: "AMSN-PH 8th NEB"
-  },
-  {
-    role: "Adviser",
-    name: "Dr. Elvin Tecson",
-    meta: "AMSN-PH"
-  }
-];
-
-
-
-if (leadershipTable) {
-  leadershipTable.innerHTML = leadership.map(member => `
-    <article class="leader-row">
-      <span class="leader-role">${member.role}</span>
-      <p class="leader-name">${member.name}</p>
-      <p class="leader-meta">${member.meta}</p>
-    </article>
-  `).join("");
-}
-
 const menuToggle = document.querySelector(".menu-toggle");
 const primaryNav = document.querySelector(".primary-nav");
 
@@ -43,7 +8,7 @@ if (menuToggle && primaryNav) {
     menuToggle.textContent = open ? "Close" : "Menu";
   });
 
-  primaryNav.querySelectorAll("a").forEach(link => {
+  primaryNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       primaryNav.classList.remove("open");
       menuToggle.setAttribute("aria-expanded", "false");
@@ -52,21 +17,21 @@ if (menuToggle && primaryNav) {
   });
 }
 
-document.querySelectorAll("#year").forEach(node => {
+document.querySelectorAll("#year").forEach((node) => {
   node.textContent = new Date().getFullYear();
 });
 
 const filters = document.querySelectorAll(".filter");
 const articles = document.querySelectorAll(".article-card[data-category]");
 
-filters.forEach(button => {
+filters.forEach((button) => {
   button.addEventListener("click", () => {
-    filters.forEach(filter => filter.classList.remove("active"));
+    filters.forEach((filter) => filter.classList.remove("active"));
     button.classList.add("active");
 
     const selected = button.dataset.filter;
 
-    articles.forEach(article => {
+    articles.forEach((article) => {
       const category = article.dataset.category;
       const visible =
         selected === "all" ||
@@ -77,7 +42,6 @@ filters.forEach(button => {
     });
   });
 });
-
 
 // 8th NEB event gallery
 const gallerySlides = Array.from(document.querySelectorAll(".gallery-slide"));
