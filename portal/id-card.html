@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <title>Digital Member ID | AMSN-PH Portal</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<div class="portal-shell">
+  <aside class="portal-sidebar">
+    <a href="../index.html" class="portal-brand">
+      <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+      <span><strong>AMSN-PH Portal</strong><span>Member & Officer Workspace</span></span>
+    </a>
+    <nav class="portal-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">My Profile</a>
+      <a href="id-card.html" aria-current="page">Digital ID</a>
+      <a href="directory.html">Member Directory</a>
+      <a href="events.html">Events</a>
+      <a href="opportunities.html">Opportunities</a>
+      <a href="mentorship.html">Mentorship</a>
+      <a href="officer.html" class="officer-link">Officer Hub</a>
+        <a href="operations.html" class="officer-link">Operations</a>
+      <a href="admin.html" class="admin-link">Admin / Verification</a>
+      <a href="../index.html">Public Website</a>
+      <button type="button" data-signout>Sign Out</button>
+    </nav>
+    <div class="portal-sidebar-footer">Private AMSN-PH workspace</div>
+  </aside>
+
+  <main class="portal-main">
+    <header class="portal-topbar">
+      <div>
+        <p class="eyebrow">DIGITAL MEMBER ID</p>
+        <h1>Your AMSN-PH credential.</h1>
+        <p>Available to verified members and linked to live membership verification.</p>
+      </div>
+      <div class="user-chip" data-user-chip>Loading…</div>
+    </header>
+
+    <div id="id-message" class="message" aria-live="polite"></div>
+
+    <section class="digital-id-wrap">
+      <article id="digital-member-card" class="digital-member-card">
+        <div class="id-card-head">
+          <div class="id-card-brand">
+            <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+            <div>
+              <strong>Adventist Medical Students Network</strong>
+              <span>PHILIPPINES • DIGITAL MEMBER ID</span>
+            </div>
+          </div>
+          <span id="id-status" class="id-verified-mark">Verified Member</span>
+        </div>
+
+        <div class="id-card-body">
+          <div id="id-photo" class="id-photo">
+            <img id="id-photo-img" alt="Member profile photo" hidden>
+            <span id="id-photo-initials">AM</span>
+          </div>
+
+          <div class="id-details">
+            <h2 id="id-name">Loading member…</h2>
+            <p id="id-member-number" class="id-member-number">—</p>
+
+            <div class="id-info-list">
+              <div><span>School</span><strong id="id-school">—</strong></div>
+              <div><span>Affiliation</span><strong id="id-chapter">—</strong></div>
+              <div><span>Verified</span><strong id="id-verified-date">—</strong></div>
+            </div>
+          </div>
+
+          <div class="id-qr-block">
+            <div id="id-qr" aria-label="Membership verification QR code"></div>
+            <small>Scan to verify<br>AMSN-PH membership</small>
+          </div>
+        </div>
+
+        <div class="id-card-footer">
+          <span>This credential is valid only while the member remains verified in AMSN-PH records.</span>
+          <span>amsn-ph.org</span>
+        </div>
+      </article>
+
+      <aside class="card id-actions-card">
+        <span class="card-label">MEMBER CREDENTIAL</span>
+        <h2>How to use your digital ID</h2>
+        <p>
+          The QR code opens a public AMSN-PH verification page. It confirms only
+          limited membership information and does not expose your email, phone number,
+          or other private profile details.
+        </p>
+
+        <div class="action-row">
+          <button id="print-id" class="btn btn-blue" type="button">Print / Save ID</button>
+          <button id="copy-verification-link" class="btn btn-light" type="button">Copy Verification Link</button>
+        </div>
+
+        <p class="registry-note">
+          If your name, school, chapter, or photo is incorrect, update your profile first.
+        </p>
+      </aside>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/vendor/qrcode.min.js"></script>
+<script src="assets/supabase-config.js?v=2.5.0"></script>
+<script src="assets/supabase-client.js?v=2.5.0"></script>
+<script src="assets/id-card.js?v=2.4.0"></script>
+</body>
+</html>

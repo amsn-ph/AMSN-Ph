@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Verify AMSN-PH Membership</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<main class="verify-page">
+  <section class="verify-shell">
+    <header class="verify-header">
+      <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+      <p class="eyebrow" style="color:#9bdef8">OFFICIAL MEMBERSHIP VERIFICATION</p>
+      <h1>Verify an AMSN-PH credential.</h1>
+      <p>This page checks a digital member ID against the current AMSN-PH membership record.</p>
+    </header>
+
+    <div class="verify-body">
+      <form id="verify-form" class="form-grid">
+        <div class="field full">
+          <label for="verification-code">Verification code</label>
+          <input id="verification-code" name="code" autocomplete="off" placeholder="Enter verification code">
+          <small class="registry-note">Scanning the QR on a digital member ID fills this automatically.</small>
+        </div>
+        <div class="field full">
+          <button class="btn btn-blue" type="submit">Verify Credential</button>
+        </div>
+      </form>
+
+      <div id="verify-result"></div>
+
+      <div style="margin-top:24px">
+        <a href="../index.html" class="btn btn-light">Visit AMSN-PH Website</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-config.js?v=2.5.0"></script>
+<script src="assets/supabase-client.js?v=2.5.0"></script>
+<script src="assets/verify.js?v=2.4.0"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#005480">
+  <title>Officer Operations | AMSN-PH Portal</title>
+  <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
+  <link rel="stylesheet" href="assets/portal.css">
+</head>
+<body>
+<div class="portal-shell">
+  <aside class="portal-sidebar">
+    <a href="../index.html" class="portal-brand">
+      <img src="../assets/amsn-logo.jpg" alt="AMSN-PH logo">
+      <span><strong>AMSN-PH Portal</strong><span>Member & Officer Workspace</span></span>
+    </a>
+
+    <nav class="portal-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">My Profile</a>
+      <a href="id-card.html">Digital ID</a>
+      <a href="directory.html">Member Directory</a>
+      <a href="events.html">Events</a>
+      <a href="opportunities.html">Opportunities</a>
+      <a href="mentorship.html">Mentorship</a>
+      <a href="officer.html" class="officer-link">Officer Hub</a>
+      <a href="operations.html" class="officer-link" aria-current="page">Operations</a>
+      <a href="admin.html" class="admin-link">Admin / Verification</a>
+      <a href="../index.html">Public Website</a>
+      <button type="button" data-signout>Sign Out</button>
+    </nav>
+
+    <div class="portal-sidebar-footer">
+      Officer workspace<br>
+      Access is role-based.
+    </div>
+  </aside>
+
+  <main class="portal-main">
+    <header class="portal-topbar">
+      <div>
+        <p class="eyebrow">OFFICER OPERATIONS</p>
+        <h1>Keep programs moving between terms.</h1>
+        <p>
+          Track projects, responsibilities, documents, school coverage, and handover notes
+          in one place so work does not disappear when officers change.
+        </p>
+      </div>
+      <div class="user-chip" data-user-chip>Loading…</div>
+    </header>
+
+    <nav class="ops-nav" aria-label="Operations sections">
+      <a href="#projects">Projects</a>
+      <a href="#tasks">Tasks</a>
+      <a href="#coverage">School & Chapter Coverage</a>
+      <a href="#resources">Resources & Minutes</a>
+      <a href="#handover">Turnover / Handover</a>
+    </nav>
+
+    <section class="ops-summary">
+      <article class="ops-stat"><span>Active Projects</span><strong id="stat-projects">—</strong></article>
+      <article class="ops-stat"><span>Open Tasks</span><strong id="stat-tasks">—</strong></article>
+      <article class="ops-stat"><span>Blocked Tasks</span><strong id="stat-blocked">—</strong></article>
+      <article class="ops-stat"><span>Archived Resources</span><strong id="stat-resources">—</strong></article>
+      <article class="ops-stat"><span>Schools Covered</span><strong id="stat-coverage">—</strong></article>
+    </section>
+
+    <div id="operations-message" class="message" aria-live="polite"></div>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="card ops-section">
+      <span class="card-label">PROGRAM / PROJECT TRACKER</span>
+      <h2>Projects and program phases</h2>
+      <p>National projects may be created by NEB/Admin. Chapter officers and trustees can manage work within their own affiliation.</p>
+
+      <div class="ops-two-col">
+        <form id="project-form" class="form-grid">
+          <div class="field full"><label>Project / program title</label><input name="title" required></div>
+          <div class="field"><label>Phase</label><input name="phase" placeholder="e.g. Planning, Recruitment, Implementation"></div>
+          <div class="field">
+            <label>Status</label>
+            <select name="status">
+              <option value="planned">Planned</option>
+              <option value="active">Active</option>
+              <option value="on_hold">On Hold</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Priority</label>
+            <select name="priority">
+              <option value="normal">Normal</option>
+              <option value="low">Low</option>
+              <option value="high">High</option>
+              <option value="urgent">Urgent</option>
+            </select>
+          </div>
+          <div class="field"><label>Owner</label><select name="owner_id" id="project-owner"><option value="">Unassigned</option></select></div>
+          <div class="field"><label>Affiliation</label><select name="chapter_id" id="project-chapter"><option value="">National / Network-wide</option></select></div>
+          <div class="field"><label>Start date</label><input name="start_date" type="date"></div>
+          <div class="field"><label>Target date</label><input name="due_date" type="date"></div>
+          <div class="field full"><label>Description / scope</label><textarea name="description"></textarea></div>
+          <div class="field full">
+            <button class="btn btn-blue" type="submit">Add Project</button>
+            <div id="project-message" class="message"></div>
+          </div>
+        </form>
+
+        <div>
+          <div class="toolbar">
+            <div class="field search-wide">
+              <label for="project-search">Search projects</label>
+              <input id="project-search" type="search" placeholder="Program, phase, chapter">
+            </div>
+            <div class="field">
+              <label for="project-status-filter">Status</label>
+              <select id="project-status-filter">
+                <option value="">All</option>
+                <option value="planned">Planned</option>
+                <option value="active">Active</option>
+                <option value="on_hold">On Hold</option>
+                <option value="completed">Completed</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+          </div>
+          <div id="project-list" style="margin-top:10px"><div class="ops-empty">Loading projects…</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASKS -->
+    <section id="tasks" class="card ops-section">
+      <span class="card-label">RESPONSIBILITY TRACKER</span>
+      <h2>Tasks and accountability</h2>
+
+      <form id="task-form" class="form-grid">
+        <div class="field"><label>Task</label><input name="title" required></div>
+        <div class="field"><label>Project</label><select name="project_id" id="task-project"><option value="">No linked project</option></select></div>
+        <div class="field"><label>Assigned officer</label><select name="assignee_id" id="task-assignee"><option value="">Unassigned</option></select></div>
+        <div class="field"><label>Affiliation</label><select name="chapter_id" id="task-chapter"><option value="">National / Network-wide</option></select></div>
+        <div class="field">
+          <label>Priority</label>
+          <select name="priority">
+            <option value="normal">Normal</option>
+            <option value="low">Low</option>
+            <option value="high">High</option>
+            <option value="urgent">Urgent</option>
+          </select>
+        </div>
+        <div class="field"><label>Due</label><input name="due_at" type="datetime-local"></div>
+        <div class="field full"><label>Description</label><textarea name="description"></textarea></div>
+        <div class="field full">
+          <button class="btn btn-blue" type="submit">Add Task</button>
+          <div id="task-message" class="message"></div>
+        </div>
+      </form>
+
+      <div id="task-board" class="task-board" style="margin-top:20px">
+        <div class="task-column"><h3>To Do</h3><div data-task-column="todo"></div></div>
+        <div class="task-column"><h3>In Progress</h3><div data-task-column="in_progress"></div></div>
+        <div class="task-column"><h3>Blocked</h3><div data-task-column="blocked"></div></div>
+        <div class="task-column"><h3>Done</h3><div data-task-column="done"></div></div>
+      </div>
+    </section>
+
+    <!-- COVERAGE -->
+    <section id="coverage" class="card ops-section">
+      <span class="card-label">NETWORK COVERAGE</span>
+      <h2>School & chapter coverage</h2>
+      <p>
+        Coverage is based on verified members currently assigned an officer role and the
+        medical school/chapter saved in their AMSN profile.
+      </p>
+
+      <div class="ops-two-col">
+        <div>
+          <h3>Registered Medical Schools</h3>
+          <div id="school-coverage" class="coverage-grid">
+            <div class="ops-empty">Loading school coverage…</div>
+          </div>
+        </div>
+        <div>
+          <h3>AMSN Affiliations</h3>
+          <div id="chapter-coverage" class="coverage-grid">
+            <div class="ops-empty">Loading chapter coverage…</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources" class="card ops-section">
+      <span class="card-label">DOCUMENTATION ARCHIVE</span>
+      <h2>Resources, minutes, and pertinent files</h2>
+      <p>
+        Save the official link to files stored in Drive or another approved repository.
+        This page serves as the searchable index and continuity record.
+      </p>
+
+      <div class="ops-two-col">
+        <form id="resource-form" class="form-grid">
+          <div class="field full"><label>Title</label><input name="title" required></div>
+          <div class="field">
+            <label>Type</label>
+            <select name="resource_type">
+              <option value="minutes">Meeting Minutes</option>
+              <option value="turnover">Turnover File</option>
+              <option value="policy">Policy / Memo</option>
+              <option value="template">Template</option>
+              <option value="report">Report</option>
+              <option value="program_file">Program File</option>
+              <option value="link">Other Link</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Audience</label>
+            <select name="audience">
+              <option value="officers">Officers only</option>
+              <option value="members">Verified members</option>
+            </select>
+          </div>
+          <div class="field"><label>Document date</label><input name="document_date" type="date"></div>
+          <div class="field"><label>Term / FY</label><input name="term_label" placeholder="e.g. 2026–2027"></div>
+          <div class="field full"><label>File / Drive URL</label><input name="resource_url" type="url" required></div>
+          <div class="field"><label>Affiliation</label><select name="chapter_id" id="resource-chapter"><option value="">National / Network-wide</option></select></div>
+          <div class="field full"><label>Description</label><textarea name="description"></textarea></div>
+          <div class="field full">
+            <button class="btn btn-blue" type="submit">Add to Archive</button>
+            <div id="resource-message" class="message"></div>
+          </div>
+        </form>
+
+        <div>
+          <div class="toolbar">
+            <div class="field search-wide"><label for="resource-search">Search archive</label><input id="resource-search" type="search" placeholder="Minutes, turnover, project, term"></div>
+            <div class="field">
+              <label for="resource-type-filter">Type</label>
+              <select id="resource-type-filter">
+                <option value="">All</option>
+                <option value="minutes">Minutes</option>
+                <option value="turnover">Turnover</option>
+                <option value="policy">Policy</option>
+                <option value="template">Template</option>
+                <option value="report">Report</option>
+                <option value="program_file">Program File</option>
+                <option value="link">Link</option>
+              </select>
+            </div>
+          </div>
+          <div id="resource-list" style="margin-top:10px"><div class="ops-empty">Loading archive…</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HANDOVER -->
+    <section id="handover" class="card ops-section">
+      <span class="card-label">PROGRAM CONTINUITY</span>
+      <h2>Turnover / handover records</h2>
+      <p>
+        Record what exists, what has already been done, what is still pending, and what
+        the next officer needs to know.
+      </p>
+
+      <div class="ops-two-col">
+        <form id="handover-form" class="form-grid">
+          <div class="field full"><label>Record title</label><input name="title" required placeholder="e.g. AMSN Website & Member Portal"></div>
+          <div class="field"><label>Area / portfolio</label><input name="area" required placeholder="e.g. Public Relations, Membership, Mentorship"></div>
+          <div class="field"><label>Term / FY</label><input name="term_label" placeholder="2026–2027"></div>
+          <div class="field"><label>Current owner</label><select name="owner_id" id="handover-owner"><option value="">Unassigned</option></select></div>
+          <div class="field"><label>Proposed successor</label><select name="successor_id" id="handover-successor"><option value="">Not yet assigned</option></select></div>
+          <div class="field"><label>Affiliation</label><select name="chapter_id" id="handover-chapter"><option value="">National / Network-wide</option></select></div>
+          <div class="field">
+            <label>Status</label>
+            <select name="status">
+              <option value="active">Active Work</option>
+              <option value="ready_for_handover">Ready for Handover</option>
+              <option value="handed_over">Handed Over</option>
+              <option value="archived">Archived</option>
+            </select>
+          </div>
+          <div class="field full"><label>Summary</label><textarea name="summary" required placeholder="What is this project/process and why does it matter?"></textarea></div>
+          <div class="field full"><label>Current state</label><textarea name="current_state" placeholder="What has already been completed? What accounts/files/processes exist?"></textarea></div>
+          <div class="field full"><label>Next steps</label><textarea name="next_steps" placeholder="What should the next officer do next?"></textarea></div>
+          <div class="field full"><label>Reference / Drive URL</label><input name="resource_url" type="url"></div>
+          <div class="field full">
+            <button class="btn btn-blue" type="submit">Save Handover Record</button>
+            <div id="handover-message" class="message"></div>
+          </div>
+        </form>
+
+        <div id="handover-list"><div class="ops-empty">Loading handover records…</div></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-config.js?v=2.5.0"></script>
+<script src="assets/supabase-client.js?v=2.5.0"></script>
+<script src="assets/operations.js?v=2.5.0"></script>
+</body>
+</html>
