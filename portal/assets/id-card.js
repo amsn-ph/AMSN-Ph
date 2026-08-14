@@ -54,7 +54,7 @@ async function bootDigitalId() {
     document.getElementById("id-member-number").textContent =
       credential.member_number;
 
-    renderQr(credential.verification_code);
+    await renderQr(credential.verification_code);
     setupActions(credential.verification_code);
 
   } catch (error) {
@@ -202,9 +202,30 @@ function renderInstitutionalDetails(profile, school, chapter) {
   document.getElementById("id-chapter").textContent = chapterName;
 }
 
-function renderQr(code) {
-  if (!window.QRCode) {
-    throw new Error("QR library did not load. Refresh the page and try again.");
+async function ensureQRCodeLibrary() {
+  if (window.QRCode) return true;
+
+  // Local file is the primary source. If it was missed during deployment,
+  // try a CDN fallback rather than leaving the member ID blank.
+  return await new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js";
+    script.async = true;
+
+    script.onload = () => resolve(!!window.QRCode);
+    script.onerror = () => resolve(false);
+
+    document.head.appendChild(script);
+  });
+}
+
+async function renderQr(code) {
+  const qrReady = await ensureQRCodeLibrary();
+
+  if (!qrReady) {
+    throw new Error(
+      "QR code component could not load. Please check that portal/assets/vendor/qrcode.min.js was uploaded, then retry."
+    );
   }
 
   const verificationUrl = new URL("verify.html", window.location.href);
