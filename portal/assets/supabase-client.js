@@ -77,15 +77,17 @@ window.amsnSetupProtectedPage = async function () {
   const userChip = document.querySelector("[data-user-chip]");
   if (userChip) userChip.textContent = profile.preferred_name || profile.full_name || user.email;
 
-  const officerLink = document.querySelector(".officer-link");
-  if (officerLink && window.amsnRoleAllowsOfficerHub(roles)) {
-    officerLink.classList.add("visible");
-  }
+  document.querySelectorAll(".officer-link").forEach((officerLink) => {
+    if (window.amsnRoleAllowsOfficerHub(roles)) {
+      officerLink.classList.add("visible");
+    }
+  });
 
-  const adminLink = document.querySelector(".admin-link");
-  if (adminLink && window.amsnRoleAllowsAdminPanel(roles)) {
-    adminLink.classList.add("visible");
-  }
+  document.querySelectorAll(".admin-link").forEach((adminLink) => {
+    if (window.amsnRoleAllowsAdminPanel(roles)) {
+      adminLink.classList.add("visible");
+    }
+  });
 
   document.querySelectorAll("[data-signout]").forEach((button) => {
     button.addEventListener("click", async () => {

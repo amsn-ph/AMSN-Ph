@@ -593,3 +593,613 @@ button,input,select,textarea{font:inherit}
     grid-template-columns:1fr;
   }
 }
+
+
+/* ======================================================
+   V2.4 — Digital AMSN-PH Member ID
+   ====================================================== */
+
+.digital-id-wrap{
+  display:grid;
+  grid-template-columns:minmax(0,720px) minmax(260px,1fr);
+  gap:24px;
+  align-items:start;
+}
+
+.digital-member-card{
+  position:relative;
+  overflow:hidden;
+  min-height:420px;
+  padding:34px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.98),rgba(244,249,251,.96));
+  border:1px solid #cbd8dd;
+  box-shadow:0 24px 60px rgba(0,48,72,.12);
+}
+
+.digital-member-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:9px;
+  background:linear-gradient(90deg,var(--blue) 0 55%,var(--cyan) 55% 78%,var(--green) 78% 100%);
+}
+
+.id-card-head{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-start;
+}
+
+.id-card-brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.id-card-brand img{
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  background:#fff;
+}
+
+.id-card-brand strong{
+  display:block;
+  color:var(--blue);
+  font-size:1rem;
+}
+
+.id-card-brand span{
+  display:block;
+  color:#75848a;
+  font-size:.7rem;
+  letter-spacing:.08em;
+}
+
+.id-verified-mark{
+  padding:7px 10px;
+  background:#e7f4eb;
+  color:#237144;
+  font-size:.68rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.id-card-body{
+  display:grid;
+  grid-template-columns:132px minmax(0,1fr) 126px;
+  gap:24px;
+  align-items:center;
+  margin-top:42px;
+}
+
+.id-photo{
+  width:132px;
+  height:132px;
+  border-radius:50%;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:#e2ebef;
+  border:5px solid #fff;
+  box-shadow:0 0 0 1px #cbd8dd;
+  color:var(--blue);
+  font-size:2rem;
+  font-weight:800;
+}
+
+.id-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.id-details h2{
+  margin:0 0 4px;
+  color:#13252d;
+  font-size:clamp(1.65rem,4vw,2.5rem);
+  line-height:1.02;
+  letter-spacing:-.035em;
+}
+
+.id-member-number{
+  margin:10px 0 18px!important;
+  color:var(--blue)!important;
+  font-size:.84rem!important;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+
+.id-info-list{
+  display:grid;
+  gap:8px;
+}
+
+.id-info-list div{
+  display:grid;
+  grid-template-columns:85px 1fr;
+  gap:10px;
+  font-size:.82rem;
+}
+
+.id-info-list span{
+  color:#78878d;
+  font-size:.68rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+
+.id-info-list strong{
+  color:#33464e;
+}
+
+.id-qr-block{
+  text-align:center;
+}
+
+#id-qr{
+  display:inline-grid;
+  place-items:center;
+  min-width:118px;
+  min-height:118px;
+  padding:4px;
+  background:#fff;
+  border:1px solid #d5e0e4;
+}
+
+#id-qr img,
+#id-qr canvas{
+  display:block;
+  max-width:110px!important;
+  max-height:110px!important;
+}
+
+.id-qr-block small{
+  display:block;
+  margin-top:8px;
+  color:#78878d;
+  font-size:.62rem;
+  line-height:1.35;
+}
+
+.id-card-footer{
+  margin-top:34px;
+  padding-top:14px;
+  border-top:1px solid #dbe4e7;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  color:#708087;
+  font-size:.68rem;
+}
+
+.id-actions-card{
+  position:sticky;
+  top:24px;
+}
+
+.id-actions-card .action-row{
+  margin-top:18px;
+}
+
+.verify-page{
+  min-height:100vh;
+  padding:48px 20px;
+  display:grid;
+  place-items:center;
+  background:#f4f7f8;
+}
+
+.verify-shell{
+  width:min(720px,100%);
+  background:#fff;
+  border:1px solid var(--line);
+  box-shadow:0 20px 55px rgba(0,50,72,.10);
+}
+
+.verify-header{
+  padding:28px;
+  background:var(--blue);
+  color:#fff;
+}
+
+.verify-header img{
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  background:#fff;
+  margin-bottom:20px;
+}
+
+.verify-header h1{
+  margin:6px 0 8px;
+  font-size:2rem;
+}
+
+.verify-header p{
+  margin:0;
+  color:#d4e6ed;
+}
+
+.verify-body{
+  padding:30px;
+}
+
+.verify-result{
+  margin-top:22px;
+  padding:24px;
+  border:1px solid var(--line);
+  background:#f9fbfb;
+}
+
+.verify-success{
+  border-left:5px solid var(--green);
+}
+
+.verify-fail{
+  border-left:5px solid #b94c4c;
+}
+
+.verify-result h2{
+  margin:4px 0 14px;
+}
+
+.verify-data{
+  display:grid;
+  gap:10px;
+}
+
+.verify-data div{
+  display:grid;
+  grid-template-columns:130px 1fr;
+  gap:12px;
+}
+
+.verify-data span{
+  color:#78878d;
+  font-size:.72rem;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+@media(max-width:880px){
+  .digital-id-wrap{
+    grid-template-columns:1fr;
+  }
+  .id-actions-card{
+    position:relative;
+    top:auto;
+  }
+}
+
+@media(max-width:660px){
+  .digital-member-card{
+    padding:24px 20px;
+  }
+
+  .id-card-head{
+    flex-direction:column;
+  }
+
+  .id-card-body{
+    grid-template-columns:1fr;
+    text-align:center;
+    margin-top:30px;
+  }
+
+  .id-photo{
+    margin:0 auto;
+  }
+
+  .id-info-list{
+    max-width:420px;
+    margin:0 auto;
+    text-align:left;
+  }
+
+  .id-card-footer{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .verify-data div{
+    grid-template-columns:1fr;
+    gap:2px;
+  }
+}
+
+@media print{
+  body{
+    background:#fff!important;
+  }
+
+  .portal-sidebar,
+  .portal-topbar,
+  .id-actions-card{
+    display:none!important;
+  }
+
+  .portal-shell{
+    display:block!important;
+  }
+
+  .portal-main{
+    padding:0!important;
+  }
+
+  .digital-id-wrap{
+    display:block!important;
+  }
+
+  .digital-member-card{
+    width:100%!important;
+    max-width:760px!important;
+    margin:0 auto!important;
+    box-shadow:none!important;
+    break-inside:avoid;
+  }
+}
+
+
+/* ======================================================
+   V2.5 — Officer Operations & Program Continuity
+   ====================================================== */
+
+.ops-nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+
+.ops-nav a{
+  padding:8px 11px;
+  background:#f0f4f6;
+  border:1px solid var(--line);
+  color:#405159;
+  text-decoration:none;
+  font-size:.76rem;
+  font-weight:800;
+}
+
+.ops-summary{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.ops-stat{
+  padding:18px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+
+.ops-stat span{
+  display:block;
+  color:#75858b;
+  font-size:.67rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.ops-stat strong{
+  display:block;
+  margin-top:5px;
+  color:var(--blue);
+  font-size:1.7rem;
+}
+
+.ops-section{
+  scroll-margin-top:20px;
+  margin-top:18px;
+}
+
+.ops-two-col{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:18px;
+  align-items:start;
+}
+
+.ops-item{
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.ops-item:last-child{
+  border-bottom:0;
+}
+
+.ops-item-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.ops-item h3{
+  margin:4px 0 7px;
+  color:#20353e;
+  font-size:1rem;
+}
+
+.ops-item p{
+  margin:5px 0;
+  color:#63737a;
+  font-size:.82rem;
+}
+
+.ops-item small{
+  color:#7b8a90;
+}
+
+.ops-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:8px 0;
+}
+
+.ops-badge{
+  display:inline-flex;
+  padding:4px 7px;
+  background:#edf3f5;
+  color:#56676e;
+  font-size:.63rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+.ops-badge.active,
+.ops-badge.done,
+.ops-badge.covered{
+  background:#e7f4eb;
+  color:#237144;
+}
+
+.ops-badge.blocked,
+.ops-badge.urgent,
+.ops-badge.uncovered{
+  background:#f7e8e8;
+  color:#963b3b;
+}
+
+.ops-badge.in_progress,
+.ops-badge.high,
+.ops-badge.ready_for_handover{
+  background:#fff1d9;
+  color:#865c10;
+}
+
+.ops-badge.completed,
+.ops-badge.handed_over{
+  background:#e7f2f7;
+  color:#306a83;
+}
+
+.task-board{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+
+.task-column{
+  min-width:0;
+  padding:14px;
+  background:#f7f9fa;
+  border:1px solid var(--line);
+}
+
+.task-column > h3{
+  margin:0 0 12px;
+  color:#65767d;
+  font-size:.74rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.task-card{
+  padding:13px;
+  margin-bottom:9px;
+  background:#fff;
+  border:1px solid #d9e2e5;
+}
+
+.task-card:last-child{
+  margin-bottom:0;
+}
+
+.task-card strong{
+  display:block;
+  color:#243940;
+  font-size:.82rem;
+}
+
+.task-card p{
+  margin:6px 0;
+  color:#6a797f;
+  font-size:.72rem;
+}
+
+.task-card select{
+  margin-top:8px;
+  width:100%;
+  padding:7px;
+  font-size:.7rem;
+}
+
+.coverage-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+
+.coverage-row{
+  padding:15px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+
+.coverage-row h3{
+  margin:3px 0 5px;
+  font-size:.91rem;
+}
+
+.coverage-row p{
+  margin:4px 0;
+  color:#69787e;
+  font-size:.75rem;
+}
+
+.resource-link{
+  word-break:break-word;
+}
+
+.handover-next{
+  padding:12px;
+  margin-top:10px;
+  background:#f5f8f9;
+  border-left:3px solid var(--cyan);
+}
+
+.ops-empty{
+  padding:18px;
+  background:#f7f9fa;
+  border:1px dashed #cad6da;
+  color:#708086;
+  font-size:.8rem;
+}
+
+@media(max-width:1050px){
+  .ops-summary{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .task-board{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:760px){
+  .ops-two-col,
+  .coverage-grid{
+    grid-template-columns:1fr;
+  }
+
+  .ops-summary{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .task-board{
+    grid-template-columns:1fr;
+  }
+}
