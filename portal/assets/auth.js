@@ -4,12 +4,41 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const tabs = document.querySelectorAll(".auth-tab");
   const panes = document.querySelectorAll(".auth-pane");
-  tabs.forEach((tab) => tab.addEventListener("click", () => {
-    tabs.forEach((item) => item.classList.remove("active"));
-    panes.forEach((item) => item.classList.remove("active"));
-    tab.classList.add("active");
-    document.getElementById(tab.dataset.target).classList.add("active");
-  }));
+
+  function activateTab(targetId) {
+    tabs.forEach((item) => {
+      const isActive = item.dataset.target === targetId;
+      item.classList.toggle("active", isActive);
+      item.setAttribute("aria-selected", String(isActive));
+    });
+
+    panes.forEach((item) => {
+      item.classList.toggle("active", item.id === targetId);
+    });
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => activateTab(tab.dataset.target));
+  });
+
+  // Public "Join AMSN-PH" CTAs use /portal/?action=join.
+  // Existing members visiting /portal/ still land on Sign In by default.
+  const portalAction = new URLSearchParams(window.location.search).get("action");
+
+  if (portalAction === "join" || portalAction === "signup") {
+    activateTab("signup-pane");
+
+    // Remove the one-time action parameter without reloading, so the URL stays clean.
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.delete("action");
+    window.history.replaceState({}, "", cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
+
+    requestAnimationFrame(() => {
+      document.getElementById("signup-name")?.focus({ preventScroll: true });
+    });
+  } else {
+    activateTab("login-pane");
+  }
 
   const loginForm = document.getElementById("login-form");
   const signupForm = document.getElementById("signup-form");
