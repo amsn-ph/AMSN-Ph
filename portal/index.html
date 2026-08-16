@@ -37,9 +37,12 @@
 
         <div id="setup-warning" class="setup-warning" hidden>
           <strong>Developer setup needed:</strong> Supabase is not connected yet.
-          Add the Project URL and publishable key in <code>portal/assets/supabase-config.js?v=2.5.0"auth-tabs" role="tablist">
-          <button class="auth-tab active" data-target="login-pane" type="button">Sign In</button>
-          <button class="auth-tab" data-target="signup-pane" type="button">Create Account</button>
+          Add the Project URL and publishable key in <code>portal/assets/supabase-config.js</code>.
+        </div>
+
+        <div class="auth-tabs" role="tablist" aria-label="Member portal authentication">
+          <button class="auth-tab active" data-target="login-pane" type="button" aria-selected="true">Sign In</button>
+          <button class="auth-tab" data-target="signup-pane" type="button" aria-selected="false">Create Account</button>
         </div>
 
         <section id="login-pane" class="auth-pane active">
@@ -148,6 +151,6 @@
   <script src="assets/supabase-config.js?v=2.5.0"></script>
   <script src="assets/supabase-client.js?v=2.5.0"></script>
 
-  <script src="assets/auth.js?v=2.2.0"></script>
+  <script src="assets/auth.js?v=2.5.3"></script>
 </body>
 </html>
