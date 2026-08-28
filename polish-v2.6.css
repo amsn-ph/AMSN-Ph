@@ -1,14 +1,12 @@
-
 /* =========================================================
-   AMSN-PH V2.6 — Public UI/UX Polish
+   AMSN-PH V2.6.1 — Public UI/UX Polish
    Non-destructive overrides only.
    ========================================================= */
 
 :root{
-  --polish-shadow:0 14px 36px rgba(0,56,82,.08);
+  --polish-shadow:0 10px 28px rgba(0,56,82,.055);
 }
 
-/* Accessibility + interaction */
 a,button,input,select,textarea{
   -webkit-tap-highlight-color:transparent;
 }
@@ -27,143 +25,67 @@ textarea:focus-visible{
   -webkit-backdrop-filter:saturate(1.1) blur(10px);
 }
 
-.header-inner{
-  min-height:74px;
-}
+.header-inner{min-height:74px}
+.brand-logo{width:48px;height:48px}
+.primary-nav{gap:15px}
+.primary-nav a{transition:color .16s ease,background .16s ease}
+.nav-action{padding:10px 14px!important}
 
-.brand-logo{
-  width:48px;
-  height:48px;
-}
+.hero{padding:82px 0 78px}
+.hero-grid{gap:70px;align-items:center}
+.hero-copy h1,.section-main h2{text-wrap:balance}
+.hero-lead{max-width:720px}
+.hero-image-frame img{width:100%}
+.hero-actions{row-gap:14px}
+.hero-meta{flex-wrap:wrap}
+.quick-grid a{min-height:116px}
 
-.primary-nav{
-  gap:15px;
-}
+.section{padding:88px 0}
 
-.primary-nav a{
-  transition:color .16s ease, background .16s ease;
-}
-
-.nav-action{
-  padding:10px 14px!important;
-}
-
-/* Hero: retain editorial identity, improve hierarchy and fold */
-.hero{
-  padding:82px 0 78px;
-}
-
-.hero-grid{
-  gap:70px;
-  align-items:center;
-}
-
-.hero-copy h1{
-  text-wrap:balance;
-}
-
-.hero-lead{
-  max-width:720px;
-}
-
-.hero-image-frame img{
-  width:100%;
-}
-
-.hero-actions{
-  row-gap:14px;
-}
-
-.hero-meta{
-  flex-wrap:wrap;
-}
-
-/* Slightly more compact quick access */
-.quick-grid a{
-  min-height:116px;
-}
-
-/* Reduce scroll fatigue while preserving every section */
-.section{
-  padding:88px 0;
-}
-
-.section-main h2{
-  text-wrap:balance;
-}
-
-/* Browser rendering optimization for below-the-fold areas */
+/* Render below-fold sections efficiently while preserving layout space. */
 main > .section:not(:first-child),
 .map-section-home{
   content-visibility:auto;
   contain-intrinsic-size:800px;
 }
 
-/* Cards keep the flat institutional style but feel less raw */
 .benefit-grid article,
 .principles article,
 .story-feature,
 .story-stack article,
 .compact-network-grid article{
-  transition:border-color .16s ease, background .16s ease;
+  transition:border-color .16s ease,background .16s ease;
 }
 
 .benefit-grid article:hover,
-.principles article:hover{
-  background:#fbfcfc;
-}
+.principles article:hover{background:#fbfcfc}
 
-/* Facebook embed */
+/* Keep the Facebook area consistent with the site's flat editorial system. */
 .facebook-embed-shell{
   box-shadow:var(--polish-shadow);
 }
 
-/* Better footer rhythm */
-.site-footer{
-  padding-top:48px;
-}
+.site-footer{padding-top:48px}
+.footer-column a{padding:2px 0}
 
-.footer-column a{
-  padding:2px 0;
-}
-
-/* Tablet */
 @media(max-width:1180px){
-  .primary-nav{
-    gap:11px;
-    font-size:.78rem;
-  }
-
-  .header-inner{
-    gap:16px;
-  }
+  .primary-nav{gap:11px;font-size:.78rem}
+  .header-inner{gap:16px}
 }
 
 @media(max-width:1050px){
-  .hero{
-    padding:68px 0 70px;
-  }
-
-  .hero-grid{
-    gap:46px;
-  }
+  .hero{padding:68px 0 70px}
+  .hero-grid{gap:46px}
 }
 
-/* Mobile public navigation */
 @media(max-width:800px){
   .site-header{
     backdrop-filter:none;
     -webkit-backdrop-filter:none;
   }
 
-  .header-inner{
-    min-height:68px;
-  }
-
-  .brand-logo{
-    width:44px;
-    height:44px;
-  }
+  .header-inner{min-height:68px}
+  .brand-logo{width:44px;height:44px}
 
   .menu-toggle{
     min-height:40px;
@@ -187,9 +109,7 @@ main > .section:not(:first-child),
     border-bottom:1px solid #edf0f1;
   }
 
-  .primary-nav a:last-child{
-    border-bottom:0;
-  }
+  .primary-nav a:last-child{border-bottom:0}
 
   .primary-nav .portal-nav-link{
     margin-top:5px;
@@ -203,44 +123,18 @@ main > .section:not(:first-child),
     border-bottom:0!important;
   }
 
-  .hero{
-    padding:54px 0 58px;
-  }
-
-  .hero-grid{
-    gap:38px;
-  }
-
-  .hero-actions{
-    margin-top:26px;
-  }
-
-  .section{
-    padding:66px 0;
-  }
-
-  .section-layout{
-    gap:22px;
-  }
-
-  .section-index{
-    padding-bottom:9px;
-  }
-
-  .map-section-home{
-    padding-top:66px;
-    padding-bottom:66px;
-  }
-
-  .footer-grid{
-    gap:34px;
-  }
+  .hero{padding:54px 0 58px}
+  .hero-grid{gap:38px}
+  .hero-actions{margin-top:26px}
+  .section{padding:66px 0}
+  .section-layout{gap:22px}
+  .section-index{padding-bottom:9px}
+  .map-section-home{padding-top:66px;padding-bottom:66px}
+  .footer-grid{gap:34px}
 }
 
 @media(max-width:540px){
-  .container{
-    width:min(calc(100% - 30px),var(--max));
-  }
+  .container{width:min(calc(100% - 30px),var(--max))}
 
   h1{
     font-size:clamp(2.65rem,11.5vw,3.75rem);
@@ -258,66 +152,42 @@ main > .section:not(:first-child),
     font-size:.68rem;
   }
 
-  .hero-lead,
-  .section-intro{
-    font-size:1.02rem;
-  }
+  .hero-lead,.section-intro{font-size:1.02rem}
 
   .hero-actions{
     gap:14px;
     align-items:stretch;
   }
 
-  .hero-actions .btn{
-    width:100%;
-  }
-
-  .hero-actions .text-link{
-    min-height:40px;
-  }
-
-  .hero-meta{
-    gap:8px 15px;
-    font-size:.72rem;
-  }
+  .hero-actions .btn{width:100%}
+  .hero-actions .text-link{min-height:40px}
+  .hero-meta{gap:8px 15px;font-size:.72rem}
 
   .quick-grid a{
     min-height:96px;
     padding:17px 18px;
   }
 
-  .section{
-    padding:58px 0;
-  }
+  .section{padding:58px 0}
 
   .benefit-grid article{
     min-height:auto;
     padding:21px;
   }
 
-  .benefit-code{
-    margin-bottom:30px;
-  }
-
-  .principles article{
-    min-height:auto;
-  }
-
-  .join-section{
-    padding:64px 0;
-  }
+  .benefit-code{margin-bottom:30px}
+  .principles article{min-height:auto}
+  .join-section{padding:64px 0}
 
   .facebook-embed-shell{
     margin-inline:-2px;
     padding:7px;
+    box-shadow:none;
   }
 
-  .footer-bottom{
-    margin-top:32px;
-  }
+  .footer-bottom{margin-top:32px}
 }
 
-/* Respect reduced-motion users */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{

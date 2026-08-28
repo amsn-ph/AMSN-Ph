@@ -1,16 +1,27 @@
-// AMSN-PH V2.6 visual polish loader.
-// This does not modify authentication or backend behavior.
-(function loadPublicPolish() {
-  if (document.querySelector('link[data-amsn-polish="public-v2.6"]')) return;
+// AMSN-PH V2.6.1 public UI/UX hotfix.
+// Frontend-only: no authentication/database behavior lives in this file.
+(function ensurePublicPolish() {
+  const existing = Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+    .some((link) => (link.getAttribute("href") || "").includes("polish-v2.6.css"));
+
+  if (existing) return;
+
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "polish-v2.6.css";
-  link.dataset.amsnPolish = "public-v2.6";
+  link.href = "polish-v2.6.css?v=2.6.1";
+  link.dataset.amsnPolish = "public-v2.6.1";
   document.head.appendChild(link);
 })();
 
 const menuToggle = document.querySelector(".menu-toggle");
 const primaryNav = document.querySelector(".primary-nav");
+
+function closePublicMenu() {
+  if (!menuToggle || !primaryNav) return;
+  primaryNav.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.textContent = "Menu";
+}
 
 if (menuToggle && primaryNav) {
   menuToggle.addEventListener("click", () => {
@@ -20,11 +31,20 @@ if (menuToggle && primaryNav) {
   });
 
   primaryNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      primaryNav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.textContent = "Menu";
-    });
+    link.addEventListener("click", closePublicMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closePublicMenu();
+      menuToggle.focus();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (window.innerWidth > 800 || !primaryNav.classList.contains("open")) return;
+    if (primaryNav.contains(event.target) || menuToggle.contains(event.target)) return;
+    closePublicMenu();
   });
 }
 
@@ -32,8 +52,8 @@ document.querySelectorAll("#year").forEach((node) => {
   node.textContent = new Date().getFullYear();
 });
 
-// Keep the homepage editorial section numbers sequential.
-// The map is intentionally unnumbered.
+// Keep homepage editorial numbers sequential.
+// The map itself remains intentionally unnumbered.
 if (document.body && /(?:^|\/)index\.html$|\/$/.test(window.location.pathname)) {
   document.querySelectorAll(".section-index").forEach((sectionIndex, index) => {
     const number = sectionIndex.querySelector("span");
@@ -41,8 +61,8 @@ if (document.body && /(?:^|\/)index\.html$|\/$/.test(window.location.pathname)) 
   });
 }
 
-// Image-loading hints: keep above-the-fold identity imagery eager;
-// defer non-critical imagery where possible.
+// Progressive image-loading hints.
+// Hero and logo remain eager; below-the-fold imagery is deferred.
 document.querySelectorAll("img").forEach((image) => {
   image.decoding = "async";
 
