@@ -1,3 +1,14 @@
+// AMSN-PH V2.6 visual polish loader.
+// This does not modify authentication or backend behavior.
+(function loadPublicPolish() {
+  if (document.querySelector('link[data-amsn-polish="public-v2.6"]')) return;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "polish-v2.6.css";
+  link.dataset.amsnPolish = "public-v2.6";
+  document.head.appendChild(link);
+})();
+
 const menuToggle = document.querySelector(".menu-toggle");
 const primaryNav = document.querySelector(".primary-nav");
 
@@ -19,6 +30,35 @@ if (menuToggle && primaryNav) {
 
 document.querySelectorAll("#year").forEach((node) => {
   node.textContent = new Date().getFullYear();
+});
+
+// Keep the homepage editorial section numbers sequential.
+// The map is intentionally unnumbered.
+if (document.body && /(?:^|\/)index\.html$|\/$/.test(window.location.pathname)) {
+  document.querySelectorAll(".section-index").forEach((sectionIndex, index) => {
+    const number = sectionIndex.querySelector("span");
+    if (number) number.textContent = String(index + 1).padStart(2, "0");
+  });
+}
+
+// Image-loading hints: keep above-the-fold identity imagery eager;
+// defer non-critical imagery where possible.
+document.querySelectorAll("img").forEach((image) => {
+  image.decoding = "async";
+
+  const isPriority =
+    image.classList.contains("brand-logo") ||
+    image.classList.contains("auth-logo") ||
+    image.closest(".hero-image-frame");
+
+  if (isPriority) {
+    image.loading = "eager";
+    if (image.closest(".hero-image-frame")) {
+      image.fetchPriority = "high";
+    }
+  } else if (!image.hasAttribute("loading")) {
+    image.loading = "lazy";
+  }
 });
 
 const filters = document.querySelectorAll(".filter");
