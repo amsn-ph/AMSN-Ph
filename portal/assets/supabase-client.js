@@ -1,13 +1,73 @@
-// AMSN-PH V2.6 portal visual polish loader.
-// IMPORTANT: this only injects a stylesheet. Auth, Supabase, roles,
-// verification, signup, login, and database logic below remain unchanged.
-(function loadPortalPolish() {
-  if (document.querySelector('link[data-amsn-polish="portal-v2.6"]')) return;
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = "assets/portal-polish-v2.6.css";
-  link.dataset.amsnPolish = "portal-v2.6";
-  document.head.appendChild(link);
+// AMSN-PH V2.6.1 portal polish bootstrap.
+// This section changes presentation/navigation only. Auth, roles, RLS,
+// profile loading and database behavior below remain unchanged.
+(function ensurePortalPolish() {
+  const existing = Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+    .some((link) => (link.getAttribute("href") || "").includes("portal-polish-v2.6.css"));
+
+  if (!existing) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "assets/portal-polish-v2.6.css?v=2.6.1";
+    link.dataset.amsnPolish = "portal-v2.6.1";
+    document.head.appendChild(link);
+  }
+
+  const setupMobilePortalNav = () => {
+    const sidebar = document.querySelector(".portal-sidebar");
+    const nav = sidebar?.querySelector(".portal-nav");
+    const brand = sidebar?.querySelector(".portal-brand");
+
+    if (!sidebar || !nav || !brand || sidebar.dataset.mobileNavReady === "true") return;
+
+    sidebar.dataset.mobileNavReady = "true";
+    sidebar.classList.add("has-mobile-toggle");
+    nav.id = nav.id || "portal-primary-nav";
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "portal-mobile-menu-toggle";
+    toggle.setAttribute("aria-controls", nav.id);
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.innerHTML = '<span>Menu</span><span aria-hidden="true">☰</span>';
+
+    brand.insertAdjacentElement("afterend", toggle);
+
+    const close = () => {
+      sidebar.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.querySelector("span:first-child").textContent = "Menu";
+    };
+
+    toggle.addEventListener("click", () => {
+      const open = sidebar.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.querySelector("span:first-child").textContent = open ? "Close" : "Menu";
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 1000) close();
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && sidebar.classList.contains("nav-open")) {
+        close();
+        toggle.focus();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1000) close();
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupMobilePortalNav, { once: true });
+  } else {
+    setupMobilePortalNav();
+  }
 })();
 
 (function () {
