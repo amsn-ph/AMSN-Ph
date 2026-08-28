@@ -1,3 +1,15 @@
+// AMSN-PH V2.6 portal visual polish loader.
+// IMPORTANT: this only injects a stylesheet. Auth, Supabase, roles,
+// verification, signup, login, and database logic below remain unchanged.
+(function loadPortalPolish() {
+  if (document.querySelector('link[data-amsn-polish="portal-v2.6"]')) return;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "assets/portal-polish-v2.6.css";
+  link.dataset.amsnPolish = "portal-v2.6";
+  document.head.appendChild(link);
+})();
+
 (function () {
   if (!window.AMSN_SUPABASE_CONFIGURED) {
     window.amsnSupabase = null;

@@ -1,0 +1,366 @@
+
+/* =========================================================
+   AMSN-PH V2.6 — Portal UI/UX Polish
+   CSS-only overrides. No auth/database behavior is changed.
+   ========================================================= */
+
+:root{
+  --portal-soft-shadow:0 12px 34px rgba(1,55,80,.07);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline:3px solid rgba(0,149,215,.25);
+  outline-offset:2px;
+}
+
+.portal-main{
+  max-width:1600px;
+  width:100%;
+}
+
+.portal-topbar{
+  padding-bottom:4px;
+}
+
+.portal-topbar h1{
+  text-wrap:balance;
+}
+
+.card,
+.member-card,
+.engagement-card,
+.mentor-request,
+.ops-stat,
+.coverage-row{
+  box-shadow:0 1px 0 rgba(0,0,0,.015);
+}
+
+.card{
+  transition:border-color .15s ease;
+}
+
+.card:hover{
+  border-color:#cad6da;
+}
+
+.btn{
+  transition:background .15s ease, color .15s ease;
+}
+
+.field input,
+.field select,
+.field textarea{
+  border-radius:0;
+}
+
+.user-chip{
+  max-width:260px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.portal-list li{
+  line-height:1.45;
+}
+
+/* Authentication screen polish without removing Sign In/Create Account */
+.auth-form-panel{
+  background:#fbfcfc;
+}
+
+.auth-box{
+  background:#fff;
+  padding:32px;
+  border:1px solid var(--line);
+  box-shadow:var(--portal-soft-shadow);
+}
+
+.auth-box-header{
+  margin-bottom:22px;
+}
+
+.auth-tabs{
+  background:#f5f8f9;
+  padding:4px;
+  border-bottom:0;
+  gap:4px;
+}
+
+.auth-tab{
+  min-height:44px;
+}
+
+.auth-tab.active{
+  background:#fff;
+  border:1px solid #d7e0e3;
+  border-bottom:1px solid #d7e0e3;
+  color:var(--blue);
+}
+
+.auth-pane-intro{
+  margin-bottom:20px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+
+.auth-pane-intro h2{
+  margin:6px 0 8px;
+}
+
+.auth-note{
+  border-left:4px solid var(--cyan);
+}
+
+/* Directory / cards */
+.member-card-header{
+  align-items:center;
+}
+
+.member-card{
+  min-height:100%;
+}
+
+.feature-link{
+  transition:background .15s ease,border-color .15s ease;
+}
+
+.feature-link:hover{
+  background:#fff;
+  border-color:#bfcdd2;
+}
+
+/* Tables remain usable on narrow screens */
+.officer-table{
+  display:block;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* Tablet + phone portal navigation:
+   preserve EVERY link; convert giant grid into scrollable app bar. */
+@media(max-width:1000px){
+  .portal-shell{
+    display:block;
+  }
+
+  .portal-sidebar{
+    position:sticky;
+    top:0;
+    z-index:900;
+    height:auto;
+    padding:12px 16px 10px;
+    box-shadow:0 8px 24px rgba(4,49,71,.12);
+  }
+
+  .portal-brand{
+    gap:10px;
+  }
+
+  .portal-brand img{
+    width:40px;
+    height:40px;
+  }
+
+  .portal-brand strong{
+    font-size:.84rem;
+  }
+
+  .portal-brand span span{
+    display:none;
+  }
+
+  .portal-nav{
+    margin-top:10px;
+    display:flex;
+    grid-template-columns:none;
+    gap:6px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding-bottom:3px;
+    scroll-snap-type:x proximity;
+    scrollbar-width:thin;
+  }
+
+  .portal-nav a,
+  .portal-nav button{
+    flex:0 0 auto;
+    width:auto;
+    min-height:38px;
+    padding:9px 11px;
+    white-space:nowrap;
+    scroll-snap-align:start;
+    border:1px solid rgba(255,255,255,.08);
+    font-size:.75rem;
+  }
+
+  .portal-nav a[aria-current="page"]{
+    background:#fff;
+    color:var(--blue-dark);
+  }
+
+  .portal-sidebar-footer{
+    display:none;
+  }
+
+  .portal-main{
+    padding:26px 20px 34px;
+  }
+
+  .portal-topbar{
+    margin-bottom:22px;
+  }
+
+  .auth-brand-panel{
+    padding:34px 28px;
+  }
+
+  .auth-logo{
+    width:68px;
+    height:68px;
+    margin-bottom:25px;
+  }
+
+  .auth-brand-panel h1{
+    max-width:650px;
+    font-size:clamp(2.6rem,8vw,4rem);
+  }
+
+  .auth-points{
+    margin-top:28px;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+  }
+
+  .auth-form-panel{
+    padding:34px 24px 48px;
+  }
+}
+
+@media(max-width:720px){
+  .portal-sidebar{
+    padding:10px 12px 8px;
+  }
+
+  .portal-main{
+    padding:20px 14px 30px;
+  }
+
+  .portal-topbar{
+    gap:12px;
+  }
+
+  .portal-topbar h1{
+    font-size:clamp(2rem,10vw,2.8rem);
+  }
+
+  .user-chip{
+    max-width:100%;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .portal-grid{
+    gap:12px;
+  }
+
+  .auth-brand-panel{
+    padding:28px 20px;
+  }
+
+  .auth-brand-panel h1{
+    font-size:2.35rem;
+  }
+
+  .auth-brand-panel p{
+    font-size:.96rem;
+  }
+
+  .auth-points{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .auth-points div{
+    padding-top:10px;
+  }
+
+  .auth-form-panel{
+    padding:24px 14px 38px;
+  }
+
+  .auth-box{
+    padding:22px 18px;
+  }
+
+  .auth-box-header h2{
+    font-size:1.65rem;
+  }
+
+  .auth-tabs{
+    position:sticky;
+    top:0;
+    z-index:3;
+  }
+
+  .directory-grid,
+  .engagement-grid,
+  .feature-link-grid,
+  .officer-management-grid{
+    gap:11px;
+  }
+
+  .digital-member-card{
+    min-height:0;
+  }
+
+  .ops-summary{
+    gap:8px;
+  }
+
+  .ops-stat{
+    padding:14px;
+  }
+
+  .ops-stat strong{
+    font-size:1.45rem;
+  }
+}
+
+@media(max-width:460px){
+  .portal-brand span{
+    display:none;
+  }
+
+  .portal-nav{
+    margin-top:8px;
+  }
+
+  .portal-nav a,
+  .portal-nav button{
+    min-height:36px;
+    padding:8px 10px;
+    font-size:.72rem;
+  }
+
+  .auth-box{
+    padding:20px 15px;
+  }
+
+  .auth-tab{
+    font-size:.8rem;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    transition:none!important;
+    animation:none!important;
+  }
+}
