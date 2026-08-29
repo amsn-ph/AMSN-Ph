@@ -6,7 +6,9 @@
   <meta name="theme-color" content="#005480">
   <title>Member Portal | AMSN-PH</title>
   <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
-  <link rel="stylesheet" href="assets/portal.css">
+  <link rel="stylesheet" href="assets/portal.css?v=2.6.1">
+  <link rel="stylesheet" href="assets/portal-polish-v2.6.css?v=2.6.1">
+  <link rel="stylesheet" href="assets/password-recovery.css?v=2.7.1">
 </head>
 <body>
   <main class="portal-auth-page">
@@ -40,7 +42,7 @@
           Add the Project URL and publishable key in <code>portal/assets/supabase-config.js</code>.
         </div>
 
-        <div class="auth-tabs" role="tablist" aria-label="Member portal authentication">
+        <div id="auth-tabs" class="auth-tabs" role="tablist" aria-label="Member portal authentication">
           <button class="auth-tab active" data-target="login-pane" type="button" aria-selected="true">Sign In</button>
           <button class="auth-tab" data-target="signup-pane" type="button" aria-selected="false">Create Account</button>
         </div>
@@ -51,10 +53,15 @@
               <label for="login-email">Email address</label>
               <input id="login-email" name="email" type="email" autocomplete="email" required>
             </div>
+
             <div class="field">
-              <label for="login-password">Password</label>
+              <div class="field-label-row">
+                <label for="login-password">Password</label>
+                <button id="forgot-password-link" class="auth-text-button" type="button">Forgot password?</button>
+              </div>
               <input id="login-password" name="password" type="password" autocomplete="current-password" required>
             </div>
+
             <button class="btn btn-blue auth-submit" type="submit">Sign In to AMSN-PH</button>
             <div id="login-message" class="message" aria-live="polite"></div>
           </form>
@@ -75,6 +82,7 @@
               <label for="signup-name">Full name</label>
               <input id="signup-name" name="full_name" type="text" autocomplete="name" required>
             </div>
+
             <div class="field">
               <label for="signup-school">Medical school</label>
               <select id="signup-school" name="medical_school_id" required>
@@ -88,6 +96,7 @@
               <input id="signup-school-other" name="school_name_other" type="text" placeholder="Enter your medical school">
               <small class="registry-note">You may continue signing up. An administrator can add the school to the registry later.</small>
             </div>
+
             <div class="form-grid">
               <div class="field">
                 <label for="signup-year">Year / training level</label>
@@ -121,10 +130,12 @@
               </select>
               <small class="registry-note">Choose your AMSN regional/chapter community, or select “Not yet affiliated.”</small>
             </div>
+
             <div class="field">
               <label for="signup-email">Email address</label>
               <input id="signup-email" name="email" type="email" autocomplete="email" required>
             </div>
+
             <div class="form-grid">
               <div class="field">
                 <label for="signup-password">Password</label>
@@ -135,6 +146,7 @@
                 <input id="signup-confirm" name="confirm_password" type="password" autocomplete="new-password" minlength="8" required>
               </div>
             </div>
+
             <label class="checkbox-row">
               <input type="checkbox" name="consent" required>
               <span>
@@ -143,12 +155,41 @@
                 and access controls.
               </span>
             </label>
+
             <button class="btn btn-blue auth-submit" type="submit">Create Member Account</button>
             <div id="signup-message" class="message" aria-live="polite"></div>
           </form>
         </section>
 
-        <div class="auth-note">
+        <section id="forgot-password-pane" class="recovery-request-pane" hidden>
+          <button id="back-to-signin" class="auth-back-button" type="button">← Back to Sign In</button>
+          <div class="recovery-heading">
+            <p class="eyebrow">ACCOUNT RECOVERY</p>
+            <h2>Reset your password.</h2>
+            <p>
+              Enter the email address connected to your AMSN-PH account.
+              We’ll send a secure password-reset link if the account can receive recovery email.
+            </p>
+          </div>
+
+          <form id="forgot-password-form" class="auth-form">
+            <div class="field">
+              <label for="recovery-email">Email address</label>
+              <input id="recovery-email" name="email" type="email" autocomplete="email" required>
+            </div>
+
+            <button id="send-reset-button" class="btn btn-blue auth-submit" type="submit">
+              Send Password Reset Link
+            </button>
+            <div id="recovery-message" class="message" aria-live="polite"></div>
+          </form>
+
+          <p class="recovery-security-note">
+            For privacy, the portal does not confirm whether a specific email address is registered.
+          </p>
+        </section>
+
+        <div id="auth-membership-note" class="auth-note">
           Creating an account does not automatically verify AMSN membership.
           New accounts begin as <strong>Pending</strong> until reviewed by an authorized officer.
         </div>
@@ -158,8 +199,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/supabase-config.js?v=2.5.0"></script>
-  <script src="assets/supabase-client.js?v=2.5.0"></script>
-
-  <script src="assets/auth.js?v=2.5.5"></script>
+  <script src="assets/supabase-client.js?v=2.6.1"></script>
+  <script src="assets/auth.js?v=2.7.1"></script>
 </body>
 </html>
