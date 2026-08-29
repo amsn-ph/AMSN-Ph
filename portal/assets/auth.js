@@ -2,54 +2,90 @@ document.addEventListener("DOMContentLoaded", async () => {
   const warning = document.getElementById("setup-warning");
   if (!window.AMSN_SUPABASE_CONFIGURED && warning) warning.hidden = false;
 
+  const tabsWrap = document.getElementById("auth-tabs");
   const tabs = document.querySelectorAll(".auth-tab");
   const panes = document.querySelectorAll(".auth-pane");
+  const membershipNote = document.getElementById("auth-membership-note");
+  const forgotPasswordPane = document.getElementById("forgot-password-pane");
+  const forgotPasswordLink = document.getElementById("forgot-password-link");
+  const backToSignin = document.getElementById("back-to-signin");
 
-  function activateTab(targetId) {
-    tabs.forEach((item) => {
-      const isActive = item.dataset.target === targetId;
-      item.classList.toggle("active", isActive);
-      item.setAttribute("aria-selected", String(isActive));
-    });
-
-    panes.forEach((item) => {
-      item.classList.toggle("active", item.id === targetId);
-    });
+  function hideRecoveryPane() {
+    if (forgotPasswordPane) forgotPasswordPane.hidden = true;
+    if (tabsWrap) tabsWrap.hidden = false;
+    if (membershipNote) membershipNote.hidden = false;
   }
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => activateTab(tab.dataset.target));
-  });
+  function activateTab(targetId) {
+    hideRecoveryPane();
+    tabs.forEach((item) => {
+      const active = item.dataset.target === targetId;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-selected", String(active));
+    });
+    panes.forEach((item) => item.classList.toggle("active", item.id === targetId));
+  }
 
-  // Public "Join AMSN-PH" CTAs use /portal/?action=join.
-  // Existing members visiting /portal/ still land on Sign In by default.
-  const portalAction = new URLSearchParams(window.location.search).get("action");
+  function showRecoveryPane() {
+    panes.forEach((item) => item.classList.remove("active"));
+    if (tabsWrap) tabsWrap.hidden = true;
+    if (membershipNote) membershipNote.hidden = true;
+    if (forgotPasswordPane) forgotPasswordPane.hidden = false;
+
+    const loginEmail = document.getElementById("login-email");
+    const recoveryEmail = document.getElementById("recovery-email");
+    if (loginEmail?.value && recoveryEmail && !recoveryEmail.value) {
+      recoveryEmail.value = loginEmail.value.trim();
+    }
+    requestAnimationFrame(() => recoveryEmail?.focus({ preventScroll: true }));
+  }
+
+  tabs.forEach((tab) => tab.addEventListener("click", () => activateTab(tab.dataset.target)));
+  forgotPasswordLink?.addEventListener("click", showRecoveryPane);
+  backToSignin?.addEventListener("click", () => activateTab("login-pane"));
+
+  const params = new URLSearchParams(window.location.search);
+  const portalAction = params.get("action");
+  const resetState = params.get("reset");
 
   if (portalAction === "join" || portalAction === "signup") {
     activateTab("signup-pane");
-
-    // Remove the one-time action parameter without reloading, so the URL stays clean.
-    const cleanUrl = new URL(window.location.href);
-    cleanUrl.searchParams.delete("action");
-    window.history.replaceState({}, "", cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
-
-    requestAnimationFrame(() => {
-      document.getElementById("signup-name")?.focus({ preventScroll: true });
-    });
+  } else if (portalAction === "forgot") {
+    showRecoveryPane();
   } else {
     activateTab("login-pane");
   }
 
+  if (portalAction) {
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.delete("action");
+    history.replaceState({}, "", cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
+  }
+
   const loginForm = document.getElementById("login-form");
   const signupForm = document.getElementById("signup-form");
+  const forgotPasswordForm = document.getElementById("forgot-password-form");
   const loginMessage = document.getElementById("login-message");
   const signupMessage = document.getElementById("signup-message");
+  const recoveryMessage = document.getElementById("recovery-message");
+  const sendResetButton = document.getElementById("send-reset-button");
   const schoolSelect = document.getElementById("signup-school");
   const schoolOtherWrap = document.getElementById("signup-school-other-wrap");
   const schoolOtherInput = document.getElementById("signup-school-other");
   const chapterSelect = document.getElementById("signup-chapter");
   const regionSelect = document.getElementById("signup-region");
   let schoolRegistry = [];
+
+  if (resetState === "success") {
+    window.amsnShowMessage(
+      loginMessage,
+      "Password updated successfully. Sign in with your new password.",
+      "success"
+    );
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.delete("reset");
+    history.replaceState({}, "", cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
+  }
 
   if (window.amsnSupabase) await loadRegistries();
 
@@ -69,24 +105,66 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const client = window.amsnRequireClient();
       const { error } = await client.auth.signInWithPassword({
-        email: loginForm.email.value.trim(), password: loginForm.password.value
+        email: loginForm.email.value.trim(),
+        password: loginForm.password.value
       });
       if (error) throw error;
       window.amsnShowMessage(loginMessage, "Signed in. Opening your portal…", "success");
       window.location.href = "dashboard.html";
-    } catch (error) { window.amsnShowMessage(loginMessage, error.message, "error"); }
+    } catch (error) {
+      window.amsnShowMessage(loginMessage, error.message, "error");
+    }
+  });
+
+  forgotPasswordForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = forgotPasswordForm.email.value.trim();
+    if (!email) return;
+
+    sendResetButton.disabled = true;
+    window.amsnClearMessage(recoveryMessage);
+
+    try {
+      const client = window.amsnRequireClient();
+      const redirectTo = new URL("reset-password.html", window.location.href).href;
+      const { error } = await client.auth.resetPasswordForEmail(email, { redirectTo });
+      if (error) throw error;
+
+      window.amsnShowMessage(
+        recoveryMessage,
+        "If an AMSN-PH account can receive recovery email at that address, a password-reset link has been sent. Please check your inbox and spam folder.",
+        "success"
+      );
+      forgotPasswordForm.reset();
+    } catch (error) {
+      const text = /rate|limit|too many/i.test(error.message || "")
+        ? "Too many reset requests were made. Please wait a while and try again."
+        : "We could not send the reset email right now. Please try again.";
+      window.amsnShowMessage(recoveryMessage, text, "error");
+    } finally {
+      sendResetButton.disabled = false;
+    }
   });
 
   signupForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
+
     if (!signupForm.consent.checked) {
-      window.amsnShowMessage(signupMessage, "Please confirm the membership data and privacy notice.", "error"); return;
+      window.amsnShowMessage(signupMessage, "Please confirm the membership data and privacy notice.", "error");
+      return;
     }
+
     try {
       const client = window.amsnRequireClient();
-      if (signupForm.password.value !== signupForm.confirm_password.value) throw new Error("Passwords do not match.");
+      if (signupForm.password.value !== signupForm.confirm_password.value) {
+        throw new Error("Passwords do not match.");
+      }
+
       const selectedSchool = schoolRegistry.find((x) => x.id === schoolSelect.value);
-      const schoolName = schoolSelect.value === "__other__" ? schoolOtherInput.value.trim() : (selectedSchool?.name || "");
+      const schoolName = schoolSelect.value === "__other__"
+        ? schoolOtherInput.value.trim()
+        : (selectedSchool?.name || "");
+
       if (!schoolName) throw new Error("Please select or enter your medical school.");
 
       const metadata = {
@@ -97,40 +175,79 @@ document.addEventListener("DOMContentLoaded", async () => {
         year_level: signupForm.year_level.value,
         region: signupForm.region.value,
       };
+
       const redirectTo = new URL("dashboard.html", window.location.href).href;
       const { data, error } = await client.auth.signUp({
-        email: signupForm.email.value.trim(), password: signupForm.password.value,
+        email: signupForm.email.value.trim(),
+        password: signupForm.password.value,
         options: { data: metadata, emailRedirectTo: redirectTo }
       });
+
       if (error) throw error;
+
       if (data.session) {
         window.amsnShowMessage(signupMessage, "Account created. Opening your portal…", "success");
         window.location.href = "dashboard.html";
       } else {
-        window.amsnShowMessage(signupMessage, "Account created. Please check your email to confirm your address. Your AMSN membership remains pending until verified.", "success");
-        signupForm.reset(); schoolOtherWrap.hidden = true;
+        window.amsnShowMessage(
+          signupMessage,
+          "Account created. Please check your email to confirm your address. Your AMSN membership remains pending until verified.",
+          "success"
+        );
+        signupForm.reset();
+        schoolOtherWrap.hidden = true;
       }
-    } catch (error) { window.amsnShowMessage(signupMessage, error.message, "error"); }
+    } catch (error) {
+      window.amsnShowMessage(signupMessage, error.message, "error");
+    }
   });
 
-  if (window.amsnSupabase) window.amsnSupabase.auth.getUser().then(({ data }) => { if (data.user) window.location.href = "dashboard.html"; });
+  if (window.amsnSupabase) {
+    window.amsnSupabase.auth.getUser().then(({ data }) => {
+      if (data.user) window.location.href = "dashboard.html";
+    });
+  }
 
   async function loadRegistries() {
     const client = window.amsnSupabase;
-    const [{data:schools,error:schoolError},{data:chapters,error:chapterError}] = await Promise.all([
-      client.from("medical_schools").select("id,name,short_name,city,province,region,chapter_id").eq("is_active",true).order("name"),
-      client.from("chapters").select("id,code,name,region").eq("is_active",true).order("code")
-    ]);
+    const [{ data: schools, error: schoolError }, { data: chapters, error: chapterError }] =
+      await Promise.all([
+        client.from("medical_schools")
+          .select("id,name,short_name,city,province,region,chapter_id")
+          .eq("is_active", true).order("name"),
+        client.from("chapters")
+          .select("id,code,name,region")
+          .eq("is_active", true).order("code")
+      ]);
+
     if (schoolError || chapterError) {
-      schoolSelect.innerHTML='<option value="">Run the V2.2 database migration first</option>';
-      chapterSelect.innerHTML='<option value="">Run the V2.2 database migration first</option>'; return;
+      schoolSelect.innerHTML = '<option value="">Run the V2.2 database migration first</option>';
+      chapterSelect.innerHTML = '<option value="">Run the V2.2 database migration first</option>';
+      return;
     }
-    schoolRegistry=schools||[];
-    schoolSelect.innerHTML='<option value="">Select your medical school</option>'+schoolRegistry.map(s=>{
-      const place=[s.city,s.province].filter(Boolean).join(", ");
-      return `<option value="${s.id}">${escapeHtml(s.short_name||s.name)}${place?" — "+escapeHtml(place):""}</option>`;
-    }).join("")+'<option value="__other__">My medical school is not listed</option>';
-    chapterSelect.innerHTML='<option value="">Not yet affiliated / I am not sure</option>'+(chapters||[]).map(c=>`<option value="${c.id}">${escapeHtml(c.code)} — ${escapeHtml(c.name)}</option>`).join("");
+
+    schoolRegistry = schools || [];
+    schoolSelect.innerHTML =
+      '<option value="">Select your medical school</option>' +
+      schoolRegistry.map((s) => {
+        const place = [s.city, s.province].filter(Boolean).join(", ");
+        return `<option value="${s.id}">${escapeHtml(s.short_name || s.name)}${place ? " — " + escapeHtml(place) : ""}</option>`;
+      }).join("") +
+      '<option value="__other__">My medical school is not listed</option>';
+
+    chapterSelect.innerHTML =
+      '<option value="">Not yet affiliated / I am not sure</option>' +
+      (chapters || []).map((c) =>
+        `<option value="${c.id}">${escapeHtml(c.code)} — ${escapeHtml(c.name)}</option>`
+      ).join("");
   }
 });
-function escapeHtml(value){return String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
