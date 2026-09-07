@@ -1,0 +1,39 @@
+<!-- AMSN-PH Membership Classification Fields -->
+<div class="form-group">
+  <label for="religious-affiliation">Religious Affiliation</label>
+  <select id="religious-affiliation" name="religious_affiliation" required>
+    <option value="">Select affiliation</option>
+    <option value="SDA">Seventh-day Adventist (SDA)</option>
+    <option value="Non-SDA">Non-SDA</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="academic-status">Academic / Professional Status</label>
+  <select id="academic-status" name="academic_status" required>
+    <option value="">Select status</option>
+    <option value="YL1">YL1 / First Year</option>
+    <option value="YL2">YL2 / Second Year</option>
+    <option value="YL3">YL3 / Third Year</option>
+    <option value="YL4">YL4 / Clerk</option>
+    <option value="YL5">YL5 / Post-Graduate Intern</option>
+    <option value="Graduate/PLE Review">Graduate / PLE Review</option>
+    <option value="Licensed Physician">Licensed Physician</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="membership-type-display">Membership Classification</label>
+  <input
+    id="membership-type-display"
+    type="text"
+    value=""
+    placeholder="Select affiliation and status"
+    readonly
+    aria-readonly="true"
+  >
+  <input id="membership-type" name="membership_type" type="hidden">
+  <small id="membership-type-help">
+    Membership classification is assigned automatically.
+  </small>
+</div>
