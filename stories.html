@@ -1,107 +1,477 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stories | AMSN-PH</title>
-  <meta name="description" content="Read and share stories from the AMSN-PH community.">
-  <meta name="theme-color" content="#23613f">
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Devotionals, member stories, chapter stories, mission reflections, and AMSN-PH updates.">
+  <meta name="theme-color" content="#005480">
+  <title>Stories & Devotionals | AMSN-PH</title>
+  <link rel="icon" type="image/jpeg" href="assets/amsn-logo.jpg">
+  <link rel="canonical" href="https://amsn-ph.org/stories.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AMSN-PH">
+  <meta property="og:title" content="Stories & Devotionals | AMSN-PH">
+  <meta property="og:description" content="Read devotionals, testimonies, chapter stories, mission reflections, and updates from our AMSN-PH community.">
+  <meta property="og:url" content="https://amsn-ph.org/stories.html">
+  <meta property="og:image" content="https://amsn-ph.org/assets/hero-network-community.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 
+<body>
 <header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="/" aria-label="AMSN-PH home">
-      <span class="brand-mark">✚</span>
-      <span>AMSN-PH<small>Faith · Medicine · Mission</small></span>
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/amsn-logo.jpg" class="brand-logo" alt="AMSN-PH logo">
+      <span class="brand-text">
+        <strong>Adventist Medical</strong>
+        <span>Students Network</span>
+        <small>PHILIPPINES</small>
+      </span>
     </a>
-    <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-label="Open navigation">☰</button>
-    <nav class="nav-links" data-nav-links aria-label="Primary navigation">
-      <a href="/about">About</a>
-      <a href="/leadership">Leadership</a>
-      <a href="/chapters">Chapters</a>
-      <a href="/programs">Programs</a>
-      <a href="/stories" aria-current="page">Stories</a>
-      <a href="/contact">Contact</a>
-      <a class="nav-portal" href="/portal/">Member Portal</a>
+
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+
+    <nav id="primary-nav" class="primary-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#membership">Membership</a>
+      <a href="index.html#programs">Programs</a>
+      <a href="network.html">Network</a>
+      <a href="stories.html" aria-current="page">Stories</a>
+      <a href="index.html#leadership">Leadership</a>
+      <a href="portal/" class="portal-nav-link">Member Portal</a>
+      <a href="index.html#join" class="nav-action">Join AMSN</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <section class="page-hero">
+  <section class="stories-hero">
     <div class="container">
-      <div class="eyebrow">Stories</div>
-      <h1>Stories of faith, medicine, and service.</h1>
-      <p>A dedicated place for testimonies, reflections, chapter experiences, and member journeys.</p>
-      <div class="actions">
-        <a class="button button-primary" href="/submit-story">Submit your story</a>
-      </div>
+      <p class="kicker">STORIES & DEVOTIONALS</p>
+      <h1>Stories of faith from the medical journey.</h1>
+      <p class="hero-lead">
+        Devotionals, testimonies, chapter stories, mission experiences, and updates
+        from Adventist medical students across the Philippines.
+      </p>
+      <p class="archive-note">
+        Here we gather the stories, prayers, milestones, and testimonies that have
+        shaped our community. Where available, we keep links to the original posts
+        so you can revisit each story in its original context.
+      </p>
     </div>
   </section>
 
-  <section class="section section-sm">
-    <div class="container">
-      <div class="grid grid-3">
-        <article class="card story-card">
-          <div class="story-meta">Member Story · Placeholder</div>
-          <h3>Faith through the difficult rotations</h3>
-          <p>Use this card format for reviewed and approved stories from AMSN-PH members.</p>
-        </article>
-        <article class="card story-card">
-          <div class="story-meta">Chapter Story · Placeholder</div>
-          <h3>Serving together beyond the classroom</h3>
-          <p>Feature community service, mission, fellowship, and chapter experiences here.</p>
-        </article>
-        <article class="card story-card">
-          <div class="story-meta">Reflection · Placeholder</div>
-          <h3>Why medicine can also be ministry</h3>
-          <p>Publish reflections only after internal review and permission from the submitter.</p>
-        </article>
+  <section class="story-filter-bar">
+    <div class="container filter-row">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="devotional">Devotionals</button>
+      <button class="filter" data-filter="member">Member Stories</button>
+      <button class="filter" data-filter="chapter">Chapter Stories</button>
+      <button class="filter" data-filter="mission">Mission & Service</button>
+      <button class="filter" data-filter="update">AMSN Updates</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container article-grid" id="article-grid">
+
+      <article class="article-card article-featured real-story" data-category="update">
+        <div class="article-label">8TH NEB • JULY 2026</div>
+        <div class="article-copy">
+          <p class="article-date">Leadership & Organizational Life</p>
+          <h2>A Legacy of Service. A New Chapter of Leadership.</h2>
+          <p>
+            We marked the transition from our 7th National Executive Board to the 8th NEB through the Turn-Over Ceremony & Dedicatory Service, honoring faithful leadership and dedicating our new national officers.
+          </p>
+          <div class="article-actions">
+            <a href="index.html#highlights">View website highlight →</a>
+            <a href="https://www.facebook.com/AMSNPh/posts/-a-legacy-of-service-a-new-chapter-of-leadership-with-grateful-hearts-we-celebra/1479385880876745/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="update">
+        <div class="article-label">MEMBERSHIP • AUGUST 2026</div>
+        <div class="article-copy">
+          <p class="article-date">Finding Adventist Community</p>
+          <h3>Studying medicine in a non-Adventist institution?</h3>
+          <p>
+            We continue reaching Adventist medical students in non-Adventist institutions because no one should have to navigate medical school without a faith community.
+          </p>
+          <div class="article-actions">
+            <a href="index.html#membership">Explore membership →</a>
+            <a href="https://www.facebook.com/AMSNPh/posts/are-you-an-adventist-medical-student-studying-in-a-non-adventist-institution-stu/1489794616502538/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="update">
+        <div class="article-label">LEADERSHIP • JULY 2026</div>
+        <div class="article-copy">
+          <p class="article-date">8th National Executive Board</p>
+          <h3>Applications opened for national leadership positions</h3>
+          <p>
+            Ahead of F.Y. 2026–2027, we invited committed medical students to step forward for national leadership and serve the wider network.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/-applications-are-now-open-are-you-ready-to-lead-serve-and-make-a-differencethe-/1470453328436667/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="devotional">
+        <div class="article-label">PLE • 2026</div>
+        <div class="article-copy">
+          <p class="article-date">Prayer & Encouragement</p>
+          <h3>In Faith, Through the Fire: Thank You, Prayer Warriors</h3>
+          <p>
+            After the 2026 Physician Licensure Examination journey, we thanked the prayer community that stood with our examinees through months of preparation, uncertainty, sacrifice, and faith.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/in-faith-through-the-fire-thank-you-prayer-warriors-the-journey-to-becoming-a-ph/1406459401502727/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="devotional">
+        <div class="article-label">WEEK OF PRAYER • 2026</div>
+        <div class="article-copy">
+          <p class="article-date">Faith & Calling</p>
+          <h3>Who are you when the white coat comes off?</h3>
+          <p>
+            During our Week of Prayer, we reflected on who we are beyond achievement and professional identity—and on the deeper calling of following Christ in medicine.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/tonight-who-are-you-when-the-white-coat-comes-off-in-the-race-to-become-a-physic/1386354960179838/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="chapter">
+        <div class="article-label">CHAPTER FEATURE • APRIL 2021</div>
+        <div class="article-copy">
+          <p class="article-date">CAMSA</p>
+          <h3>Day 6: Cebu Adventist Medical Students community</h3>
+          <p>
+            We highlighted CAMSA so our members could discover the distinct communities that make up our national network.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/day-6-camsacebu-adventist-medical-students-network-camsa-is-known-for-its-distin/1362100870851328/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="devotional">
+        <div class="article-label">WEEK OF PRAYER • OCTOBER 2025</div>
+        <div class="article-copy">
+          <p class="article-date">Surrender • Reflection • Revival</p>
+          <h3>AMSN-PH Week of Prayer 2025</h3>
+          <p>
+            Our Week of Prayer invited us to pause, surrender, and renew our relationship with Christ in the midst of medical training.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/1-day-to-go-amsn-week-of-prayer-2025-october-20-to-24-700-pmthe-wait-is-over-our/1250347507113918/" target="_blank" rel="noopener">Week of Prayer post ↗</a>
+            <a href="https://www.facebook.com/AMSNPh/posts/sabbath-culmination-amsn-ph-week-of-prayer-2025-most-of-our-failure-is-the-resul/1255487269933275/" target="_blank" rel="noopener">Sabbath culmination ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="devotional">
+        <div class="article-label">SABBATH FELLOWSHIP • MAY 2025</div>
+        <div class="article-copy">
+          <p class="article-date">Pause • Reflect • Renew</p>
+          <h3>Welcoming the Sabbath together</h3>
+          <p>
+            We invited one another to set aside the demands of the week and welcome the Sabbath through reflection, renewal, and surrender.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/pause-reflect-renewthis-friday-may-9-600700-pm-via-zoomlets-welcome-the-sabbath-/1113513304130673/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="update">
+        <div class="article-label">PLE SUPPORT • MARCH 2025</div>
+        <div class="article-copy">
+          <p class="article-date">Prayer for Examinees</p>
+          <h3>Standing with future physicians through the PLE</h3>
+          <p>
+            Throughout the March 2025 Physician Licensure Examination, we shared prayer, encouragement, and messages of faith with examinees through the demanding board-exam season.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/one-day-left-before-the-march-2025-physician-licensure-examination-remember-with/1080269490788388/" target="_blank" rel="noopener">Before the PLE ↗</a>
+            <a href="https://www.facebook.com/AMSNPh/posts/congratulations-on-making-it-through-day-two-of-the-march-2025-physician-licensu/1081953740619963/" target="_blank" rel="noopener">Day Two encouragement ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="member">
+        <div class="article-label">MEMBER TESTIMONY • FROM OUR ARCHIVES</div>
+        <div class="article-copy">
+          <p class="article-date">Faith in a Non-Adventist Medical School</p>
+          <h3>Being different became an opportunity to witness</h3>
+          <p>
+            In one of our member testimonies, a medical student reflected on studying in a non-Adventist school and learning to see being different as an opportunity to share faith.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/i-have-always-wondered-what-it-would-be-like-to-attend-a-non-adventist-school-th/901468045335201/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="member">
+        <div class="article-label">WITNESS • INSIDE STORY</div>
+        <div class="article-copy">
+          <p class="article-date">Missionary Physician Testimony</p>
+          <h3>How the Lord redeemed the time</h3>
+          <p>
+            Through our Inside Story series, we shared testimonies from missionary physicians so students could hear stories of calling, service, and God's leading.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/witness-how-the-lord-redeemed-the-time-through-the-life-and-testimony-of-adventi/1238120569916026/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="mission">
+        <div class="article-label">MISSION REFLECTION • FROM OUR ARCHIVES</div>
+        <div class="article-copy">
+          <p class="article-date">Medical Missionary Work</p>
+          <h3>Medicine in the service of the gospel</h3>
+          <p>
+            We reflected on medical missionary work as part of the wider gospel mission and on healthcare as a practical avenue for compassionate Christian service.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/ellen-g-white-said-that-the-medical-missionary-work-is-the-right-hand-of-the-gos/579603684188307/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="article-card real-story" data-category="update">
+        <div class="article-label">8TH NEB • JULY 2026</div>
+        <div class="article-copy">
+          <p class="article-date">National Leadership</p>
+          <h3>GTYK: The first meeting of the 8th National Executive Board</h3>
+          <p>
+            Our incoming national board began its term with a Getting to Know You meeting centered on shared mission, teamwork, fellowship, and collaboration.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/-gtyk-getting-to-know-you-our-first-amsn-ph-national-executive-board-meeting-was/1471904998291500/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="update">
+        <div class="article-label">8TH NEB • JULY 2026</div>
+        <div class="article-copy">
+          <p class="article-date">Leadership & Dedication</p>
+          <h3>Leadership begins with service</h3>
+          <p>
+            We formally welcomed our 8th National Executive Board with the conviction that leadership is an act of service and spiritual responsibility.
+          </p>
+          <div class="article-actions">
+            <a href="index.html#leadership">Meet the current leadership →</a>
+            <a href="https://www.facebook.com/AMSNPh/posts/-leadership-begins-with-service-a-new-chapter-begins-as-we-officially-welcome-th/1475354077946592/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="update">
+        <div class="article-label">7TH NEB • JULY 2026</div>
+        <div class="article-copy">
+          <p class="article-date">Leadership Legacy</p>
+          <h3>A tribute to the 7th AMSN Executive Board</h3>
+          <p>
+            Before our leadership transition, we honored the 7th Executive Board for leading with humility, serving with excellence, and preparing AMSN-PH for its next chapter.
+          </p>
+          <div class="article-actions">
+            <a href="index.html#highlights">See the turnover gallery →</a>
+            <a href="https://www.facebook.com/AMSNPh/posts/-a-tribute-to-the-7th-amsn-executive-board-today-we-celebrate-and-honor-the-rema/1477545211060812/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="devotional">
+        <div class="article-label">WEEK OF PRAYER • APRIL 2026</div>
+        <div class="article-copy">
+          <p class="article-date">Calling, Identity & Faith</p>
+          <h3>Week of Prayer 2026: a calling beyond the white coat</h3>
+          <p>
+            Our 2026 Week of Prayer centered us on identity, commitment, calling, and the assurance of Christ. The series included
+            messages such as “A Time,” reflections on why we stand, and the reminder
+            that the Christian calling is larger than professional achievement.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/tonight-who-are-you-when-the-white-coat-comes-off-in-the-race-to-become-a-physic/1386354960179838/" target="_blank" rel="noopener">Featured reflection ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="member">
+        <div class="article-label">TESTIMONY • 2026</div>
+        <div class="article-copy">
+          <p class="article-date">Physician Testimonies</p>
+          <h3>Stories from doctors who have seen God answer prayer</h3>
+          <p>
+            We shared encouraging testimonies from Drs. Dejolde, Dela Cruz, and Rabadon—stories of faith, perseverance, and answered prayer for those still journeying through medical training.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/we-were-blessed-with-three-encouraging-testimonies-from-doctors-dejolde-dela-cru/1486230945104986/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="member">
+        <div class="article-label">MEMBER TESTIMONY • FROM OUR ARCHIVES</div>
+        <div class="article-copy">
+          <p class="article-date">Grace in the Medical Journey</p>
+          <h3>The Answer Is Grace</h3>
+          <p>
+            One of our testimonies follows a medical student's experience of carefully planning the future, facing an unexpected turn, and learning that God's grace remains sufficient even when plans change.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/%F0%9D%90%93%F0%9D%90%87%F0%9D%90%84-%F0%9D%90%80%F0%9D%90%8D%F0%9D%90%92%F0%9D%90%96%F0%9D%90%84%F0%9D%90%91-%F0%9D%90%88%F0%9D%90%92-%F0%9D%90%86%F0%9D%90%91%F0%9D%90%80%F0%9D%90%82%F0%9D%90%84two-years-ago-i-had-my-life-planned-out-in-perfect-order-when/490608926421117/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="member">
+        <div class="article-label">MEMBER TESTIMONY • FROM OUR ARCHIVES</div>
+        <div class="article-copy">
+          <p class="article-date">God's Will & Community</p>
+          <h3>“What's Your will for me, Lord?”</h3>
+          <p>
+            Another reflection looks back on uncertainty about the future and gratitude for AMiCUS-UNP, friends, and church community—reminding us that belonging can become part of God's answer.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/i-used-to-ask-whats-your-will-for-me-lord-what-would-my-future-be-while-asking-g/680834760731865/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="mission">
+        <div class="article-label">GOOD SAMARITAN PROJECT • 2020</div>
+        <div class="article-copy">
+          <p class="article-date">COVID-19 Response</p>
+          <h3>GifTED: responding to crisis through service</h3>
+          <p>
+            During the COVID-19 crisis, we launched the Good Samaritan Project GifTED response fund drive to support Adventist hospitals and extend practical help through our service ministry.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/the-good-samaritan-project-the-adventist-medical-students-network-project-gifted/1002257726835646/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="mission">
+        <div class="article-label">RELIEF RESPONSE • ARCHIVE</div>
+        <div class="article-copy">
+          <p class="article-date">Typhoon Agaton</p>
+          <h3>Responding when communities are affected by disaster</h3>
+          <p>
+            After Typhoon Agaton brought flooding and destruction to communities, we used our platform to appeal for support and mobilize compassion beyond the classroom.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/many-of-our-kababayans-have-been-affected-by-typhoon-agaton-homes-were-flooded-d/1513693545692059/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="update">
+        <div class="article-label">PLE MILESTONE • MARCH 2019</div>
+        <div class="article-copy">
+          <p class="article-date">From Medical Student to Physician</p>
+          <h3>Celebrating newly registered physicians</h3>
+          <p>
+            One of our early milestones celebrated members who became newly registered physicians after the March 2019 Physician Licensure Examination—an enduring picture of our student-to-physician journey.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/presenting-the-amsn-ple-march-2019-newly-registered-physicians/715239968870758/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="update">
+        <div class="article-label">LEADERSHIP • FROM OUR ARCHIVES</div>
+        <div class="article-copy">
+          <p class="article-date">Earlier National Executive Council</p>
+          <h3>Remembering earlier generations of AMSN leadership</h3>
+          <p>
+            Our records preserve the service of previous national leadership teams, including the 4th National Executive Council, and remind us that each generation builds on the work of those before it.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/amsn-presents-its-4th-national-executive-council-officers-committed-to-serve-the/1476699256058155/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card real-story" data-category="devotional">
+        <div class="article-label">COLLABORATIVE WEEK OF PRAYER • 2022</div>
+        <div class="article-copy">
+          <p class="article-date">AMSN-PH • AUP-COM • AMiCUS-UNP</p>
+          <h3>Prayer across institutions</h3>
+          <p>
+            In 2022, we joined AUP College of Medicine and AMiCUS-UNP for a collaborative Week of Prayer, strengthening spiritual community across schools.
+          </p>
+          <div class="article-actions">
+            <a href="https://www.facebook.com/AMSNPh/posts/%F0%9D%90%80%F0%9D%90%8C%F0%9D%90%92%F0%9D%90%8D-%F0%9D%90%8F%F0%9D%90%87-%F0%9D%90%80%F0%9D%90%94%F0%9D%90%8F-%F0%9D%90%82%F0%9D%90%8E%F0%9D%90%8C-%F0%9D%90%80%F0%9D%90%8C%F0%9D%90%88%F0%9D%90%82%F0%9D%90%94%F0%9D%90%92-%F0%9D%90%94%F0%9D%90%8D%F0%9D%90%8F-%F0%9D%90%96%F0%9D%90%9E%F0%9D%90%9E%F0%9D%90%A4-%F0%9D%90%A8%F0%9D%90%9F-%F0%9D%90%8F%F0%9D%90%AB%F0%9D%90%9A%F0%9D%90%B2%F0%9D%90%9E%F0%9D%90%AB-%F0%9D%90%8C%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9C%F0%9D%90%A1-%F0%9D%9F%90%F0%9D%9F%8E%F0%9D%9F%90%F0%9D%9F%90the-lord-desires-us-to-appre/1487343964993684/" target="_blank" rel="noopener">Original Facebook post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="article-card submit-story" data-category="all">
+        <div class="article-label">SHARE YOUR STORY</div>
+        <div class="article-copy">
+          <h3>Your story may be the encouragement another medical student needs.</h3>
+          <p>
+            Share your devotional, testimony, chapter story, or mission reflection
+            with us for possible publication on AMSN-PH channels.
+          </p>
+          <a href="mailto:connect@amsn-ph.org?subject=AMSN-PH Story Submission" class="btn btn-white">Submit a Story</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="devotional-band">
+    <div class="container devotional-grid">
+      <div>
+        <p class="eyebrow">DEVOTIONALS</p>
+        <h2>A quiet space in the middle of medical training.</h2>
       </div>
+      <blockquote>
+        Scripture-centered reflections for the seasons when students need to
+        remember their calling, renew their faith, and find strength to continue.
+      </blockquote>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">AMSN-PH</div>
-        <p>Adventist Medical Students Network – Philippines. Connecting faith, medicine, service, and community across the country.</p>
-      </div>
-      <div>
-        <div class="footer-title">Organization</div>
-        <div class="footer-links">
-          <a href="/about">About</a>
-          <a href="/leadership">Leadership</a>
-          <a href="/chapters">Chapters</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-title">Engage</div>
-        <div class="footer-links">
-          <a href="/programs">Programs</a>
-          <a href="/stories">Stories</a>
-          <a href="/submit-story">Submit your story</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-title">Connect</div>
-        <div class="footer-links">
-          <a href="/contact">Inquiry form</a>
-          <a href="/portal/">Member Portal</a>
-        </div>
-      </div>
+  <div class="container footer-grid">
+    <div class="footer-brand-block">
+      <img src="assets/amsn-logo.jpg" alt="AMSN-PH logo">
+      <div><strong>AMSN-PH</strong><p>Adventist Medical Students Network – Philippines</p></div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span data-year></span> AMSN-PH. All rights reserved.</span>
-      <span>Adventist Medical Students Network – Philippines</span>
+    <div class="footer-column">
+      <strong>Explore</strong>
+      <a href="index.html">Home</a>
+      <a href="index.html#membership">Membership</a>
+      <a href="index.html#programs">Programs</a>
+    </div>
+    <div class="footer-column">
+      <strong>Connect</strong>
+      <a href="portal/">Member Portal</a>
+      <a href="mailto:connect@amsn-ph.org">connect@amsn-ph.org</a>
+      <a href="https://www.facebook.com/AMSNPh" target="_blank" rel="noopener">Facebook Page ↗</a>
+      <a href="https://www.facebook.com/groups/857062394442251" target="_blank" rel="noopener">Facebook Group ↗</a>
     </div>
   </div>
+  <div class="container footer-bottom">© <span id="year"></span> Adventist Medical Students Network – Philippines</div>
 </footer>
 
-<script src="/assets/js/site.js"></script>
+<script src="script.js?v=2.2.1"></script>
 </body>
 </html>

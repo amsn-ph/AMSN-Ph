@@ -1,88 +1,219 @@
-# AMSN-PH Static Multi-Page Website — V1
 
-This package restructures the public website into a simple, true multi-page site.
+Key improvements:
+- cleaner hero proportions and typography
+- more editorial image framing
+- AMSN letterhead-inspired cyan/blue/green accent lines
+- better section spacing and visual rhythm
+- refined quick-access navigation band
+- clearer section markers
+- more deliberate membership/program/chapter layouts
+- cleaner gallery presentation
+- improved stories/publication styling
+- subtler hover states
+- reduced “template/card” feel
+- no decorative stock medical imagery added
 
-## Branding rule
-Use **AMSN-PH** everywhere.
 
-The package intentionally avoids mixed forms such as:
-- AMSN-Ph
-- AMSN PH
-- AMSN-ph
 
-Long-form organization name:
-**Adventist Medical Students Network – Philippines**
+## V1.10 — Curated Facebook content migration
 
-## Site structure
+The Stories & Devotionals page now uses real AMSN-PH public content rather than generic placeholders.
 
-- `/` — minimal landing page
-- `/about` — mission, vision, values, membership overview
-- `/leadership` — separate officer page
-- `/chapters` — separate chapters/member organizations page
-- `/programs` — programs, events, ministries
-- `/stories` — published/community stories
-- `/submit-story` — public story submission form
-- `/contact` — public inquiry form
-- `/portal/` — existing Member Portal
+Added curated items covering:
+- 8th NEB Turn-Over & Dedicatory Service
+- 2026 membership/network outreach
+- 8th NEB officer recruitment
+- 2026 PLE prayer support
+- 2026 faith/calling reflection
+- CAMSA chapter feature
+- Week of Prayer 2025
+- Sabbath fellowship
+- March 2025 PLE support
+- archived member testimony
+- WITNESS / Inside Story
+- medical-missionary reflection
 
-Navigation links point to separate pages. They are NOT anchor links to sections on the homepage.
+A separate `FACEBOOK-CONTENT-INVENTORY.md` is included for future migration work.
 
-## Homepage philosophy
+Facebook indexing is incomplete, so this is a curated archive rather than a complete page export.
 
-The landing page contains only:
-1. Hero
-2. Three short pillars
-3. Two simple calls-to-action
 
-Detailed content belongs on the separate pages.
+## V1.11 — Expanded Facebook / institutional archive
 
-## Forms
+Second migration pass added:
+- 8th NEB GTYK first meeting
+- 8th NEB welcome / “Leadership begins with service”
+- tribute to the 7th Executive Board
+- 2026 Week of Prayer context
+- physician testimonies
+- “The Answer Is Grace” member testimony
+- “What’s Your will for me, Lord?” member testimony
+- Good Samaritan Project GifTED
+- Typhoon Agaton relief appeal
+- March 2019 newly registered physicians
+- earlier national leadership archive
+- 2022 collaborative Week of Prayer
 
-Two public forms are included:
-- Inquiry form
-- Submit Your Story form
+Homepage “Our Story” timeline was also expanded to better connect public archive material
+with AMSN-PH’s organizational history.
 
-### To connect them to Supabase
+No Facebook photos were copied into the package during this pass; public posts are summarized
+and linked to their original source. This keeps the website useful while avoiding unnecessary
+republication of externally hosted media.
 
-1. Run `supabase-public-forms.sql` in Supabase SQL Editor.
-2. Copy:
-   `assets/js/config.example.js`
-   to:
-   `assets/js/config.js`
-3. Put ONLY your public Supabase values in `config.js`:
 
-```js
-window.AMSN_FORM_CONFIG = {
-  supabaseUrl: "https://YOUR_PROJECT.supabase.co",
-  supabaseAnonKey: "YOUR_PUBLIC_ANON_KEY"
-};
-```
+## V1.12 — Network & Chapter Profiles
 
-Never place a service-role key in frontend code.
+Major network update:
+- replaced generic Luzon/Visayas/Mindanao placeholders on the homepage
+- added five documented historical/core organizations:
+  - LSAMS
+  - CAMSA
+  - ISAMS
+  - AMiCUS-UNP
+  - DSAMS
+- added a 2026 "Campus Connections" expansion card
+- created a dedicated `network.html` page with detailed chapter histories
+- added links to public chapter pages and the WITNESS 2023 archive
+- clearly separates verified historical information from current 2026 chapter status
+- added source/research notes to `FACEBOOK-CONTENT-INVENTORY.md`
 
-The included RLS policies:
-- allow anonymous INSERT only
-- do not allow anonymous SELECT
-- do not allow anonymous UPDATE/DELETE
+Current officers and active-school lists were intentionally not invented.
+Those fields should be added after formal 8th NEB verification.
 
-This means public users can submit but cannot read other submissions.
 
-## Before going live
+## V1.13 — Philippines map section on homepage
 
-Update:
-- current leadership names and photos
-- current chapter list
-- social/contact details if desired
-- actual stories after editorial approval
+Added a new landing-page section:
+- `AMSN Across the Philippines`
 
-The previous AMSN-PH chapter names are included only as starter content and should be reviewed before deployment.
+Placement:
+- homepage, early on the landing page (Option A), after “The Network in Action”
 
-## Deployment
+Includes:
+- stylized SVG map of the Philippines
+- location markers for:
+  - AMiCUS-UNP
+  - LSAMS
+  - ISAMS
+  - CAMSA
+  - DSAMS
+- emerging-connections marker (Leyte / school-based expansion)
+- legend for established vs emerging communities
+- location list with full names
+- CTA for schools not yet represented
 
-This is a no-build static website.
+The map is illustrative and region/city-level, not a precise geographic locator.
+Current chapter/officer status should still be verified separately.
 
-For Vercel:
-- upload/deploy the folder
-- `vercel.json` enables clean URLs
 
-The existing `/portal/` should remain separate and continue handling authentication/member functions.
+## V1.14 — Hero photo replaced
+
+- Replaced the homepage hero photo with the newly supplied AMSN-PH collage featuring the blue event background.
+- The image is displayed in full and remains uncropped.
+- All V1.13 content, including the Philippines map section, is retained.
+
+
+## V1.15 — Subtle medical hero background
+
+- Added the supplied doctor/stethoscope image as a low-contrast hero background.
+- Kept the AMSN community collage as the main foreground visual.
+- Applied a strong white overlay plus a light AMSN-blue wash so the image adds atmosphere without reducing readability.
+- Retained AMSN blue/green identity accents.
+- Background image is preserved as supplied; no image editing or cropping was performed.
+
+
+## V1.16 — Launch-ready copy + accurate Philippines map
+
+Launch-preparation pass:
+- replaced the hand-drawn Philippines illustration with an accurate geographic map
+- added city/region-level pins for AMiCUS-UNP, LSAMS/AUP-MEDS, ISAMS, CAMSA, DSAMS, and the Leyte campus connection
+- made map pins clickable and keyboard-accessible
+- rewrote public-facing copy into AMSN-PH's own voice (`we`, `our`, `us`)
+- removed visible editor notes, verification reminders, Phase 2 notes, and pre-launch language
+- revised the AMSN–AMEN section to use conservative wording grounded in the current membership framework
+- reframed the leadership section around verified public coordination contacts
+- added canonical/OpenGraph metadata
+- added `robots.txt`, `sitemap.xml`, and a branded `404.html`
+- retained all real AMSN-PH event photos and content archives
+
+### Map source
+The accurate map asset is derived from `Map of the Philippines.svg` on Wikimedia Commons,
+licensed CC BY-SA 3.0. Attribution is displayed below the map on the homepage.
+
+
+## V1.17 — CAMSA story date fix + alternate network photo
+
+- corrected the CAMSA chapter-story date from April 2026 to April 2021
+- replaced the duplicated homepage network/community image so it no longer repeats the hero photo
+- used a different AMSN community collage for the secondary network visual
+- lightly refined the related section wording to reduce repetition
+
+
+## V1.18 — Final polish + visible photo backgrounds
+
+- increased the visibility of the doctor/stethoscope background photo in the hero
+- kept readability by using a softer white overlay instead of hiding the image too much
+- added a coordinated low-transparency medical photo treatment to the Join section
+- slightly refined shadows/section rhythm for a less flat, more launch-ready look
+
+Note:
+The medical photo background you sent is still the same file previously added in V1.15.
+In this version, it is simply made more visible and used more intentionally.
+
+
+## V1.19 — Leadership placeholders
+
+- removed the partial/incomplete public officer list
+- replaced the leadership roster with neutral placeholders
+- added a visual organizational-chart placeholder
+- added a separate officer-roster placeholder
+- removed dynamic officer names from `script.js`
+- section is ready to receive the final approved organizational chart and complete 8th NEB roster later
+
+
+## V1.20 — Landing page cleanup
+
+Homepage structure was intentionally shortened to improve scanability and launch readiness.
+
+Changes:
+- removed the duplicate “Network in Action” section
+- removed the longer “Why a Network?” and standalone AMSN + AMEN sections from the homepage
+- replaced the long chapter grid with a compact network teaser that links to `network.html`
+- replaced the long highlights block/gallery with a shorter featured-update layout
+- replaced the longer stories/archive section with a compact three-card teaser
+- removed the Leadership placeholder section from the homepage to keep the landing page focused
+- kept AMEN continuity as a short note inside Membership
+- updated quick-access cards to point to the most important landing-page destinations
+- removed “Phase 1” from the footer
+
+Recommended homepage flow:
+Hero → Quick Access → Philippines Map → About → Membership → Programs → Network teaser → Featured Highlight → Stories teaser → Join
+
+
+## V2.0 — Phase 2 Starter
+
+Phase 2 begins with a Supabase-ready authenticated portal.
+
+New files:
+- `portal/` — member login, dashboard, profile, directory, officer hub
+- `supabase/phase2-schema.sql` — database + RLS starter
+- `PHASE-2-SETUP.md` — step-by-step implementation guide
+
+The public site now includes a Member Portal link.
+
+This starter intentionally focuses on the smallest useful workflow:
+sign-up → email confirmation → pending profile → officer verification → verified member directory → role-based officer access.
+
+
+## V2.1 — Separate Admin / Verification Panel
+
+- Added `portal/admin.html`
+- Added `portal/assets/admin.js`
+- Added `verifier` system role
+- Separated membership verification from the general Officer Hub
+- Added verification audit history
+- Added `verified_at`, `verified_by`, and verification notes
+- Admins can assign system roles
+- Verifiers can approve/reject members without receiving full administrator access
+- Added `supabase/v2.1-admin-verifier-migration.sql` for existing Supabase projects
