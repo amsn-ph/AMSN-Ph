@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | AMSN-PH</title>
+  <meta name="description" content="Send an inquiry to AMSN-PH.">
+  <meta name="theme-color" content="#23613f">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/" aria-label="AMSN-PH home">
+      <span class="brand-mark">✚</span>
+      <span>AMSN-PH<small>Faith · Medicine · Mission</small></span>
+    </a>
+    <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-label="Open navigation">☰</button>
+    <nav class="nav-links" data-nav-links aria-label="Primary navigation">
+      <a href="/about">About</a>
+      <a href="/leadership">Leadership</a>
+      <a href="/chapters">Chapters</a>
+      <a href="/programs">Programs</a>
+      <a href="/stories">Stories</a>
+      <a href="/contact" aria-current="page">Contact</a>
+      <a class="nav-portal" href="/portal/">Member Portal</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Contact AMSN-PH</div>
+      <h1>How can we help?</h1>
+      <p>Use one inquiry form for membership, chapters, partnerships, events, media, and general questions.</p>
+    </div>
+  </section>
+
+  <section class="section section-sm">
+    <div class="container form-shell">
+      <form class="form-card" data-amsn-form="inquiry">
+        <div class="form-grid">
+          <div class="field">
+            <label for="inq-name">Full name</label>
+            <input id="inq-name" name="full_name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="inq-email">Email address</label>
+            <input id="inq-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field field-full">
+            <label for="inq-school">School / organization / affiliation</label>
+            <input id="inq-school" name="school_or_affiliation" type="text">
+          </div>
+          <div class="field field-full">
+            <label for="inq-type">Inquiry type</label>
+            <select id="inq-type" name="inquiry_type" required>
+              <option value="">Select one</option>
+              <option>Membership</option>
+              <option>Chapter concern</option>
+              <option>Program or event</option>
+              <option>Partnership or collaboration</option>
+              <option>Media or publication</option>
+              <option>Website / technical concern</option>
+              <option>General inquiry</option>
+            </select>
+          </div>
+          <div class="field field-full">
+            <label for="inq-message">Message</label>
+            <textarea id="inq-message" name="message" required></textarea>
+          </div>
+          <div class="field field-full">
+            <label class="checkbox">
+              <input name="consent" type="checkbox" required>
+              <span>I agree that AMSN-PH may use the information above to respond to this inquiry.</span>
+            </label>
+          </div>
+          <div class="field field-full">
+            <button class="button button-primary" type="submit">Submit inquiry</button>
+            <div class="form-status" data-form-status aria-live="polite"></div>
+          </div>
+        </div>
+        <p class="form-note">The form is designed to save to a Supabase table once the provided setup SQL and public client configuration are added.</p>
+      </form>
+
+      <aside class="aside-card">
+        <h3>Before you send</h3>
+        <ul>
+          <li>For account-specific concerns, include the email used in the Member Portal.</li>
+          <li>For chapter matters, mention the school or chapter involved.</li>
+          <li>Do not submit sensitive health or patient information through this public form.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">AMSN-PH</div>
+        <p>Adventist Medical Students Network – Philippines. Connecting faith, medicine, service, and community across the country.</p>
+      </div>
+      <div>
+        <div class="footer-title">Organization</div>
+        <div class="footer-links">
+          <a href="/about">About</a>
+          <a href="/leadership">Leadership</a>
+          <a href="/chapters">Chapters</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Engage</div>
+        <div class="footer-links">
+          <a href="/programs">Programs</a>
+          <a href="/stories">Stories</a>
+          <a href="/submit-story">Submit your story</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Connect</div>
+        <div class="footer-links">
+          <a href="/contact">Inquiry form</a>
+          <a href="/portal/">Member Portal</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> AMSN-PH. All rights reserved.</span>
+      <span>Adventist Medical Students Network – Philippines</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/forms.js"></script>
+</body>
+</html>

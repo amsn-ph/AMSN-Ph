@@ -1,80 +1,88 @@
-# AMSN-PH Membership Registration Patch
+# AMSN-PH Static Multi-Page Website — V1
 
-This patch implements the requested classification:
+This package restructures the public website into a simple, true multi-page site.
 
-## SDA
-- YL1 / First Year -> Regular Member
-- YL2 / Second Year -> Regular Member
-- YL3 / Third Year -> Regular Member
-- YL4 / Clerk -> Associate Member
-- YL5 / Post-Graduate Intern -> Associate Member
-- Graduate / PLE Review -> Associate Member
-- Licensed Physician -> Honorary Member
+## Branding rule
+Use **AMSN-PH** everywhere.
 
-## Non-SDA
-All academic/professional statuses -> Affiliate Member
+The package intentionally avoids mixed forms such as:
+- AMSN-Ph
+- AMSN PH
+- AMSN-ph
 
-"Other" is intentionally removed.
+Long-form organization name:
+**Adventist Medical Students Network – Philippines**
 
-## Files
+## Site structure
 
-1. `membership-fields.html`
-   - Drop-in form fields for affiliation, academic/professional status, and
-     read-only automatic membership classification.
+- `/` — minimal landing page
+- `/about` — mission, vision, values, membership overview
+- `/leadership` — separate officer page
+- `/chapters` — separate chapters/member organizations page
+- `/programs` — programs, events, ministries
+- `/stories` — published/community stories
+- `/submit-story` — public story submission form
+- `/contact` — public inquiry form
+- `/portal/` — existing Member Portal
 
-2. `membership-logic.js`
-   - Frontend classification and display logic.
+Navigation links point to separate pages. They are NOT anchor links to sections on the homepage.
 
-3. `amsn-membership-migration.sql`
-   - Adds database fields, check constraints, classification function, and
-     trigger so membership type is recomputed in Supabase and cannot be
-     trusted from browser input alone.
+## Homepage philosophy
 
-## Recommended integration
+The landing page contains only:
+1. Hero
+2. Three short pillars
+3. Two simple calls-to-action
 
-### Registration form
-Insert the HTML block into the current AMSN registration form.
+Detailed content belongs on the separate pages.
 
-Include the JavaScript file after the existing registration JS:
+## Forms
 
-```html
-<script src="membership-logic.js"></script>
-```
+Two public forms are included:
+- Inquiry form
+- Submit Your Story form
 
-### Signup payload
-Store:
-- `religious_affiliation`
-- `academic_status`
+### To connect them to Supabase
 
-The SQL trigger calculates `membership_type`.
-
-If the current signup uses Supabase Auth metadata first, include:
+1. Run `supabase-public-forms.sql` in Supabase SQL Editor.
+2. Copy:
+   `assets/js/config.example.js`
+   to:
+   `assets/js/config.js`
+3. Put ONLY your public Supabase values in `config.js`:
 
 ```js
-options: {
-  data: {
-    ...existingMetadata,
-    religious_affiliation: document.getElementById("religious-affiliation").value,
-    academic_status: document.getElementById("academic-status").value
-  }
-}
+window.AMSN_FORM_CONFIG = {
+  supabaseUrl: "https://YOUR_PROJECT.supabase.co",
+  supabaseAnonKey: "YOUR_PUBLIC_ANON_KEY"
+};
 ```
 
-Then make sure the existing `handle_new_user()` trigger copies those two metadata
-fields into the profile/member table.
+Never place a service-role key in frontend code.
 
-### Database
-Run `amsn-membership-migration.sql` once in Supabase SQL Editor.
+The included RLS policies:
+- allow anonymous INSERT only
+- do not allow anonymous SELECT
+- do not allow anonymous UPDATE/DELETE
 
-IMPORTANT: the migration assumes the AMSN member table is `public.profiles`.
-If the live project uses a different table, replace that table name before running.
+This means public users can submit but cannot read other submissions.
 
-## UI behavior
+## Before going live
 
-Example:
-- SDA + YL2 -> Regular Member
-- SDA + YL5 -> Associate Member
-- SDA + Licensed Physician -> Honorary Member
-- Non-SDA + any listed status -> Affiliate Member
+Update:
+- current leadership names and photos
+- current chapter list
+- social/contact details if desired
+- actual stories after editorial approval
 
-The user never manually selects a membership type.
+The previous AMSN-PH chapter names are included only as starter content and should be reviewed before deployment.
+
+## Deployment
+
+This is a no-build static website.
+
+For Vercel:
+- upload/deploy the folder
+- `vercel.json` enables clean URLs
+
+The existing `/portal/` should remain separate and continue handling authentication/member functions.

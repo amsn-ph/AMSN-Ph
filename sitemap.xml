@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://amsn-ph.org/</loc></url>
-  <url><loc>https://amsn-ph.org/network.html</loc></url>
-  <url><loc>https://amsn-ph.org/stories.html</loc></url>
+  <url><loc>https://amsn-ph.org/about</loc></url>
+  <url><loc>https://amsn-ph.org/leadership</loc></url>
+  <url><loc>https://amsn-ph.org/chapters</loc></url>
+  <url><loc>https://amsn-ph.org/programs</loc></url>
+  <url><loc>https://amsn-ph.org/stories</loc></url>
+  <url><loc>https://amsn-ph.org/contact</loc></url>
+  <url><loc>https://amsn-ph.org/submit-story</loc></url>
 </urlset>
