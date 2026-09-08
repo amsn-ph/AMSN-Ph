@@ -1,0 +1,197 @@
+/*
+  AMSN-PH MULTI-PAGE PATCH
+  Designed to sit AFTER the Aug 29 styles.css.
+  It intentionally reuses the original variables, typography, buttons,
+  logo treatment, spacing language, and section system.
+*/
+
+.page-hero{
+  padding:82px 0 70px;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+.page-hero h1{
+  max-width:980px;
+  margin-bottom:24px;
+}
+.page-hero .hero-lead{
+  margin-bottom:0;
+}
+
+.page-link-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:22px;
+  align-items:center;
+  margin-top:34px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+}
+
+.home-links-strip{
+  padding:0;
+  border-bottom:1px solid var(--line);
+}
+.home-links-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+.home-links-grid>a{
+  min-height:170px;
+  padding:32px 28px;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.home-links-grid>a:first-child{border-left:1px solid var(--line)}
+.home-links-grid>a:hover{background:var(--light)}
+.home-links-grid span{
+  color:var(--amsn-blue);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.13em;
+}
+.home-links-grid strong{
+  margin:18px 0 8px;
+  font-size:1.15rem;
+}
+.home-links-grid small{
+  color:var(--muted);
+  line-height:1.45;
+}
+
+.public-form-layout{
+  display:grid;
+  grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);
+  gap:72px;
+  align-items:start;
+}
+.public-form{
+  padding:34px;
+  border:1px solid var(--line);
+  border-top:4px solid var(--amsn-blue);
+  background:#fff;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+.form-grid label{
+  display:grid;
+  gap:8px;
+}
+.form-grid label>span:first-child{
+  color:#384145;
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.04em;
+}
+.form-wide{grid-column:1/-1}
+.public-form input,
+.public-form select,
+.public-form textarea{
+  width:100%;
+  min-height:46px;
+  padding:11px 12px;
+  border:1px solid #cbd1d4;
+  border-radius:0;
+  outline:none;
+  background:#fff;
+  color:var(--ink);
+  font:inherit;
+}
+.public-form textarea{
+  min-height:170px;
+  resize:vertical;
+}
+.public-form .story-textarea{min-height:300px}
+.public-form input:focus,
+.public-form select:focus,
+.public-form textarea:focus{
+  border-color:var(--amsn-blue);
+  box-shadow:0 0 0 2px rgba(0,84,128,.10);
+}
+.form-consent{
+  grid-template-columns:auto 1fr!important;
+  align-items:start;
+  gap:10px!important;
+}
+.form-consent input{
+  width:18px!important;
+  min-height:18px!important;
+  height:18px;
+  margin-top:2px;
+}
+.form-consent span{
+  color:var(--muted)!important;
+  font-weight:400!important;
+  letter-spacing:0!important;
+  font-size:.86rem!important;
+}
+.form-actions{
+  margin-top:26px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  display:flex;
+  gap:18px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.form-status{
+  color:var(--muted);
+  font-size:.84rem;
+}
+.form-status.success{color:#25701f}
+.form-status.error{color:#a82727}
+.honeypot{
+  position:absolute!important;
+  left:-10000px!important;
+  width:1px!important;
+  height:1px!important;
+  overflow:hidden!important;
+}
+
+.story-submit-cta{
+  margin-top:26px;
+}
+
+@media (max-width:900px){
+  .home-links-grid{grid-template-columns:1fr}
+  .home-links-grid>a{
+    min-height:130px;
+    border-left:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .public-form-layout{grid-template-columns:1fr;gap:34px}
+}
+
+@media (max-width:650px){
+  .page-hero{padding:58px 0 48px}
+  .public-form{padding:24px 18px}
+  .form-grid{grid-template-columns:1fr}
+  .form-wide{grid-column:auto}
+}
+
+
+/* Homepage 8th NEB hero image — same Aug 29 design, better space for the wide artwork */
+.neb-hero-grid{
+  grid-template-columns:minmax(0,1fr) minmax(420px,1fr);
+  gap:58px;
+}
+.neb-hero-grid .hero-image-frame{
+  background:#fff;
+  overflow:hidden;
+}
+.neb-hero-grid .neb-hero-image{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+@media(max-width:1050px){
+  .neb-hero-grid{
+    grid-template-columns:1fr;
+  }
+}
