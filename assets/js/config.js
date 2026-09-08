@@ -1,0 +1,1 @@
+window.AMSN_FORM_CONFIG = { supabaseUrl: "", supabaseAnonKey: "" };\n
