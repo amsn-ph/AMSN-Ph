@@ -1,0 +1,14 @@
+git switch main
+git pull origin main
+
+git restore \
+  --source=7fd95473945e81f7f56e0083b02a582b7914ffcf \
+  --staged \
+  --worktree \
+  .
+
+git status
+
+git commit -m "Restore original AMSN-PH website design"
+
+git push origin main
