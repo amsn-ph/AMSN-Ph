@@ -1,7 +1,10 @@
 {
-  "regions": [
-    "Luzon",
-    "Visayas",
-    "Mindanao"
-  ]
+  "official_form": "https://forms.gle/wjTczgLwT2KsLwLdA",
+  "updated": [
+    "submit-story.html"
+  ],
+  "added": [
+    "devotional-book.css"
+  ],
+  "supabase_changes_required": false
 }

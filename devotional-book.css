@@ -1,0 +1,139 @@
+/*
+  AMSN-PH Project 2026 Devotional Book
+  Extends the existing Aug 29 design system.
+*/
+
+.devotional-hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.devotional-hero::after{
+  content:"2026";
+  position:absolute;
+  right:-.04em;
+  bottom:-.24em;
+  color:rgba(0,84,128,.045);
+  font-size:clamp(9rem,28vw,25rem);
+  font-weight:700;
+  line-height:1;
+  pointer-events:none;
+}
+
+.devotional-hero .container{
+  position:relative;
+  z-index:1;
+}
+
+.devotional-hero-actions{
+  margin-top:32px;
+}
+
+.devotional-guide{
+  margin-top:38px;
+}
+
+.devotional-privacy-note{
+  margin-top:32px;
+  padding:22px 24px;
+  border-left:4px solid var(--amsn-cyan);
+  background:var(--light);
+}
+
+.devotional-privacy-note strong{
+  display:block;
+  margin-bottom:7px;
+  color:var(--amsn-blue);
+}
+
+.devotional-privacy-note p{
+  margin-bottom:0;
+}
+
+.devotional-form-section{
+  padding:92px 0;
+  border-bottom:1px solid var(--line);
+  background:#f7f9fa;
+}
+
+.devotional-form-heading{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(300px,.78fr);
+  gap:64px;
+  align-items:end;
+  margin-bottom:36px;
+}
+
+.devotional-form-heading h2{
+  margin-bottom:0;
+}
+
+.devotional-form-heading .section-intro{
+  margin-bottom:22px;
+}
+
+.google-form-shell{
+  position:relative;
+  border:1px solid var(--line);
+  border-top:5px solid var(--amsn-blue);
+  background:#fff;
+  min-height:760px;
+}
+
+.google-form-shell iframe{
+  display:block;
+  width:100%;
+  min-height:1040px;
+  border:0;
+  background:#fff;
+}
+
+.google-form-fallback{
+  padding:24px;
+  border-top:1px solid var(--line);
+  background:var(--light);
+}
+
+.google-form-fallback strong{
+  display:block;
+  margin-bottom:6px;
+  color:var(--amsn-blue);
+}
+
+.google-form-fallback p{
+  margin-bottom:15px;
+  max-width:680px;
+}
+
+.devotional-closing{
+  margin-top:0;
+}
+
+@media(max-width:800px){
+  .devotional-form-section{
+    padding:66px 0;
+  }
+
+  .devotional-form-heading{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .google-form-shell iframe{
+    min-height:900px;
+  }
+}
+
+@media(max-width:540px){
+  .google-form-shell{
+    margin-inline:-4px;
+  }
+
+  .google-form-shell iframe{
+    min-height:820px;
+  }
+
+  .google-form-fallback{
+    padding:20px;
+  }
+}
