@@ -1,0 +1,33 @@
+
+.region-hero-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:70px;align-items:center}
+.region-national-mark{padding:26px;border-left:1px solid var(--line);text-align:center}
+.region-national-mark img{width:min(100%,250px);margin:0 auto 16px;display:block}
+.region-national-mark span{color:var(--amsn-blue);font-size:.68rem;font-weight:700;letter-spacing:.16em}
+.region-overview{padding:90px 0;border-bottom:1px solid var(--line);background:var(--light)}
+.region-overview-heading{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:42px}
+.region-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.region-card{min-width:0;background:#fff;border:1px solid var(--line);border-top:5px solid var(--amsn-blue)}
+.region-card.region-visayas{border-top-color:#d4aa00}
+.region-card.region-mindanao{border-top-color:#982c27}
+.region-logo-wrap{aspect-ratio:1/1;display:grid;place-items:center;padding:26px;background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
+.region-logo-wrap img{width:100%;height:100%;max-height:310px;object-fit:contain;display:block}
+.region-card-copy{padding:28px}
+.region-number{display:block;margin-bottom:34px;color:var(--muted);font-size:.72rem}
+.region-label{margin:0 0 7px;color:var(--amsn-blue);font-size:.65rem;font-weight:700;letter-spacing:.12em}
+.region-card h2{margin-bottom:18px;font-size:clamp(2rem,3vw,3rem)}
+@media(max-width:950px){
+  .region-card-grid{grid-template-columns:1fr}
+  .region-card{display:grid;grid-template-columns:260px minmax(0,1fr)}
+  .region-logo-wrap{border-bottom:0;border-right:1px solid var(--line)}
+}
+@media(max-width:800px){
+  .region-hero-layout,.region-overview-heading{grid-template-columns:1fr;gap:28px}
+  .region-national-mark{max-width:280px;padding:18px 0 0;border-left:0;border-top:1px solid var(--line);text-align:left}
+  .region-national-mark img{width:180px;margin:0 0 12px}
+  .region-overview{padding:66px 0}
+}
+@media(max-width:600px){
+  .region-card{display:block}
+  .region-logo-wrap{aspect-ratio:4/3;border-right:0;border-bottom:1px solid var(--line);padding:22px}
+  .region-card-copy{padding:22px}
+}

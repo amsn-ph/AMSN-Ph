@@ -1,27 +1,7 @@
 {
-  "baseline_commit": "872a327b0565d9f94da215924d01f9278bdf0be1",
-  "preserved_existing_files": [
-    "styles.css",
-    "polish-v2.6.css",
-    "network.html",
-    "stories.html",
-    "portal/",
-    "assets/"
-  ],
-  "replacement_files": [
-    "index.html",
-    "script.js"
-  ],
-  "new_pages": [
-    "about.html",
-    "membership.html",
-    "programs.html",
-    "highlights.html",
-    "contact.html",
-    "submit-story.html"
-  ],
-  "new_support_files": [
-    "multipage.css",
-    "public-forms.js"
+  "regions": [
+    "Luzon",
+    "Visayas",
+    "Mindanao"
   ]
 }
