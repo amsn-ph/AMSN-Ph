@@ -1,58 +1,39 @@
-# AMSN-PH Project 2026 Devotional Book Form Patch
+# AMSN-PH Officer Publishing CMS Patch
 
-Official Google Form:
-https://forms.gle/wjTczgLwT2KsLwLdA
+This adds officer-authored public posts to the existing AMSN-PH portal and public website.
 
-## What this patch does
+## Roles
+Contributors: trustee, chapter_officer, neb_officer, admin
+Publishers: neb_officer, admin
 
-- Replaces the current custom `submit-story.html` Supabase form with a branded
-  **AMSN-PH Project 2026 Devotional Book** page.
-- Keeps the current Aug 29 AMSN-PH design system.
-- Adds an embedded Google Form area.
-- Adds direct Google Form buttons as fallback.
-- Removes the need to submit devotional stories to the website's Supabase table.
-- Does not change the Inquiry Form or Member Portal.
+Workflow: Draft -> Review -> Published -> Archived
 
-## Important note about the embed
+## Public behavior
+Published posts automatically appear on:
+- homepage: latest 3
+- Stories page: latest 12
+- full article: story.html?id=<post-id>
 
-The supplied URL is a shortened `forms.gle` link. The page attempts to load it
-inside an iframe, but some browsers / Google redirect behavior may prevent a
-shortened URL from rendering inside an iframe.
+## Install
+1. From repository root:
+   python apply_publications_cms_patch.py
 
-For that reason the patch includes prominent direct buttons to the exact official
-Google Form. If you later copy the full Google Forms `.../viewform?embedded=true`
-URL from Google Forms > Send > Embed HTML, you can replace the iframe `src` with
-that full embed URL for the most reliable inline experience.
+2. Run supabase-publications-cms.sql in Supabase SQL Editor.
 
-## Apply
+3. Check:
+   git status --short
 
-From the repository root:
+4. Stage:
+   git add index.html stories.html story.html publications.css public-posts.js portal/officer.html portal/assets/publications.js portal/assets/publications.css
 
-```bash
-python apply_devotional_patch.py
-```
+5. Commit:
+   git commit -m "Add officer public publishing CMS"
+   git push origin main
 
-Check:
+## Permissions
+Trustees/chapter officers can save drafts and submit for review.
+NEB officers/admins can publish, feature, and archive.
 
-```bash
-git status --short
-```
-
-Stage only:
-
-```bash
-git add submit-story.html devotional-book.css
-```
-
-Then:
-
-```bash
-git commit -m "Integrate Project 2026 Devotional Book submission form"
-git push origin main
-```
-
-## No Supabase SQL needed
-
-This patch uses the official Google Form for devotional-book submissions.
-Your existing `public-forms.js` may remain because it is still used by the
-public Inquiry Form.
+## Security
+Public visitors can SELECT only published rows through Supabase RLS.
+The browser UI is not the security boundary; RLS is.

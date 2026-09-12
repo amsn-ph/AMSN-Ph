@@ -1,10 +1,15 @@
 {
-  "official_form": "https://forms.gle/wjTczgLwT2KsLwLdA",
-  "updated": [
-    "submit-story.html"
+  "patched": [
+    "index.html",
+    "stories.html",
+    "portal/officer.html"
   ],
-  "added": [
-    "devotional-book.css"
+  "new": [
+    "story.html",
+    "publications.css",
+    "public-posts.js",
+    "portal/assets/publications.js",
+    "portal/assets/publications.css"
   ],
-  "supabase_changes_required": false
+  "sql": "supabase-publications-cms.sql"
 }
