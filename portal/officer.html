@@ -6,6 +6,7 @@
   <title>Officer Hub | AMSN-PH Portal</title>
   <link rel="icon" type="image/jpeg" href="../assets/amsn-logo.jpg">
   <link rel="stylesheet" href="assets/portal.css">
+<link rel="stylesheet" href="assets/publications.css?v=1.0.0">
 </head>
 <body>
 <div class="portal-shell">
@@ -43,7 +44,115 @@
       <div class="user-chip" data-user-chip>Loading…</div>
     </header>
 
-    <section class="portal-grid">
+    <section class="card publication-manager" id="publication-manager" style="margin-top:18px">
+  <div class="publication-heading-row">
+    <div>
+      <span class="card-label">PUBLIC WEBSITE</span>
+      <h2>Publications</h2>
+      <p>Create AMSN-PH Stories, devotionals, announcements, events, and public updates.</p>
+    </div>
+    <div class="publication-permission-note" id="publication-permission-note"></div>
+  </div>
+
+  <form id="publication-form" class="form-grid">
+    <input type="hidden" name="post_id">
+
+    <div class="field full">
+      <label>Title</label>
+      <input name="title" required maxlength="180">
+    </div>
+
+    <div class="field">
+      <label>Category</label>
+      <select name="category" required>
+        <option value="story">AMSN Story</option>
+        <option value="devotional">Devotional</option>
+        <option value="announcement">Announcement</option>
+        <option value="event">Event</option>
+        <option value="update">News / Update</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Region</label>
+      <select name="region" required>
+        <option value="National">National</option>
+        <option value="Luzon">Luzon</option>
+        <option value="Visayas">Visayas</option>
+        <option value="Mindanao">Mindanao</option>
+      </select>
+    </div>
+
+    <div class="field full">
+      <label>Short excerpt</label>
+      <textarea name="excerpt" required maxlength="420"
+        placeholder="1–3 sentence preview for the homepage and Stories page."></textarea>
+    </div>
+
+    <div class="field full">
+      <label>Full content</label>
+      <textarea name="body" required class="publication-body-input"
+        placeholder="Write the full public post here. Paragraph breaks will be preserved."></textarea>
+    </div>
+
+    <div class="field full">
+      <label>Cover image URL (optional)</label>
+      <input name="cover_image_url" type="url"
+        placeholder="https://... or upload below">
+    </div>
+
+    <div class="field full">
+      <label>Upload cover image (optional, max 5 MB)</label>
+      <input name="cover_file" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+      <small class="field-help">Uploaded images are stored in the AMSN-PH public post-images bucket.</small>
+    </div>
+
+    <div class="field checkbox-row publication-publisher-only" hidden>
+      <input type="checkbox" name="featured">
+      <span>Feature on homepage</span>
+    </div>
+
+    <div class="field full publication-action-row">
+      <button class="btn btn-outline" type="button" data-publication-action="draft">Save Draft</button>
+      <button class="btn btn-blue" type="button" data-publication-action="review">Submit for Review</button>
+      <button class="btn btn-blue publication-publisher-only" type="button"
+        data-publication-action="published" hidden>Publish Now</button>
+      <button class="btn btn-outline" type="button" data-publication-reset>Clear</button>
+    </div>
+
+    <div class="field full">
+      <div id="publication-message" class="message"></div>
+    </div>
+  </form>
+
+  <div class="publication-divider"></div>
+
+  <div class="publication-list-heading">
+    <div>
+      <span class="card-label">MY POSTS</span>
+      <h3>Drafts and submissions</h3>
+    </div>
+    <button class="btn btn-outline btn-sm" type="button" data-refresh-publications>Refresh</button>
+  </div>
+
+  <div id="my-publication-list">
+    <div class="empty-state">Loading your posts…</div>
+  </div>
+
+  <div class="publication-publisher-only publication-review-wrap" hidden>
+    <div class="publication-divider"></div>
+    <div class="publication-list-heading">
+      <div>
+        <span class="card-label">EDITORIAL REVIEW</span>
+        <h3>Posts submitted for review</h3>
+      </div>
+    </div>
+    <div id="publication-review-list">
+      <div class="empty-state">Loading review queue…</div>
+    </div>
+  </div>
+</section>
+<section class="portal-grid">
 <article class="card span-7">
         <span class="card-label">Announcements</span>
         <h2>Post to the member portal</h2>
@@ -150,6 +259,7 @@
   <script src="assets/supabase-config.js?v=2.5.0"></script>
   <script src="assets/supabase-client.js?v=2.5.0"></script>
 
+<script src="assets/publications.js?v=1.0.0"></script>
 <script src="assets/officer.js?v=2.3.0"></script>
 </body>
 </html>
